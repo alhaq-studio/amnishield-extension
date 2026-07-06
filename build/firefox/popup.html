@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amn Shield</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body class="popup-dark ui-liquid">
+    <div class="card" aria-label="Launcher">
+        <div class="header-container">
+            <div class="icon header-icon">🛡️</div>
+            <div>
+                <h2>Amn Shield</h2>
+                <p class="help-text header-help-text">Halal-first browsing protection.</p>
+            </div>
+        </div>
+
+        <!-- Quick Status Section -->
+        <div class="status-summary">
+            <div class="status-item">
+                <span class="status-label">Blocking</span>
+                <span id="blockingStatus" class="status-value">Active</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Blur</span>
+                <span id="blurStatus" class="status-value">Off</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Blocked Today</span>
+                <span id="blockedCount" class="status-value">0</span>
+            </div>
+        </div>
+
+        <!-- Quick Blurr Toggle -->
+        <div class="switch-container">
+            <div class="switch-desc-container">
+                <span class="switch-desc-title">Full Content Blur</span>
+                <span class="help-text">Blur all images/videos on web pages</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="quickBlurToggle" aria-label="Quick toggle content blur" title="Quick toggle content blur" />
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- DeenTab Toggle -->
+        <div class="switch-container">
+            <div class="switch-desc-container">
+                <span class="switch-desc-title">DeenTab (New Tab)</span>
+                <span class="help-text">Islamic dashboard with Quran & Prayer times</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" id="quickDeenTabToggle" aria-label="Quick toggle DeenTab" title="Quick toggle DeenTab" />
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <!-- HaramBlur Integration -->
+        <div class="hb-container">
+            <div class="hb-header">
+                <div class="hb-title">
+                    <span>🛡️</span> HaramBlur AI Shield
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="hbStatus" name="status" aria-label="Toggle HaramBlur" title="Toggle HaramBlur" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div id="hbSettingsPanel" class="hidden">
+                <div class="hb-section">
+                    <label for="sgBlurLevel" class="hb-label">Blur Level</label>
+                    <input type="range" class="form-range" id="sgBlurLevel" min="0" max="100" value="40" aria-label="Blur Level" title="Blur Level" />
+                </div>
+
+                <div class="hb-section">
+                    <div class="options-grid">
+                        <label class="form-checkbox-label" for="sgVideoBlur">
+                            <input type="checkbox" class="form-checkbox" id="sgVideoBlur" aria-label="Blur Videos" title="Blur Videos" /> Blur Videos
+                        </label>
+                        <label class="form-checkbox-label" for="sgBlockMen">
+                            <input type="checkbox" class="form-checkbox" id="sgBlockMen" aria-label="Block Men" title="Block Men" /> Block Men
+                        </label>
+                        <label class="form-checkbox-label" for="sgBlockWomen">
+                            <input type="checkbox" class="form-checkbox" id="sgBlockWomen" aria-label="Block Women" title="Block Women" /> Block Women
+                        </label>
+                    </div>
+                </div>
+
+                <div class="hb-section">
+                    <label for="sgBlurMode" class="hb-label">Blur Style</label>
+                    <select id="sgBlurMode" class="form-select form-select-custom" aria-label="Blur Style" title="Select Blur Style">
+                        <option value="BLUR">Standard Blur</option>
+                        <option value="PIXELATE">Pixelate</option>
+                        <option value="VEIL">Veil (Solid Color)</option>
+                    </select>
+                </div>
+
+                <div class="hb-section">
+                    <label for="sgGenderScope" class="hb-label">Gender Blocking Scope</label>
+                    <select id="sgGenderScope" class="form-select form-select-custom" aria-label="Gender Blocking Scope" title="Select Gender Blocking Scope">
+                        <option value="FULL">Full Image</option>
+                        <option value="EXCEPT_FACE">Body Only (Show Face)</option>
+                    </select>
+                </div>
+
+                <div class="hb-section">
+                    <label for="sgStrictness" class="hb-label">AI Sensitivity</label>
+                    <select id="sgStrictness" class="form-select form-select-custom" aria-label="AI Sensitivity" title="Select AI Sensitivity">
+                        <option value="0.25">Low (Fewer False Blurs)</option>
+                        <option value="0.5">Medium (Balanced)</option>
+                        <option value="0.75">High (Aggressive)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions-inline actions-spaced">
+            <button class="button-secondary flex-button" id="openSettingsBtn" aria-label="Open Settings">⚙️ Settings</button>
+            <button class="button-secondary flex-button" id="userGuideBtn" aria-label="User Guide">📚 Guide</button>
+            <button class="button-secondary flex-button" id="helpBtn" aria-label="Help and FAQ">❓ Help</button>
+        </div>
+
+        <div class="donate-container mt-16">
+            <div class="donate-title">🙏 Support Amn Shield</div>
+            <div class="donate-description">Help us keep this free and beneficial for the Ummah.</div>
+            <button class="donate-button" id="donateBtn">💝 Donate (Sadaqah)</button>
+        </div>
+
+        <div class="footer-container">
+            <button class="button-secondary footer-btn" id="contactBtn">✉️ Contact Support</button>
+            <button class="button-secondary footer-btn" id="privacyBtn" aria-label="Privacy Policy">🔒 Privacy</button>
+        </div>
+    </div>
+
+    <script src="polyfill.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>

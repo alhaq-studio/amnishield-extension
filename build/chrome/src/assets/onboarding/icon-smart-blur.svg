@@ -1,0 +1,21 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Smart blur icon: face with partial blur overlay -->
+  <defs>
+    <linearGradient id="smartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <!-- Face circle -->
+  <circle cx="24" cy="20" r="12" fill="url(#smartGrad)" opacity="0.2"/>
+  <!-- Eyes -->
+  <circle cx="20" cy="18" r="2" fill="url(#smartGrad)"/>
+  <circle cx="28" cy="18" r="2" fill="url(#smartGrad)"/>
+  <!-- Smile -->
+  <path d="M20 24 Q24 28 28 24" stroke="url(#smartGrad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Blur overlay on specific area -->
+  <rect x="16" y="14" width="16" height="8" rx="4" fill="url(#smartGrad)" opacity="0.4"/>
+  <!-- Target/focus indicator -->
+  <circle cx="24" cy="40" r="4" stroke="url(#smartGrad)" stroke-width="2" fill="none"/>
+  <circle cx="24" cy="40" r="1.5" fill="url(#smartGrad)"/>
+</svg>

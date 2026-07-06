@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Site Blocked - AmnGaze</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f5f7fa;
+            color: #2d3748;
+        }
+
+        .container {
+            max-width: 600px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .description {
+            margin-bottom: 2rem;
+            color: #4a5568;
+            font-size: 0.875rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            background-color: #4299e1;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .button:hover {
+            background-color: #3182ce;
+        }
+
+        .secondary-button {
+            background-color: transparent;
+            color: #718096;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            text-decoration: dotted underline;
+            border: none;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+
+        .secondary-button:hover {
+            color: #4a5568;
+        }
+
+        .tertiary-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            background-color: #8c8c8c;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .tertiary-button:disabled {
+            background-color: #dcdcdc;
+            color: #a0a0a0;
+            cursor: not-allowed;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            max-width: 500px;
+            /* width: 90%; */
+            /* text-align: left; */
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        #confirmation-text {
+            /* width: 100%; */
+            padding: 0.75rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            cursor: not-allowed;
+            user-select: none;
+        }
+
+        #confirmation-text[readonly] {
+            background-color: #f7fafc;
+            color: #4a5568;
+        }
+
+        .input-text {
+            width: 95%;
+            padding: 0.75rem;
+            margin: 1rem 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 0.875rem;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+            text-align: right;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+            gap: 1rem;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #718096;
+            font-size: 0.875rem;
+        }
+
+        .support-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            scale: 0.8
+        }
+
+        .support-text {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .support-button {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: transform 0.2s;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: #4a5568;
+        }
+
+        .support-button:hover {
+            transform: translateY(-1px);
+            background: #f7fafc;
+        }
+
+        .support-button img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #4a5568;
+            transition: transform 0.2s ease;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 50px;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: #f7fafc;
+        }
+
+        .social-link img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-link span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .reminder-card {
+            margin-top: 1.5rem;
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid #f6ad55;
+            background: linear-gradient(180deg, #fffaf0 0%, #fff7ed 100%);
+            text-align: left;
+        }
+
+        .reminder-eyebrow {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #c05621;
+        }
+
+        .reminder-title {
+            margin: 0 0 0.45rem;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #7b341e;
+        }
+
+        .reminder-description {
+            margin: 0;
+            font-size: 0.875rem;
+            line-height: 1.55;
+            color: #7c5a2d;
+        }
+
+        .reminder-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .reminder-dismiss {
+            margin-top: 0;
+            padding: 0;
+            text-decoration: underline;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #f8fafc;
+            }
+
+            .container,
+            .modal-content {
+                background: #1f2937;
+                box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+            }
+
+            .title,
+            .modal-title {
+                color: #f8fafc;
+            }
+
+            .description,
+            .footer,
+            .support-text {
+                color: #cbd5e1;
+            }
+
+            .secondary-button {
+                color: #cbd5e1;
+            }
+
+            .secondary-button:hover {
+                color: #f8fafc;
+            }
+
+            .support-button,
+            .social-link {
+                background: #111827;
+                border-color: #374151;
+                color: #e5e7eb;
+            }
+
+            .support-button:hover,
+            .social-link:hover {
+                background: #0f172a;
+            }
+
+            #confirmation-text[readonly],
+            .input-text {
+                background-color: #111827;
+                border-color: #374151;
+                color: #e5e7eb;
+            }
+
+            .reminder-card {
+                border-color: #c2410c;
+                background: linear-gradient(180deg, #3a1d11 0%, #2b1810 100%);
+            }
+
+            .reminder-eyebrow {
+                color: #fdba74;
+            }
+
+            .reminder-title {
+                color: #ffedd5;
+            }
+
+            .reminder-description {
+                color: #fed7aa;
+            }
+
+            .reminder-dismiss {
+                color: #fdba74;
+            }
+
+            .reminder-dismiss:hover {
+                color: #ffedd5;
+            }
+        }
+    </style>
+</head>
+
+<body style="visibility: hidden;">
+    <div class="container">
+        <img src="../amngaze-icon-128.png" alt="AmnGaze Logo" class="logo">
+        <h1 class="title">Site Blocked by AmnGaze</h1>
+        <p class="description">This site has been blocked because it may contain inappropriate content.</p>
+        <div>
+            <a href="#" class="button" id="go-back">Go Back to Safety</a>
+            <br>
+            <button class="secondary-button" id="report-false-positive">This site shouldn't be blocked</button>
+        </div>
+        <div id="companion-reminder" class="reminder-card hidden">
+            <span id="companion-reminder-eyebrow" class="reminder-eyebrow">
+                Extra Accountability
+            </span>
+            <h2 id="companion-reminder-title" class="reminder-title">
+                Want more support after moments like this?
+            </h2>
+            <p id="companion-reminder-description" class="reminder-description">
+                Companion Alerts can notify a trusted person when a harmful site attempt is blocked,
+                giving you an extra layer of accountability when you need it most.
+            </p>
+            <div class="reminder-actions">
+                <button class="button" id="setup-companion-alerts" type="button">
+                    Set up Companion Alerts
+                </button>
+                <button
+                    class="secondary-button reminder-dismiss"
+                    id="dismiss-companion-reminder"
+                    type="button"
+                >
+                    Not now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <div class="support-text">If you find AmnGaze helpful, please consider supporting us:</div>
+        <div class="support-buttons">
+            <a href="https://www.buymeacoffee.com/alganzory">
+                <img data--h-breplaced="true" src="bmc-button.png"
+                    alt="Buy Me A Coffee" style="width: 180px !important;" class="social-link" alt="Buy Me A Coffee">
+            </a>
+            <!-- add vertical driver -->
+            <div style="width: 1px; height: 50px; background-color: #e2e8f0; margin-top: 15px;"></div>
+            <a href="https://www.patreon.com/AmnGaze" target="_blank" class="social-link">
+                <img data--h-breplaced="true" src="patreon.svg" alt="Patreon">
+                <span>Patreon</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Unblock Site Confirmation</h2>
+            <p>Please carefully read and type the following text to confirm you understand the implications:</p>
+            <div id="confirmation-text" readonly>I understand that by unblocking this site, I take full responsibility
+                for any inappropriate content I may be exposed to. AmnGaze's purpose is to protect me from harmful
+                content, and I am choosing to override this protection.</div>
+            <input type="text" class="input-text" id="confirmation-input" placeholder="Type the above text to confirm" autocomplete="off">
+            <div class="error-message" id="error-message">The text doesn't match. Please type it exactly as shown.</div>
+            <div class="button-group">
+                <button class="button" id="cancel-unblock">Go Back to Safety</button>
+                <button class="tertiary-button" id="confirm-unblock" disabled> Report and Unblock Site</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="blocked.js"></script>
+</body>
+
+</html>

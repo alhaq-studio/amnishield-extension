@@ -1,0 +1,26 @@
+PROPRIETARY MODEL LICENSE
+
+Copyright (c) 2024-2025 AmnGaze. All Rights Reserved.
+
+The machine learning models contained in this directory are proprietary
+and confidential assets of AmnGaze. These models are protected by
+intellectual property laws and international treaties.
+
+RESTRICTIONS:
+- No copying, redistribution, or modification of these models is permitted
+- No reverse engineering, decompilation, or extraction of model weights
+- No use of these models outside of the official AmnGaze extension
+- No commercial or non-commercial use without explicit written permission
+
+LICENSING:
+For licensing inquiries, partnerships, or permission requests, contact:
+info@AmnGaze.com
+
+ENFORCEMENT:
+Unauthorized use, reproduction, or distribution of these models may result
+in civil and criminal penalties, including but not limited to:
+- Injunctive relief and damages
+- Legal action for intellectual property infringement
+- DMCA takedown notices for infringing distributions
+
+By accessing these files, you acknowledge and agree to these terms.

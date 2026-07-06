@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amn Shield — Complete User Guide</title>
+  <style>
+    :root {
+      --teal: #008080;
+      --teal-dark: #006666;
+      --bg: #f6f8fa;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #666;
+      --border: #e5e7eb;
+      --success: #2e7d32;
+      --info: #0277bd;
+      --warn: #ed6c02;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #e0f7fa, #80cbc4);
+      padding: 32px 16px;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .title {
+      font-size: 28px;
+      color: var(--teal-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .kicker {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Navigation */
+    nav {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      background: var(--bg);
+      color: var(--teal);
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 16px 60px;
+    }
+
+    .toc-card {
+      background: var(--card);
+      border: 2px solid var(--teal);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .toc-title {
+      font-size: 20px;
+      color: var(--teal);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+    }
+
+    .toc-item {
+      padding: 12px;
+      background: var(--bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toc-item:hover {
+      background: #e8f4f8;
+      transform: translateX(4px);
+    }
+
+    .toc-icon {
+      font-size: 24px;
+    }
+
+    .toc-text {
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin-bottom: 24px;
+      scroll-margin-top: 80px;
+    }
+
+    h2 {
+      color: var(--teal);
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--teal-dark);
+      font-size: 18px;
+      margin: 20px 0 12px 0;
+      font-weight: 600;
+    }
+
+    h4 {
+      color: var(--text);
+      font-size: 16px;
+      margin: 16px 0 8px 0;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 12px 24px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #d32f2f;
+    }
+
+    .kbd {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-family: monospace;
+      background: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .info-box {
+      background: #e3f2fd;
+      border-left: 4px solid var(--info);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .success-box {
+      background: #e8f5e9;
+      border-left: 4px solid var(--success);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .warn-box {
+      background: #fff3e0;
+      border-left: 4px solid var(--warn);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      padding: 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--teal-dark);
+    }
+
+    .feature-desc {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 128, 128, 0.2);
+    }
+
+    .btn-secondary {
+      background: #eef2f7;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .steps-list {
+      counter-reset: step-counter;
+      list-style: none;
+      margin: 20px 0;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      margin: 16px 0;
+      padding-left: 50px;
+      position: relative;
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--teal);
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th {
+      background: var(--bg);
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px;
+      border: 1px solid var(--border);
+    }
+
+    footer {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <img class="logo" src="images/icon128.png" alt="Amn Shield logo" />
+      <div>
+        <h1 class="title">Amn Shield — Complete User Guide</h1>
+        <div class="kicker">Your comprehensive guide to using Amn Shield effectively</div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-link" href="#quick-start">Quick Start</a>
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#blur">Content Blur</a>
+      <a class="nav-link" href="#deentab">DeenTab</a>
+      <a class="nav-link" href="#blocking">Blocking</a>
+      <a class="nav-link" href="#security">Security</a>
+      <a class="nav-link" href="#shortcuts">Shortcuts</a>
+      <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Table of Contents -->
+    <div class="toc-card">
+      <div class="toc-title">📚 Jump to Section</div>
+      <div class="toc-grid">
+        <a href="#quick-start" class="toc-item">
+          <span class="toc-icon">🚀</span>
+          <span class="toc-text">Quick Start</span>
+        </a>
+        <a href="#features" class="toc-item">
+          <span class="toc-icon">✨</span>
+          <span class="toc-text">All Features</span>
+        </a>
+        <a href="#blur" class="toc-item">
+          <span class="toc-icon">🔍</span>
+          <span class="toc-text">Content Blur</span>
+        </a>
+        <a href="#deentab" class="toc-item">
+          <span class="toc-icon">📖</span>
+          <span class="toc-text">DeenTab</span>
+        </a>
+        <a href="#blocking" class="toc-item">
+          <span class="toc-icon">🚫</span>
+          <span class="toc-text">Content Blocking</span>
+        </a>
+        <a href="#security" class="toc-item">
+          <span class="toc-icon">🔒</span>
+          <span class="toc-text">Password & Security</span>
+        </a>
+        <a href="#shortcuts" class="toc-item">
+          <span class="toc-icon">⌨️</span>
+          <span class="toc-text">Keyboard Shortcuts</span>
+        </a>
+        <a href="#troubleshooting" class="toc-item">
+          <span class="toc-icon">🔧</span>
+          <span class="toc-text">Troubleshooting</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Start -->
+    <section id="quick-start">
+      <h2>🚀 Quick Start Guide</h2>
+
+      <div class="success-box">
+        <strong>Welcome!</strong> Let's get you set up in under 2 minutes.
+      </div>
+
+      <h3>Step 1: Access the Extension</h3>
+      <ul class="steps-list">
+        <li>Click the <strong>Amn Shield icon</strong> in your browser toolbar</li>
+        <li>The popup shows your current protection status</li>
+        <li>You'll see three toggles: Blocking, Content Blur, and DeenTab</li>
+      </ul>
+
+      <h3>Step 2: Enable Protection</h3>
+      <ul class="steps-list">
+        <li>Toggle <strong>Content Blur</strong> ON to blur inappropriate images/videos</li>
+        <li>Toggle <strong>DeenTab</strong> ON if you want Islamic content on new tabs</li>
+        <li>Click <strong>⚙️ Settings</strong> to configure blocking options</li>
+      </ul>
+
+      <h3>Step 3: Configure (Optional)</h3>
+      <ul class="steps-list">
+        <li>In Settings, enable <strong>Block Impermissible Content</strong></li>
+        <li>Enable <strong>Block Social Media</strong> if needed</li>
+        <li>Add custom keywords to block specific distractions</li>
+        <li>Set a password to lock your settings</li>
+      </ul>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="openSettings()">⚙️ Open Settings Now</button>
+        <a class="btn btn-secondary" href="#features">📖 Learn All Features</a>
+      </div>
+    </section>
+
+    <!-- All Features -->
+    <section id="features">
+      <h2>✨ All Features Overview</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🚫</div>
+          <div class="feature-title">Content Blocking</div>
+          <div class="feature-desc">Block impermissible websites, social media, and custom domains automatically</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-title">Content Blur</div>
+          <div class="feature-desc">Automatically blur images, videos, and iframes on web pages</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <div class="feature-title">DeenTab</div>
+          <div class="feature-desc">Islamic new tab with Quran, prayer times, adhkaar, and reminders</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Password Protection</div>
+          <div class="feature-desc">Lock your settings with password and security question</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <div class="feature-title">Custom Blocklist</div>
+          <div class="feature-desc">Add your own keywords and domains to block</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-title">Time-Based Blocking</div>
+          <div class="feature-desc">Schedule different protection levels throughout the day</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">Customizable Appearance</div>
+          <div class="feature-desc">Choose UI style, background, and color themes</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⌨️</div>
+          <div class="feature-title">Keyboard Shortcuts</div>
+          <div class="feature-desc">Quick access with Alt+L and Alt+K hotkeys</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Blur Feature -->
+    <section id="blur">
+      <h2>🔍 Content Blur Guide</h2>
+
+      <p>The Content Blur feature adds a visual layer of protection by blurring potentially inappropriate images,
+        videos, and other media on web pages.</p>
+
+      <h3>Quick Toggle</h3>
+      <ul>
+        <li>Click the extension icon</li>
+        <li>Toggle <strong>🔍 Content Blur</strong> ON or OFF</li>
+        <li>Changes apply immediately to all tabs</li>
+      </ul>
+
+      <h3>What Gets Blurred?</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🖼️</div>
+          <div class="feature-title">Images</div>
+          <div class="feature-desc">All &lt;img&gt; tags on web pages</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-title">Videos</div>
+          <div class="feature-desc">All &lt;video&gt; elements</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📺</div>
+          <div class="feature-title">iFrames</div>
+          <div class="feature-desc">Embedded content</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <div class="feature-title">Backgrounds</div>
+          <div class="feature-desc">CSS background images</div>
+        </div>
+      </div>
+
+      <h3>Keyboard Shortcuts</h3>
+      <table>
+        <tr>
+          <th>Shortcut</th>
+          <th>Action</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><span class="kbd">Alt</span> + <span class="kbd">L</span></td>
+          <td>Toggle Blur</td>
+          <td>Turn blur ON/OFF for current page</td>
+        </tr>
+        <tr>
+          <td><span class="kbd">Alt</span> + <span class="kbd">K</span></td>
+          <td>Toggle Element</td>
+          <td>Blur/unblur element under cursor</td>
+        </tr>
+      </table>
+
+      <div class="info-box">
+        <strong>💡 Pro Tip:</strong> Press <span class="kbd">Alt</span>+<span class="kbd">K</span> while hovering over a
+        blurred image to selectively unblur it for viewing.
+      </div>
+
+      <h3>Advanced Configuration</h3>
+      <p>For full control, go to Settings → Content Blur Settings:</p>
+      <ul>
+        <li><strong>Blur Intensity</strong>: Adjust slider from 1-50px (default: 20px)</li>
+        <li><strong>Grayscale</strong>: Add black & white effect to blurred content</li>
+        <li><strong>Whitelist Domains</strong>: Exclude trusted sites from blurring</li>
+        <li><strong>Selective Blur</strong>: Choose what to blur (images, videos, etc.)</li>
+      </ul>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="openSettings()">Configure Blur Settings</button>
+      </div>
+    </section>
+
+    <!-- DeenTab Feature -->
+    <section id="deentab">
+      <h2>📖 DeenTab Guide</h2>
+
+      <p>DeenTab replaces your browser's new tab page with an Islamic-themed page featuring Quran recitation, prayer
+        times, adhkaar, and Islamic reminders.</p>
+
+      <h3>Quick Enable</h3>
+      <ul class="steps-list">
+        <li>Click the Amn Shield icon in your toolbar</li>
+        <li>Toggle <strong>📖 DeenTab (New Tab)</strong> ON</li>
+        <li>Open a new tab to see DeenTab</li>
+      </ul>
+
+      <h3>DeenTab Features</h3>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📿</div>
+          <div class="feature-title">Quran Audio</div>
+          <div class="feature-desc">Listen to Quran recitations with various reciters</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🕌</div>
+          <div class="feature-title">Prayer Times</div>
+          <div class="feature-desc">Automatic prayer times for your location</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <div class="feature-title">Daily Adhkaar</div>
+          <div class="feature-desc">Morning and evening remembrances</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <div class="feature-title">Islamic Calendar</div>
+          <div class="feature-desc">Hijri date and Islamic events</div>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <strong>✨ Benefit:</strong> Start every browsing session with a reminder of Allah and strengthen your connection
+        to the Quran.
+      </div>
+
+      <h3>Customization</h3>
+      <ul>
+        <li>Choose your preferred Quran reciter</li>
+        <li>Set your location for accurate prayer times</li>
+        <li>Customize background and appearance</li>
+        <li>Toggle features on/off as needed</li>
+      </ul>
+    </section>
+
+    <!-- Content Blocking -->
+    <section id="blocking">
+      <h2>🚫 Content Blocking Guide</h2>
+
+      <p>Amn Shield blocks access to inappropriate websites and distracting platforms to help you maintain focus and
+        protect your values.</p>
+
+      <h3>Blocking Categories</h3>
+
+      <h4>1. Impermissible Content (Haram)</h4>
+      <ul>
+        <li>Adult/inappropriate websites</li>
+        <li>Gambling sites</li>
+        <li>Alcohol-related content</li>
+        <li>Content against Islamic values</li>
+      </ul>
+
+      <h4>2. Social Media</h4>
+      <ul>
+        <li>Facebook, Instagram, Twitter/X</li>
+        <li>TikTok, YouTube, Reddit</li>
+        <li>Snapchat, Pinterest, LinkedIn</li>
+        <li>Discord, Telegram, and more</li>
+      </ul>
+
+      <h4>3. Custom Blocklist</h4>
+      <ul>
+        <li>Add your own keywords (e.g., "gaming", "news")</li>
+        <li>Add specific domains (e.g., "example.com")</li>
+        <li>Export/import blocklists</li>
+      </ul>
+
+      <h3>How to Enable Blocking</h3>
+      <ul class="steps-list">
+        <li>Click <strong>⚙️ Settings</strong> in the popup</li>
+        <li>Toggle <strong>Block Impermissible Content</strong> ON</li>
+        <li>Toggle <strong>Block Social Media</strong> ON (optional)</li>
+        <li>Click <strong>💾 Save Changes</strong></li>
+      </ul>
+
+      <div class="warn-box">
+        <strong>⚠️ Important:</strong> The browser may ask for permissions when you first enable blocking. Click "Allow"
+        to activate protection.
+      </div>
+
+      <h3>Custom Blocklist</h3>
+      <p>Add personal distractions:</p>
+      <ol>
+        <li>Go to Settings → Custom Blocklist</li>
+        <li>Type a keyword or domain</li>
+        <li>Click <strong>Add</strong></li>
+        <li>Save your changes</li>
+      </ol>
+
+      <h3>Safe Search Enforcement</h3>
+      <p>Amn Shield automatically enforces safe search on:</p>
+      <ul>
+        <li>Google</li>
+        <li>Bing</li>
+        <li>DuckDuckGo</li>
+        <li>Yahoo</li>
+        <li>YouTube (Restricted Mode)</li>
+      </ul>
+    </section>
+
+    <!-- Security -->
+    <section id="security">
+      <h2>🔒 Password & Security Guide</h2>
+
+      <p>Protect your settings from being changed by setting a password and security question.</p>
+
+      <h3>Setting Up Security</h3>
+      <ul class="steps-list">
+        <li>Open Settings</li>
+        <li>Scroll to <strong>Password Protection</strong></li>
+        <li>Enter a strong password</li>
+        <li>Click <strong>Set</strong></li>
+        <li>Click <strong>📝 Set Security Question</strong></li>
+        <li>Choose a question and enter your answer</li>
+        <li>Click <strong>Save</strong></li>
+      </ul>
+
+      <div class="info-box">
+        <strong>🔐 Security:</strong> Your password is stored as a salted hash - never in plain text. Even we cannot see
+        your password!
+      </div>
+
+      <h3>Password Recovery</h3>
+      <p>If you forget your password:</p>
+      <ol>
+        <li>Click <strong>Forgot password?</strong> in the locked view</li>
+        <li>Answer your security question</li>
+        <li>Set a new password</li>
+      </ol>
+
+      <h3>Emergency Reset</h3>
+      <p>If you forget both password and security answer:</p>
+      <ol>
+        <li>Click <strong>Emergency Reset</strong> in the recovery screen</li>
+        <li>This removes password protection</li>
+        <li>Your blocking settings remain intact</li>
+      </ol>
+
+      <div class="warn-box">
+        <strong>⚠️ Note:</strong> Emergency reset is your last resort. Always set a memorable security question!
+      </div>
+
+      <h3>Password Tips</h3>
+      <ul>
+        <li>Use at least 8 characters</li>
+        <li>Mix letters, numbers, and symbols</li>
+        <li>Don't use easily guessable passwords</li>
+        <li>Choose a security question you'll remember</li>
+      </ul>
+    </section>
+
+    <!-- Keyboard Shortcuts -->
+    <section id="shortcuts">
+      <h2>⌨️ Keyboard Shortcuts</h2>
+
+      <p>Quick access to important features without opening menus.</p>
+
+      <h3>All Shortcuts</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Shortcut</th>
+            <th>Feature</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="kbd">Alt</span> + <span class="kbd">L</span></td>
+            <td>Toggle Blur</td>
+            <td>Turn content blur ON/OFF for current page</td>
+          </tr>
+          <tr>
+            <td><span class="kbd">Alt</span> + <span class="kbd">K</span></td>
+            <td>Toggle Element Blur</td>
+            <td>Blur or unblur the element under your cursor</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <strong>💡 Tip:</strong> Shortcuts won't work when the popup is open. Close the popup first, then use shortcuts
+        on the web page.
+      </div>
+
+      <h3>Using Element Toggle (Alt+K)</h3>
+      <ul class="steps-list">
+        <li>Make sure Content Blur is enabled</li>
+        <li>Browse to a page with blurred content</li>
+        <li>Hover your mouse over a blurred image/video</li>
+        <li>Press <span class="kbd">Alt</span> + <span class="kbd">K</span></li>
+        <li>The element will unblur (or reblur if already unblurred)</li>
+      </ul>
+
+      <h3>Platform Differences</h3>
+      <ul>
+        <li><strong>Windows/Linux:</strong> Alt + Letter</li>
+        <li><strong>Mac:</strong> Option + Letter</li>
+        <li>Shortcuts work in Chrome, Firefox, and Edge</li>
+      </ul>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section id="troubleshooting">
+      <h2>🔧 Troubleshooting Guide</h2>
+
+      <h3>Content Not Being Blocked</h3>
+      <h4>Possible Solutions:</h4>
+      <ul>
+        <li>Make sure blocking is enabled in Settings</li>
+        <li>Check that you granted permissions when prompted</li>
+        <li>Refresh the page after enabling blocking (Ctrl+R or Cmd+R)</li>
+        <li>Clear browser cache and try again</li>
+        <li>Make sure you're on an http:// or https:// page</li>
+      </ul>
+
+      <h3>Content Blur Not Working</h3>
+      <h4>Possible Solutions:</h4>
+      <ul>
+        <li>Toggle Content Blur OFF then ON again</li>
+        <li>Check if the current site is in your blur whitelist</li>
+        <li>Increase blur intensity in settings</li>
+        <li>Try refreshing the page</li>
+        <li>Some images load dynamically - wait a moment and refresh</li>
+      </ul>
+
+      <h3>Keyboard Shortcuts Not Working</h3>
+      <h4>Possible Solutions:</h4>
+      <ul>
+        <li>Close the extension popup first</li>
+        <li>Make sure you're on a regular web page (not chrome:// or about: pages)</li>
+        <li>Check if another extension is using the same shortcut</li>
+        <li>Try restarting your browser</li>
+      </ul>
+
+      <h3>DeenTab Not Appearing</h3>
+      <h4>Possible Solutions:</h4>
+      <ul>
+        <li>Make sure DeenTab is enabled in the popup</li>
+        <li>Close all existing new tabs and open a fresh one</li>
+        <li>Check if another extension is overriding the new tab</li>
+        <li>Try restarting your browser</li>
+      </ul>
+
+      <h3>Settings Not Saving</h3>
+      <h4>Possible Solutions:</h4>
+      <ul>
+        <li>Click the <strong>💾 Save Changes</strong> button</li>
+        <li>Check if browser sync is working</li>
+        <li>Disable other extensions that might conflict</li>
+        <li>Clear browser cache and try again</li>
+      </ul>
+
+      <h3>Password Issues</h3>
+      <h4>Forgot Password:</h4>
+      <ul>
+        <li>Click "Forgot password?" in the locked view</li>
+        <li>Answer your security question</li>
+        <li>Set a new password</li>
+      </ul>
+
+      <h4>Forgot Security Answer:</h4>
+      <ul>
+        <li>Use <strong>Emergency Reset</strong></li>
+        <li>This removes password protection only</li>
+        <li>Your other settings remain intact</li>
+      </ul>
+
+      <h3>Performance Issues</h3>
+      <h4>If the extension slows down your browser:</h4>
+      <ul>
+        <li>Reduce blur intensity to 10-15px</li>
+        <li>Disable blur for background images</li>
+        <li>Reduce the size of your custom blocklist</li>
+        <li>Clear browser cache regularly</li>
+      </ul>
+
+      <div class="warn-box">
+        <strong>Still Having Issues?</strong> Contact support with details about your browser version, extension
+        version, and the problem you're experiencing.
+      </div>
+
+      <div class="btn-group">
+        <a class="btn btn-primary" href="https://alhaq-initiative.org/contact.html" target="_blank">Contact Support</a>
+        <a class="btn btn-secondary" href="help.html" target="_blank">Open FAQ</a>
+      </div>
+    </section>
+
+    <!-- Additional Resources -->
+    <section>
+      <h2>📚 Additional Resources</h2>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">❓</div>
+          <div class="feature-title">Help & FAQ</div>
+          <div class="feature-desc">Common questions and detailed help</div>
+          <div style="margin-top: 12px;">
+            <a class="btn btn-secondary" href="help.html" target="_blank">Open Help</a>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-title">Privacy Policy</div>
+          <div class="feature-desc">How we handle your data</div>
+          <div style="margin-top: 12px;">
+            <a class="btn btn-secondary" href="privacy.html" target="_blank">Read Policy</a>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">👋</div>
+          <div class="feature-title">Welcome Guide</div>
+          <div class="feature-desc">First-time setup walkthrough</div>
+          <div style="margin-top: 12px;">
+            <a class="btn btn-secondary" href="welcome.html" target="_blank">View Welcome</a>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <div class="feature-title">Settings</div>
+          <div class="feature-desc">Configure all extension options</div>
+          <div style="margin-top: 12px;">
+            <button class="btn btn-secondary" onclick="openSettings()">Open Settings</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support Section -->
+    <section>
+      <h2>💝 Support Amn Shield</h2>
+
+      <p>Amn Shield is built for the Ummah and is completely free. If you find it beneficial, please consider supporting
+        the project:</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <div class="feature-title">Donate (Sadaqah)</div>
+          <div class="feature-desc">Help us keep Amn Shield free and beneficial</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <div class="feature-title">Leave a Review</div>
+          <div class="feature-desc">Share your experience on the extension store</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📢</div>
+          <div class="feature-title">Spread the Word</div>
+          <div class="feature-desc">Tell your family and friends about Amn Shield</div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🤲</div>
+          <div class="feature-title">Make Dua</div>
+          <div class="feature-desc">Pray for the developers and users</div>
+        </div>
+      </div>
+
+      <div class="btn-group" style="justify-content: center; margin-top: 24px;">
+        <a class="btn btn-primary" href="https://buy.stripe.com/28E3cwea897i8vkh2l14400" target="_blank">💝 Donate Now
+          (Sadaqah)</a>
+        <a class="btn btn-secondary" href="https://alhaq-initiative.org/contact.html" target="_blank">✉️ Contact Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>Amn Shield v<span id="ver">-</span></strong> · Developed by Al-Haq Studio (Alhaq.uk) for Al-Haq Initiative
+    </div>
+    <div class="footer-links">
+      <a href="help.html" target="_blank">Help & FAQ</a>
+      <a href="privacy.html" target="_blank">Privacy Policy</a>
+      <a href="welcome.html" target="_blank">Welcome Guide</a>
+      <a href="https://alhaq-initiative.org" target="_blank">Visit Website</a>
+      <a href="https://buy.stripe.com/28E3cwea897i8vkh2l14400" target="_blank">Donate</a>
+    </div>
+    <div style="margin-top: 12px; font-style: italic;">
+      Built with ❤️ for the Muslim Ummah
+    </div>
+  </footer>
+
+  <script src="polyfill.js"></script>
+  <script src="guide.js"></script>
+</body>
+
+</html>

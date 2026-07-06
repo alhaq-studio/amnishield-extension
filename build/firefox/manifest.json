@@ -1,0 +1,115 @@
+{
+  "manifest_version": 2,
+  "name": "Amn Shield - Islamic Productivity Tool",
+  "short_name": "Amn Shield",
+  "version": "0.1.2",
+  "version_name": "0.1.2",
+  "description": "Blocks haram & distracting sites. Custom filters, password lock, optional DeenTab (Qur'an, adhkaar, prayer times).",
+  "author": "Al-Haq Studio",
+  "homepage_url": "https://alhaq-initiative.org",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "alarms",
+    "<all_urls>",
+    "https://facebook.com/*",
+    "https://www.facebook.com/*",
+    "https://twitter.com/*",
+    "https://www.twitter.com/*",
+    "https://instagram.com/*",
+    "https://www.instagram.com/*",
+    "https://tiktok.com/*",
+    "https://www.tiktok.com/*",
+    "https://youtube.com/*",
+    "https://www.youtube.com/*",
+    "https://reddit.com/*",
+    "https://www.reddit.com/*",
+    "https://pinterest.com/*",
+    "https://www.pinterest.com/*",
+    "https://linkedin.com/*",
+    "https://www.linkedin.com/*",
+    "https://snapchat.com/*",
+    "https://www.snapchat.com/*",
+    "https://discord.com/*",
+    "https://www.discord.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "polyfill.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "page": "background.html",
+    "persistent": true
+  },
+  "commands": {
+    "toggle_blur_status": {
+      "suggested_key": {
+        "default": "Alt+L"
+      },
+      "description": "Toggle blur on/off"
+    },
+    "toggle_selected_blur": {
+      "suggested_key": {
+        "default": "Alt+K"
+      },
+      "description": "Toggle blur for selected element"
+    }
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Amn Shield - Islamic Productivity Tool",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_security_policy": "default-src 'self'; connect-src 'self' https://api.aladhan.com https://www.everyayah.com https://cdn.jsdelivr.net https://tfhub.dev https://storage.googleapis.com; media-src 'self' https://www.everyayah.com; script-src 'self' 'unsafe-eval'; object-src 'self';",
+  "web_accessible_resources": [
+    "popup.html",
+    "block.html",
+    "assets/*",
+    "assets/wasm/*",
+    "assets/models/nsfw/*",
+    "assets/models/human-js/*",
+    "tfjs/*",
+    "src/mdls/*",
+    "src/assets/*"
+  ],
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "amn-shield@alhaq-initiative.org",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ],
+        "optional": []
+      }
+    }
+  },
+  "chrome_url_overrides": {
+    "newtab": "DeenTab/deen-tab.html"
+  }
+}

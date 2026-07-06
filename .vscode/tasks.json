@@ -2,14 +2,143 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "build-deen-shield-all",
 			"type": "shell",
-			"label": "Build Extension",
-			"command": "npm run build",
-			"group": "build",
+			"command": "npm",
+			"args": [
+				"run",
+				"build:all"
+			],
+			"isBackground": false,
 			"problemMatcher": [
 				"$tsc"
 			],
-			"args": []
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Build All (Node)",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Update adult blocklist",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"blocklist:update"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Update adult blocklist (postprocess)",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"blocklist:update"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build-all",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"scripts/build-all.js"
+			],
+			"isBackground": false,
+			"group": "build"
 		}
 	]
 }

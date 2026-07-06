@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amn Shield — Welcome</title>
+  <style>
+    :root {
+      --teal: #008080;
+      --teal-dark: #006666;
+      --bg: #f6f8fa;
+      --card: #fff;
+      --text: #222;
+      --muted: #666;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: linear-gradient(135deg, #e0f7fa, #80cbc4);
+      padding: 24px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    }
+
+    .title {
+      margin: 0;
+      font-size: 22px;
+      color: var(--teal-dark);
+    }
+
+    .kicker {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 20px auto;
+      padding: 0 16px 40px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+      color: var(--teal);
+      font-size: 18px;
+    }
+
+    ul {
+      margin: 8px 0 0 18px;
+    }
+
+    li {
+      margin: 4px 0;
+    }
+
+    .inline-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      background: #eef2f7;
+      color: #222;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+    }
+
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 12px 16px 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <img class="logo" src="images/icon128.png" alt="Amn Shield logo" />
+      <div>
+        <h1 class="title">Welcome to Amn Shield</h1>
+        <div class="kicker">Bismillah — Let’s get you set up in a minute</div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="card">
+      <h2>Quick Start</h2>
+      <ul>
+        <li>Open <strong>Settings</strong> to choose your blocking options and appearance.</li>
+        <li>Optionally set a <strong>Password</strong> and <strong>Security Question</strong> to lock settings.</li>
+        <li>Use <strong>Custom Blocklist</strong> to add personal distractions (keywords/domains).</li>
+      </ul>
+      <div class="inline-actions">
+        <button id="openSettings" class="btn btn-primary">Open Settings</button>
+        <a class="btn btn-primary" href="guide.html" target="_blank" rel="noopener">📚 User Guide</a>
+        <a class="btn" href="help.html" target="_blank" rel="noopener">Help & FAQ</a>
+        <a class="btn" href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Optional: DeenTab</h2>
+      <ul>
+        <li>Enable the <strong>DeenTab</strong> new tab for Islamic reminders, prayer times, and Quran audio.</li>
+        <li>You can toggle DeenTab anytime from Settings.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Support the Work</h2>
+      <ul>
+        <li>Amn Shield is built for the Ummah. Consider supporting with a small donation.</li>
+      </ul>
+      <div class="inline-actions">
+        <a class="btn btn-primary" href="https://buy.stripe.com/28E3cwea897i8vkh2l14400" target="_blank"
+          rel="noopener">Donate (Sadaqah)</a>
+        <a class="btn" href="https://alhaq-initiative.org/contact.html" target="_blank" rel="noopener">Contact
+          Support</a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div>Amn Shield v<span id="ver">-</span> · Al-Haq Studio (Alhaq.uk) for Al-Haq Initiative</div>
+  </footer>
+
+  <script src="welcome.js"></script>
+</body>
+
+</html>

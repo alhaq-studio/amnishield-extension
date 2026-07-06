@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Professional version update script for Deen Shield
+# Professional version update script for Amn Shield
 # Usage: ./update-version.sh <new_version>
 
 set -e
@@ -21,7 +21,7 @@ if ! [[ $NEW_VERSION =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
 fi
 
 echo "=========================================="
-echo "Updating Deen Shield to version $NEW_VERSION"
+echo "Updating Amn Shield to version $NEW_VERSION"
 echo "=========================================="
 
 # Update manifest.json (Chrome/Edge)
@@ -38,8 +38,8 @@ sed -i.bak "s/\"version\": \"[^\"]*\"/\"version\": \"$NEW_VERSION\"/" package.js
 
 # Update build scripts with new version
 echo "Updating build scripts..."
-sed -i.bak "s/deen-shield-chrome-v[0-9]\+\.[0-9]\+\.[0-9]\+/deen-shield-chrome-v$NEW_VERSION/g" build-chrome.bat
-sed -i.bak "s/deen-shield-firefox-v[0-9]\+\.[0-9]\+\.[0-9]\+/deen-shield-firefox-v$NEW_VERSION/g" build-firefox.bat
+sed -i.bak "s/amn-shield-chrome-v[0-9]\+\.[0-9]\+\.[0-9]\+/amn-shield-chrome-v$NEW_VERSION/g" build-chrome.bat
+sed -i.bak "s/amn-shield-firefox-v[0-9]\+\.[0-9]\+\.[0-9]\+/amn-shield-firefox-v$NEW_VERSION/g" build-firefox.bat
 
 # Clean up backup files
 rm -f *.bak
