@@ -2,7 +2,7 @@
 
 <img src="public/icon/128.png" width="88" height="88" alt="Amn Shield">
 
-# Amn Shield Browser
+# Amn Shield Browser Extention
 
 **Break the doomscroll.**
 
