@@ -14,7 +14,7 @@ A browser extension that shows where your time actually goes online. It blocks t
 [![React](https://img.shields.io/badge/React-19-444?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-444?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
-[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Donate](https://AmnShield.com) · [Android app](https://AmnShield.com) · [Website](https://alhaq.studio)
+[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Donate](https://AmnShield.com) · [Android app](https://AmnShield.com) · [Website](https://alhaq.uk)
 
 </div>
 
