@@ -1,14 +1,14 @@
 # Privacy Policy - Deen Shield Extension
 
-**Developer:** Alhaq Digital Services (ADS)  
+**Developer:** Alhaq Digital Services   
 **Last Updated:** January 29, 2025  
 **Effective Date:** January 29, 2025
 
 ## Introduction
 
-Deen Shield ("we," "our," or "us") is developed by **Alhaq Digital Services (ADS)**, an Islamic technology company committed to protecting your privacy while providing Islamic-compliant digital solutions. This Privacy Policy explains how our browser extension collects, uses, and protects your information.
+Deen Shield ("we," "our," or "us") is developed by **Alhaq Digital Services **, an Islamic technology company committed to protecting your privacy while providing Islamic-compliant digital solutions. This Privacy Policy explains how our browser extension collects, uses, and protects your information.
 
-## About Alhaq Digital Services (ADS)
+## About Alhaq Digital Services 
 
 **Alhaq Digital Services** is a specialized Islamic technology company dedicated to creating digital solutions that align with Islamic values. We follow Islamic principles in all aspects of our business, including complete respect for user privacy and data protection.
 
@@ -110,7 +110,7 @@ For questions about this Privacy Policy or our privacy practices:
 - **Support**: https://alhaqds.software/support
 
 ### Company Contact
-- **Alhaq Digital Services (ADS)**
+- **Alhaq Digital Services **
 - **Website**: https://alhaqds.software
 - **Contact Page**: https://alhaqds.software/contact
 - **GitHub**: https://github.com/HabibGHub
@@ -132,7 +132,7 @@ We dedicate this work to Allah (SWT) and ask for His guidance in protecting the 
 
 ---
 
-**Developed by Alhaq Digital Services (ADS) - Islamic Technology Solutions**
+**Developed by Alhaq Digital Services  - Islamic Technology Solutions**
 
 *Committed to helping Muslims maintain halal browsing habits while respecting your complete privacy and data security.*
 

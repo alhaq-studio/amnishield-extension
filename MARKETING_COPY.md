@@ -11,7 +11,7 @@ Professional Islamic content blocker by Alhaq Digital Services helping Muslims m
 ### Detailed Description
 ```
 ??? **Deen Shield - Professional Islamic Content Blocker**
-**Developed by Alhaq Digital Services (ADS)**
+**Developed by Alhaq Digital Services **
 
 Maintain halal browsing habits with our comprehensive content blocking solution designed specifically for the Muslim community by Islamic technology experts.
 
@@ -31,7 +31,7 @@ Maintain halal browsing habits with our comprehensive content blocking solution 
 - Open source and transparent
 
 **?? ABOUT ALHAQ DIGITAL SERVICES:**
-Alhaq Digital Services (ADS) is a specialized Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
+Alhaq Digital Services  is a specialized Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
 
 **?? PERFECT FOR:**
 - Muslim families wanting safer browsing
@@ -69,12 +69,12 @@ islamic, content-blocker, privacy, security, halal, muslim, deen, parental-contr
 Deen Shield - Islamic Content Blocker
 
 ### Summary (250 characters max)
-Professional Islamic content blocker by Alhaq Digital Services (ADS) helping Muslims maintain halal browsing habits. Block inappropriate content, social media, and custom keywords with complete privacy.
+Professional Islamic content blocker by Alhaq Digital Services  helping Muslims maintain halal browsing habits. Block inappropriate content, social media, and custom keywords with complete privacy.
 
 ### Description
 ```
 ??? **Deen Shield - Professional Islamic Content Blocker**
-**By Alhaq Digital Services (ADS)**
+**By Alhaq Digital Services **
 
 A comprehensive, privacy-first content blocking solution designed specifically for the Muslim community by Islamic technology experts who understand the unique needs of Muslim internet users.
 
@@ -112,7 +112,7 @@ A comprehensive, privacy-first content blocking solution designed specifically f
 - ? Complete transparency and open source
 - ? GDPR and privacy law compliant
 
-**ALHAQ DIGITAL SERVICES (ADS):**
+**ALHAQ DIGITAL SERVICES :**
 We are an Islamic technology company committed to developing digital solutions that uphold Islamic values. Our mission is to create technology that promotes what is good (Ma'ruf) and prevents what is harmful (Munkar) in the digital space.
 
 **ISLAMIC VALUES:**
@@ -133,11 +133,11 @@ Developed following Islamic principles of:
 Join thousands of Muslims who have transformed their browsing experience with Deen Shield. Create a cleaner, more focused internet environment that aligns with your Islamic values.
 
 **Support & Company:**
-- Company: Alhaq Digital Services (ADS)
+- Company: Alhaq Digital Services 
 - Website: https://alhaqds.software
 - Contact: https://alhaqds.software/contact
 - Support: support@alhaqds.software
-- Source Code: github.com/HabibGHub/DeenShield-Extension
+- Source Code: github.com/HabibGHub/AmnShield-Extension
 
 *May Allah accept this effort and make it beneficial for the Ummah. Ameen.*
 
@@ -218,7 +218,7 @@ Professional Islamic content blocker by Alhaq Digital Services for Muslims maint
 
 ### Social Media Post
 ```
-??? Introducing Deen Shield by Alhaq Digital Services (ADS)!
+??? Introducing Deen Shield by Alhaq Digital Services !
 
 The professional Islamic content blocker developed by Muslim technologists for the Muslim community.
 
@@ -232,7 +232,7 @@ Available now on Chrome, Firefox, and Edge web stores!
 
 Help us spread the word and protect our Ummah's digital experience.
 
-#DeenShield #AlhaqDigital #ADS #IslamicTech #HalalBrowsing #MuslimDevelopers #ContentBlocker
+#AmnShield #AlhaqDigital #ADS #IslamicTech #HalalBrowsing #MuslimDevelopers #ContentBlocker
 
 Developed by: @AlhaqDigital
 Website: https://alhaqds.software
@@ -247,7 +247,7 @@ Subject: ??? Deen Shield by Alhaq Digital Services - Islamic Content Blocker Now
 Bismillah hirRahman nirRaheem
 Assalamu Alaikum wa Rahmatullahi wa Barakatuh,
 
-We're excited to announce the launch of **Deen Shield**, developed by **Alhaq Digital Services (ADS)** - a professional Islamic content blocker designed specifically for the Muslim community.
+We're excited to announce the launch of **Deen Shield**, developed by **Alhaq Digital Services ** - a professional Islamic content blocker designed specifically for the Muslim community.
 
 **About Alhaq Digital Services:**
 We are an Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
@@ -274,7 +274,7 @@ Created by Muslim developers at Alhaq Digital Services following Islamic princip
 Join thousands of Muslims already using Deen Shield to transform their browsing experience.
 
 **Company Contact:**
-- Alhaq Digital Services (ADS)
+- Alhaq Digital Services 
 - Website: https://alhaqds.software
 - Contact: https://alhaqds.software/contact
 - Support: support@alhaqds.software
@@ -289,8 +289,8 @@ The Alhaq Digital Services Team
 
 ## ?? Company Branding Guidelines
 
-### Alhaq Digital Services (ADS) Messaging
-- Always mention "Developed by Alhaq Digital Services (ADS)"
+### Alhaq Digital Services  Messaging
+- Always mention "Developed by Alhaq Digital Services "
 - Emphasize Islamic technology expertise
 - Highlight commitment to Islamic values
 - Mention serving the global Muslim community

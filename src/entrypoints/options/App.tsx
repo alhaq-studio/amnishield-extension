@@ -5,6 +5,7 @@ import { GroupManager } from "../../ui/blocker";
 import { FocusPanel } from "../../ui/focus";
 import { AboutPanel } from "../../ui/about";
 import { ProtectionPanel } from "../../ui/protection";
+import { PasswordLock } from "../../ui/PasswordLock";
 import type { Settings } from "../../lib/types";
 
 type Tab = "usage" | "website" | "focus" | "protection" | "about";
@@ -21,9 +22,15 @@ export function App() {
   const { usage, settings, focus, focusLog, ready, saveSettings } = useAmnShield();
   const [draft, setDraft] = useState<Settings | null>(null);
   const [tab, setTab] = useState<Tab>("usage");
+  const [isLocked, setIsLocked] = useState<boolean>(false);
 
   useEffect(() => {
-    if (ready && !draft) setDraft(settings);
+    if (ready && !draft) {
+      setDraft(settings);
+      if (settings.password) {
+        setIsLocked(true);
+      }
+    }
   }, [ready, settings, draft]);
 
   if (!draft) return null;
@@ -32,6 +39,31 @@ export function App() {
     setDraft(next);
     void saveSettings(next);
   };
+
+  const handleUpgradePassword = async (newHash: string) => {
+    commit({ ...draft, password: newHash });
+  };
+
+  const handleEmergencyReset = async () => {
+    const nextSettings = { ...draft };
+    delete nextSettings.password;
+    delete nextSettings.securityQuestion;
+    delete nextSettings.securityAnswer;
+    commit(nextSettings);
+  };
+
+  if (isLocked && draft.password) {
+    return (
+      <PasswordLock
+        storedHash={draft.password}
+        storedQuestion={draft.securityQuestion}
+        storedAnswerHash={draft.securityAnswer}
+        onUnlock={() => setIsLocked(false)}
+        onEmergencyReset={handleEmergencyReset}
+        onUpgradePassword={handleUpgradePassword}
+      />
+    );
+  }
 
   return (
     <div className="mx-auto flex max-w-xl flex-col gap-7 px-6 py-14">

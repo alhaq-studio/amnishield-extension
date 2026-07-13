@@ -85,7 +85,7 @@
 
 ### ? Security Review
 - [ ] No hardcoded credentials
-- [ ] Password properly hashed
+- [x] Password properly hashed
 - [ ] No eval() or dangerous functions
 - [ ] Content Security Policy implemented
 - [ ] No XSS vulnerabilities

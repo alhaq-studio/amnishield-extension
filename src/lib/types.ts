@@ -97,6 +97,9 @@ export interface Settings {
   adultContentEnabled: boolean;
   safeSearchEnabled: boolean;
   deenTabEnabled: boolean;
+  password?: string;
+  securityQuestion?: string;
+  securityAnswer?: string;
 }
 
 export type BlockSource = "group" | "focus";

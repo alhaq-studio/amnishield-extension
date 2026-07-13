@@ -1656,3 +1656,57 @@ button.danger:hover { background: #9e1717; }
   border-radius: 12px;
   font-weight: 600;
 }
+
+/* Minimalist Focus Mode Layout */
+body.tab-mode-minimal .content-wrap {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: 600px;
+  padding-top: 80px;
+}
+
+body.tab-mode-minimal .center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+body.tab-mode-minimal .left-column,
+body.tab-mode-minimal .right-column {
+  display: none;
+}
+
+body.tab-mode-minimal .clock {
+  font-size: 110px;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+}
+
+body.tab-mode-minimal .ampm {
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* Focus Goal Card Styling */
+#focus-goal-card {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 30px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#focus-goal-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+#focus-goal-display:hover {
+  opacity: 0.8;
+  text-decoration: line-through;
+  color: #e53935;
+}

@@ -96,6 +96,7 @@
     modalSettings: document.getElementById('settings-modal'),
     formSettings: document.getElementById('settings-form'),
     optTts: document.getElementById('opt-tts'),
+    optTabMode: document.getElementById('opt-tab-mode'),
     optTranslation: document.getElementById('opt-translation'),
     optTicker: document.getElementById('opt-ticker'),
     optLocation: document.getElementById('opt-location'),
@@ -148,7 +149,8 @@
   widgetsLayout: 'default', // 'default' | 'quran-centered'
   bgStyle: 'default',
   bgCustom: '#174a3c',
-  bgImage: ''
+  bgImage: '',
+  tabMode: 'minimal'
   };
 
   let settings = { ...defaultSettings };
@@ -762,6 +764,7 @@
 
     // Settings
   els.btnSettings?.addEventListener('click', async () => {
+      if (els.optTabMode) els.optTabMode.value = settings.tabMode || 'deen';
       els.optTts.checked = !!settings.tts;
       els.optTranslation.checked = !!settings.showTranslation;
       els.optTicker.checked = !!settings.showTicker;
@@ -801,6 +804,7 @@
 
     els.formSettings?.addEventListener('submit', async (e) => {
       e.preventDefault();
+      settings.tabMode = els.optTabMode?.value || 'deen';
       settings.tts = !!els.optTts.checked;
       settings.showTranslation = !!els.optTranslation.checked;
       settings.showTicker = !!els.optTicker.checked;
@@ -1241,18 +1245,128 @@
   }
 
   function applySettingsToUI() {
-    toggle(els.ticker, !!settings.showTicker);
-  updateTicker();
-    els.currentLocation.textContent = settings.location ? `· ${settings.location}` : '';
+    const isMinimal = settings.tabMode === 'minimal';
+    
+    // Toggle body classes
+    document.body.classList.toggle('tab-mode-minimal', isMinimal);
+    document.body.classList.toggle('tab-mode-deen', !isMinimal);
+    
+    // Set Main title
+    const mainTitleEl = document.querySelector('.main-title');
+    if (mainTitleEl) {
+      mainTitleEl.textContent = isMinimal ? '🛡️ Amn Shield' : '☪ DeenHub - Quran Home';
+    }
+
+    // Toggle specific elements
+    const hijriEl = document.getElementById('hijri-date');
+    if (hijriEl) hijriEl.classList.toggle('hidden', isMinimal);
+    
+    const adhkarDrop = document.getElementById('adhkar-dropdown');
+    if (adhkarDrop) adhkarDrop.classList.toggle('hidden', isMinimal);
+
+    const prayerWidget = document.getElementById('prayer-widget');
+    if (prayerWidget) prayerWidget.classList.toggle('hidden', isMinimal);
+
+    const dhikrWidget = document.getElementById('adhkar-counter-widget');
+    if (dhikrWidget) dhikrWidget.classList.toggle('hidden', isMinimal);
+
+    const ayahCard = document.getElementById('ayah-card');
+    if (ayahCard) ayahCard.classList.toggle('hidden', isMinimal);
+
+    // Custom Focus Card for Minimalist mode
+    let focusCard = document.getElementById('focus-goal-card');
+    if (isMinimal) {
+      if (!focusCard) {
+        focusCard = document.createElement('div');
+        focusCard.id = 'focus-goal-card';
+        focusCard.className = 'ayah-card card'; // inherit beautiful glass/card styles!
+        focusCard.innerHTML = `
+          <div class="focus-title" style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; opacity: 0.85;">What is your main focus today?</div>
+          <input type="text" id="focus-goal-input" placeholder="Type your daily goal and press Enter..." style="width: 100%; padding: 0.75rem; border: none; border-bottom: 2px solid rgba(255,255,255,0.2); background: transparent; color: inherit; text-align: center; font-size: 1.2rem; outline: none; transition: border-color 0.2s;" />
+          <div id="focus-goal-display" class="hidden" style="font-size: 1.6rem; font-weight: 500; padding: 0.5rem 0; cursor: pointer; text-align: center; color: var(--islamic-gold, #d4af37);"></div>
+        `;
+        const centerCol = document.querySelector('.center-column');
+        if (centerCol) {
+          centerCol.appendChild(focusCard);
+        }
+        
+        const input = focusCard.querySelector('#focus-goal-input');
+        const display = focusCard.querySelector('#focus-goal-display');
+        
+        const saveGoal = (val) => {
+          localStorage.setItem('amnShieldDailyFocusGoal', val);
+          if (val) {
+            display.textContent = val;
+            display.classList.remove('hidden');
+            input.classList.add('hidden');
+          } else {
+            display.classList.add('hidden');
+            input.classList.remove('hidden');
+            input.value = '';
+            setTimeout(() => input.focus(), 50);
+          }
+        };
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            saveGoal(input.value.trim());
+          }
+        });
+
+        display.addEventListener('click', () => {
+          saveGoal('');
+        });
+
+        const saved = localStorage.getItem('amnShieldDailyFocusGoal');
+        if (saved) {
+          saveGoal(saved);
+        }
+      } else {
+        focusCard.classList.remove('hidden');
+      }
+    } else {
+      if (focusCard) focusCard.classList.add('hidden');
+    }
+
+    const btnSound = document.getElementById('btn-sound');
+    if (btnSound) btnSound.classList.toggle('hidden', isMinimal);
+
+    const btnFavs = document.getElementById('btn-favorites');
+    if (btnFavs) btnFavs.classList.toggle('hidden', isMinimal);
+    
+    // Toggle settings fields visibility based on mode
+    const ttsToggle = els.optTts?.closest('.toggle');
+    if (ttsToggle) ttsToggle.classList.toggle('hidden', isMinimal);
+    
+    const transToggle = els.optTranslation?.closest('.toggle');
+    if (transToggle) transToggle.classList.toggle('hidden', isMinimal);
+    
+    const locationField = els.optLocation?.closest('.field');
+    if (locationField) locationField.classList.toggle('hidden', isMinimal);
+    
+    const methodField = els.optMethod?.closest('.field');
+    if (methodField) methodField.classList.toggle('hidden', isMinimal);
+
+    const madhabField = els.optMadhab?.closest('.field');
+    if (madhabField) madhabField.classList.toggle('hidden', isMinimal);
+
+    const reciterField = els.optReciter?.closest('.field');
+    if (reciterField) reciterField.classList.toggle('hidden', isMinimal);
+
+    const widgetsField = els.optWidgetsLayout?.closest('.field');
+    if (widgetsField) widgetsField.classList.toggle('hidden', isMinimal);
+
+    toggle(els.ticker, !isMinimal && !!settings.showTicker);
+    updateTicker();
+    els.currentLocation.textContent = (!isMinimal && settings.location) ? `· ${settings.location}` : '';
     els.btnSound?.setAttribute('aria-pressed', String(!!settings.tts));
-  document.body.classList.toggle('dark-mode', !!settings.isDark);
-  // Layout style
-  document.body.classList.toggle('ui-liquid', settings.uiStyle === 'liquid');
-  document.body.classList.toggle('ui-classic', settings.uiStyle !== 'liquid');
-  document.body.classList.toggle('layout-quran-centered', settings.widgetsLayout === 'quran-centered');
-  // Remove all background classes
-  document.body.classList.remove('bg-light', 'bg-dark', 'bg-custom', 'bg-pattern', 'bg-image');
-    // Apply selected background style
+    document.body.classList.toggle('dark-mode', !!settings.isDark);
+    
+    document.body.classList.toggle('ui-liquid', settings.uiStyle === 'liquid');
+    document.body.classList.toggle('ui-classic', settings.uiStyle !== 'liquid');
+    document.body.classList.toggle('layout-quran-centered', !isMinimal && settings.widgetsLayout === 'quran-centered');
+    
+    document.body.classList.remove('bg-light', 'bg-dark', 'bg-custom', 'bg-pattern', 'bg-image');
     if (settings.bgStyle === 'light') document.body.classList.add('bg-light');
     else if (settings.bgStyle === 'dark') document.body.classList.add('bg-dark');
     else if (settings.bgStyle === 'custom') {
@@ -1261,22 +1375,23 @@
     } else if (settings.bgStyle === 'pattern') document.body.classList.add('bg-pattern');
     else if (settings.bgStyle === 'image') {
       document.body.classList.add('bg-image');
-      // Resolve image from settings or localStorage sentinel
       let img = settings.bgImage || '';
       if (img === '__local__') {
         try { img = localStorage.getItem('deenTabBgImageLocal') || ''; } catch {}
       }
       if (img) document.body.style.setProperty('--bg-image', `url('${img}')`);
       else document.body.style.removeProperty('--bg-image');
-    } else document.body.style.setProperty('--bg-custom', '#174a3c');
-    // Set color picker value
+    } else document.body.style.setProperty('--bg-custom', settings.bgCustom || '#174a3c');
+    
     if (els.optBgCustom) els.optBgCustom.value = settings.bgCustom || '#174a3c';
     const btnDarkmode = document.getElementById('btn-darkmode');
     if(btnDarkmode) {
       btnDarkmode.classList.toggle('active', !!settings.isDark);
       btnDarkmode.innerHTML = settings.isDark ? '&#9728;' : '&#9790;';
     }
-    renderAyah();
+    if (!isMinimal) {
+      renderAyah();
+    }
   }
 
   function indexFromKey(sura, aya) {

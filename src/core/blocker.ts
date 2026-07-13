@@ -92,16 +92,28 @@ import { DEFAULT_HARMFUL_KEYWORDS, DEFAULT_ADULT_KEYWORDS, DEFAULT_ADULT_DOMAINS
 let harmfulRegex: RegExp | null = null;
 let adultRegex: RegExp | null = null;
 
+const STRICT_BOUNDARIES = new Set(["anal", "oral", "jav", "xxx", "lust"]);
+
+function buildRegex(keywords: string[]): RegExp {
+  const parts = keywords.map((kw) => {
+    if (STRICT_BOUNDARIES.has(kw)) {
+      return `\\b${kw}\\b`;
+    }
+    return `\\b${kw}`;
+  });
+  return new RegExp(parts.join("|"), "i");
+}
+
 function getHarmfulRegex() {
   if (!harmfulRegex) {
-    harmfulRegex = new RegExp(`\\b(${DEFAULT_HARMFUL_KEYWORDS.join("|")})\\b`, "i");
+    harmfulRegex = buildRegex(DEFAULT_HARMFUL_KEYWORDS);
   }
   return harmfulRegex;
 }
 
 function getAdultRegex() {
   if (!adultRegex) {
-    adultRegex = new RegExp(`\\b(${DEFAULT_ADULT_KEYWORDS.join("|")})\\b`, "i");
+    adultRegex = buildRegex(DEFAULT_ADULT_KEYWORDS);
   }
   return adultRegex;
 }

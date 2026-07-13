@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Blocked - AmnGaze</title>
     <style>
         body {
@@ -133,6 +134,7 @@
             border-radius: 4px;
             font-size: 0.875rem;
             cursor: not-allowed;
+            -webkit-user-select: none;
             user-select: none;
         }
 
@@ -373,10 +375,25 @@
                 color: #ffedd5;
             }
         }
+
+        body {
+            visibility: hidden;
+        }
+
+        .bmc-btn {
+            width: 180px !important;
+        }
+
+        .vertical-divider {
+            width: 1px;
+            height: 50px;
+            background-color: #e2e8f0;
+            margin-top: 15px;
+        }
     </style>
 </head>
 
-<body style="visibility: hidden;">
+<body>
     <div class="container">
         <img src="../amngaze-icon-128.png" alt="AmnGaze Logo" class="logo">
         <h1 class="title">Site Blocked by AmnGaze</h1>
@@ -418,11 +435,11 @@
         <div class="support-buttons">
             <a href="https://www.buymeacoffee.com/alganzory">
                 <img data--h-breplaced="true" src="bmc-button.png"
-                    alt="Buy Me A Coffee" style="width: 180px !important;" class="social-link" alt="Buy Me A Coffee">
+                    alt="Buy Me A Coffee" class="social-link bmc-btn">
             </a>
             <!-- add vertical driver -->
-            <div style="width: 1px; height: 50px; background-color: #e2e8f0; margin-top: 15px;"></div>
-            <a href="https://www.patreon.com/AmnGaze" target="_blank" class="social-link">
+            <div class="vertical-divider"></div>
+            <a href="https://www.patreon.com/AmnGaze" target="_blank" rel="noopener" class="social-link">
                 <img data--h-breplaced="true" src="patreon.svg" alt="Patreon">
                 <span>Patreon</span>
             </a>

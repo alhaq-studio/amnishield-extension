@@ -9,8 +9,8 @@ export default defineConfig({
   }),
   manifest: {
     name: "Amn Shield - Islamic Productivity Tool",
-    description: "Blocks harmful & distracting sites. Custom filters, focus schedules, password lock, and optional DeenTab dashboard (Qur'an, adhkaar, prayer times).",
-    version: "0.2.0",
+    description: "Blocks harmful sites with custom filters, focus schedules, password lock, and a faith-based dashboard (Qur'an, prayer times).",
+    version: "0.7.13.2026",
     permissions: ["storage", "tabs", "alarms", "declarativeNetRequest", "webNavigation"],
     host_permissions: ["<all_urls>"],
     chrome_url_overrides: {
