@@ -1,6 +1,6 @@
 # Cross-Browser Installation and Testing Guide
 
-## Deen Shield Extension - Cross-Browser Support
+## Amn Shield Extension - Cross-Browser Support
 
 ### Browser Compatibility
 

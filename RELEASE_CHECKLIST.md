@@ -28,8 +28,8 @@
 - [ ] `test-extension.sh` - Professional testing suite
 
 ### ? Distribution Packages
-- [ ] `dist/deen-shield-chrome-v1.0.0.zip` - Chrome Web Store package
-- [ ] `dist/deen-shield-firefox-v1.0.0.zip` - Firefox AMO package
+- [ ] `dist/amn-shield-chrome-v1.0.0.zip` - Chrome Web Store package
+- [ ] `dist/amn-shield-firefox-v1.0.0.zip` - Firefox AMO package
 - [ ] All packages tested and validated
 - [ ] File sizes optimized for web stores
 
@@ -158,7 +158,7 @@
 - [ ] Beta tester feedback collected
 
 ### ? Support Infrastructure
-- [ ] Support email configured (support@deenshield.com)
+- [ ] Support email configured (support@amnshield.com)
 - [ ] Documentation website ready
 - [ ] FAQ section prepared
 - [ ] GitHub repository organized
@@ -251,4 +251,4 @@ Ameen.
 
 **Next Action:** Submit to Chrome Web Store, Firefox AMO, and Edge Add-ons
 
-**Contact:** support@deenshield.com
+**Contact:** support@amnshield.com

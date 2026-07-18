@@ -11,7 +11,6 @@ const createBaseSettings = (custom: Partial<Settings> = {}): Settings => ({
   harmfulContentEnabled: false,
   adultContentEnabled: false,
   safeSearchEnabled: false,
-  deenTabEnabled: false,
   ...custom
 });
 

@@ -96,7 +96,6 @@ export interface Settings {
   harmfulContentEnabled: boolean;
   adultContentEnabled: boolean;
   safeSearchEnabled: boolean;
-  deenTabEnabled: boolean;
   password?: string;
   securityQuestion?: string;
   securityAnswer?: string;

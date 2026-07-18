@@ -1,6 +1,6 @@
 {
   "name": "amn-shield",
-  "description": "Blocks harmful & distracting sites. Custom filters, focus schedules, password lock, and optional DeenTab dashboard.",
+  "description": "Blocks harmful & distracting sites. Custom filters, focus schedules, password lock, and mindful breathing pause screen.",
   "private": true,
   "version": "0.7.13.2026",
   "type": "module",

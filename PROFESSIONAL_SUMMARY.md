@@ -1,4 +1,4 @@
-# ??? Deen Shiel- 🌐 Cross-browser compatibility (Chrome, Firefox, Edge) - Professional Extension Summary
+# ??? Amn Shield- 🌐 Cross-browser compatibility (Chrome, Firefox, Edge) - Professional Extension Summary
 
 ## ?? TRANSFORMATION COMPLETE!
 
@@ -9,8 +9,8 @@ Your Chrom- 🌐 **Cross-Platform**: Support for Chrome, Firefox, and Edge exten
 ### ?? **Ready-to-Submit Packages**
 ```
 ?? dist/
-  ??? deen-shield-chrome-v1.2.0.zip    ? Chrome Web Store ready
-  ??? deen-shield-firefox-v1.2.0.zip   ? Firefox AMO ready
+  ??? amn-shield-chrome-v1.2.0.zip    ? Chrome Web Store ready
+  ??? amn-shield-firefox-v1.2.0.zip   ? Firefox AMO ready
 ```
 
 ### ??? **Professional Development Setup**
@@ -55,13 +55,13 @@ Your Chrom- 🌐 **Cross-Platform**: Support for Chrome, Firefox, and Edge exten
 ## ?? Web Store Submission Ready
 
 ### **Chrome Web Store** ?
-- Package: `dist/deen-shield-chrome-v1.2.0.zip`
+- Package: `dist/amn-shield-chrome-v1.2.0.zip`
 - Manifest V3 compliant
 - All required fields completed
 - Professional descriptions ready
 
 ### **Firefox Add-ons (AMO)** ?
-- Package: `dist/deen-shield-firefox-v1.2.0.zip`
+- Package: `dist/amn-shield-firefox-v1.2.0.zip`
 - Manifest V2 compliant
 - Mozilla policies compliant
 - Source code documented
@@ -87,8 +87,8 @@ Your Chrom- 🌐 **Cross-Platform**: Support for Chrome, Firefox, and Edge exten
    - Follow guidelines in `WEBSTORE_SUBMISSION_GUIDE.md`
 
 3. **?? Submit to Stores**
-   - Chrome Web Store: Upload `dist/deen-shield-chrome-v1.2.0.zip`
-   - Firefox AMO: Upload `dist/deen-shield-firefox-v1.2.0.zip`
+   - Chrome Web Store: Upload `dist/amn-shield-chrome-v1.2.0.zip`
+   - Firefox AMO: Upload `dist/amn-shield-firefox-v1.2.0.zip`
    - Edge Add-ons: Upload Chrome package
 
 ### **Marketing & Launch:**
@@ -99,7 +99,7 @@ Your Chrom- 🌐 **Cross-Platform**: Support for Chrome, Firefox, and Edge exten
    - Announce on social media
 
 5. **?? Support Setup**
-   - Set up support@deenshield.com
+   - Set up support@amnshield.com
    - Monitor store reviews
    - Respond to user feedback
 
@@ -212,7 +212,7 @@ npm run build
 
 ## ?? READY FOR LAUNCH!
 
-Your **Deen Shield** extension is now a **professional, web store-ready product** that:
+Your **Amn Shield** extension is now a **professional, web store-ready product** that:
 
 1. **Meets all web store requirements**
 2. **Follows industry best practices**
@@ -235,5 +235,5 @@ Your **Deen Shield** extension is now a **professional, web store-ready product*
 ---
 
 **Status:** ? **PROFESSIONAL WEB STORE SUBMISSION READY**  
-**Contact:** support@deenshield.com  
-**Repository:** github.com/deenshield/extension
+**Contact:** support@amnshield.com  
+**Repository:** github.com/Afrasyaab-GH/AmnShield-Extension

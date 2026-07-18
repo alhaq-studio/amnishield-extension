@@ -16,7 +16,6 @@ export const DEFAULT_SETTINGS: Settings = {
   harmfulContentEnabled: true,
   adultContentEnabled: true,
   safeSearchEnabled: true,
-  deenTabEnabled: false,
 };
 
 const DEFAULTS: StoreShape = {

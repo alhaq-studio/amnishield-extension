@@ -55,7 +55,13 @@ You can add your own message and cap how many times you are allowed through, so 
 
 ## Installation
 
-Amn Shield is not on the browser stores yet, so you load it yourself. It takes about two minutes.
+### From the Web Store (Recommended)
+
+- **Chrome / Chromium Browsers:** Install the official extension directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/llbdoeiphjhnjlohogddiignodbmlomo?utm_source=item-share-cb).
+
+### Manual Installation (Build from Source)
+
+If you prefer to build the extension from source, it takes about two minutes:
 
 ```bash
 npm install        # grab dependencies

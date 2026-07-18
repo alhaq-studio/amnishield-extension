@@ -118,20 +118,6 @@ export function ProtectionPanel({
           />
         </div>
 
-        <hr className="border-line" />
-
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <p className="font-semibold text-sm">DeenTab (New Tab Override)</p>
-            <p className="text-xs text-muted mt-1 leading-normal">
-              Use DeenTab as your browser New Tab page (showing Qur'an, Adhkaar, and prayer times).
-            </p>
-          </div>
-          <Toggle
-            on={settings.deenTabEnabled}
-            onChange={(v) => onChange({ ...settings, deenTabEnabled: v })}
-          />
-        </div>
       </section>
 
       {/* Password Protection Card */}

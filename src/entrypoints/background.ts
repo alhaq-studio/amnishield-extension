@@ -61,13 +61,6 @@ async function evaluateTab(tabId: number, url: string | undefined, makeActive: b
   }
   const decision = await decide(location);
 
-  // If blocked by Harmful or Adult filter, perform hard redirect to DeenTab
-  if (decision.blocked && (decision.groupId === "adult-content" || decision.groupId === "harmful-content")) {
-    if (makeActive) stopTracking();
-    void browser.tabs.update(tabId, { url: browser.runtime.getURL("/DeenTab/deen-tab.html") });
-    return;
-  }
-
   sendToTab(tabId, { type: "evaluate", decision });
   if (makeActive) {
     if (decision.blocked) stopTracking();

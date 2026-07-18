@@ -3,15 +3,15 @@
 ## ?? Chrome Web Store Listing
 
 ### Title
-Deen Shield - Islamic Content Blocker
+Amn Shield - Islamic Content Blocker
 
 ### Short Description (132 characters max)
-Professional Islamic content blocker by Alhaq Digital Services helping Muslims maintain halal browsing habits.
+Professional Islamic content blocker by Al-Haq Studio helping Muslims maintain halal browsing habits.
 
 ### Detailed Description
 ```
-??? **Deen Shield - Professional Islamic Content Blocker**
-**Developed by Alhaq Digital Services **
+??? **Amn Shield - Professional Islamic Content Blocker**
+**Developed by Al-Haq Studio **
 
 Maintain halal browsing habits with our comprehensive content blocking solution designed specifically for the Muslim community by Islamic technology experts.
 
@@ -30,8 +30,8 @@ Maintain halal browsing habits with our comprehensive content blocking solution 
 - Encrypted settings storage
 - Open source and transparent
 
-**?? ABOUT ALHAQ DIGITAL SERVICES:**
-Alhaq Digital Services  is a specialized Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
+**?? ABOUT Al-Haq Studio:**
+Al-Haq Studio  is a specialized Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
 
 **?? PERFECT FOR:**
 - Muslim families wanting safer browsing
@@ -43,15 +43,15 @@ Alhaq Digital Services  is a specialized Islamic technology company dedicated to
 **?? COMMUNITY DRIVEN:**
 Developed by Muslim technologists following Islamic principles of promoting good (Ma'ruf) and preventing harm (Munkar).
 
-Transform your browsing experience while staying true to Islamic values. Install Deen Shield today and join thousands of Muslims creating a cleaner internet experience.
+Transform your browsing experience while staying true to Islamic values. Install Amn Shield today and join thousands of Muslims creating a cleaner internet experience.
 
-**?? Contact:** https://alhaqds.software/contact
-**?? Company:** https://alhaqds.software
-**?? Support:** support@alhaqds.software
+**?? Contact:** https://alhaq.uk/contact
+**?? Company:** https://alhaq.uk
+**?? Support:** support@alhaq.uk
 
 *"And whoever fears Allah - He will make for him a way out" - Quran 65:2*
 
-**Developed by Alhaq Digital Services - Islamic Technology Solutions**
+**Developed by Al-Haq Studio - Islamic Technology Solutions**
 ```
 
 ### Categories
@@ -59,22 +59,22 @@ Transform your browsing experience while staying true to Islamic values. Install
 - Secondary: Privacy & Security
 
 ### Tags
-islamic, content-blocker, privacy, security, halal, muslim, deen, parental-control, productivity, web-filter, alhaq-digital
+islamic, content-blocker, privacy, security, halal, muslim, deen, parental-control, productivity, web-filter, alhaq-studio
 
 ---
 
 ## ?? Firefox Add-ons (AMO) Listing
 
 ### Name
-Deen Shield - Islamic Content Blocker
+Amn Shield - Islamic Content Blocker
 
 ### Summary (250 characters max)
-Professional Islamic content blocker by Alhaq Digital Services  helping Muslims maintain halal browsing habits. Block inappropriate content, social media, and custom keywords with complete privacy.
+Professional Islamic content blocker by Al-Haq Studio  helping Muslims maintain halal browsing habits. Block inappropriate content, social media, and custom keywords with complete privacy.
 
 ### Description
 ```
-??? **Deen Shield - Professional Islamic Content Blocker**
-**By Alhaq Digital Services **
+??? **Amn Shield - Professional Islamic Content Blocker**
+**By Al-Haq Studio **
 
 A comprehensive, privacy-first content blocking solution designed specifically for the Muslim community by Islamic technology experts who understand the unique needs of Muslim internet users.
 
@@ -112,7 +112,7 @@ A comprehensive, privacy-first content blocking solution designed specifically f
 - ? Complete transparency and open source
 - ? GDPR and privacy law compliant
 
-**ALHAQ DIGITAL SERVICES :**
+**Al-Haq Studio :**
 We are an Islamic technology company committed to developing digital solutions that uphold Islamic values. Our mission is to create technology that promotes what is good (Ma'ruf) and prevents what is harmful (Munkar) in the digital space.
 
 **ISLAMIC VALUES:**
@@ -130,18 +130,18 @@ Developed following Islamic principles of:
 - Parents implementing digital guidelines
 - Anyone wanting Islamic-compliant browsing
 
-Join thousands of Muslims who have transformed their browsing experience with Deen Shield. Create a cleaner, more focused internet environment that aligns with your Islamic values.
+Join thousands of Muslims who have transformed their browsing experience with Amn Shield. Create a cleaner, more focused internet environment that aligns with your Islamic values.
 
 **Support & Company:**
-- Company: Alhaq Digital Services 
-- Website: https://alhaqds.software
-- Contact: https://alhaqds.software/contact
-- Support: support@alhaqds.software
+- Company: Al-Haq Studio 
+- Website: https://alhaq.uk
+- Contact: https://alhaq.uk/contact
+- Support: support@alhaq.uk
 - Source Code: github.com/HabibGHub/AmnShield-Extension
 
 *May Allah accept this effort and make it beneficial for the Ummah. Ameen.*
 
-**Barakallahu feekum** - Alhaq Digital Services Team
+**Barakallahu feekum** - Al-Haq Studio Team
 ```
 
 ### Categories
@@ -149,17 +149,17 @@ Join thousands of Muslims who have transformed their browsing experience with De
 - Productivity & Tools
 
 ### Tags
-islamic, content-blocker, privacy, security, halal, muslim, web-filter, parental-control, productivity, alhaq-digital
+islamic, content-blocker, privacy, security, halal, muslim, web-filter, parental-control, productivity, alhaq-studio
 
 ---
 
 ## ?? Edge Add-ons Store
 
 ### Title
-Deen Shield - Islamic Content Blocker
+Amn Shield - Islamic Content Blocker
 
 ### Short Description
-Professional Islamic content blocker by Alhaq Digital Services for Muslims maintaining halal browsing habits with complete privacy protection.
+Professional Islamic content blocker by Al-Haq Studio for Muslims maintaining halal browsing habits with complete privacy protection.
 
 ### Categories
 - Security
@@ -171,7 +171,7 @@ Professional Islamic content blocker by Alhaq Digital Services for Muslims maint
 
 ### Screenshot 1: Main Interface
 **Title:** "Professional Islamic Interface by ADS"
-**Description:** "Clean, professional popup by Alhaq Digital Services with toggle controls for different blocking categories. Islamic-themed design with modern UI principles."
+**Description:** "Clean, professional popup by Al-Haq Studio with toggle controls for different blocking categories. Islamic-themed design with modern UI principles."
 
 ### Screenshot 2: Settings Configuration
 **Title:** "Customizable Content Blocking"
@@ -183,11 +183,11 @@ Professional Islamic content blocker by Alhaq Digital Services for Muslims maint
 
 ### Screenshot 4: Custom Keywords
 **Title:** "Personal Keyword Filtering"
-**Description:** "Add your own keywords and terms to block. Create a personalized filtering experience designed by Alhaq Digital Services."
+**Description:** "Add your own keywords and terms to block. Create a personalized filtering experience designed by Al-Haq Studio."
 
 ### Screenshot 5: Blocked Content Example
 **Title:** "Content Successfully Blocked"
-**Description:** "When inappropriate content is detected, users see a clean blocking page with Islamic messaging from Alhaq Digital Services."
+**Description:** "When inappropriate content is detected, users see a clean blocking page with Islamic messaging from Al-Haq Studio."
 
 ---
 
@@ -218,7 +218,7 @@ Professional Islamic content blocker by Alhaq Digital Services for Muslims maint
 
 ### Social Media Post
 ```
-??? Introducing Deen Shield by Alhaq Digital Services !
+??? Introducing Amn Shield by Al-Haq Studio !
 
 The professional Islamic content blocker developed by Muslim technologists for the Muslim community.
 
@@ -235,24 +235,24 @@ Help us spread the word and protect our Ummah's digital experience.
 #AmnShield #AlhaqDigital #ADS #IslamicTech #HalalBrowsing #MuslimDevelopers #ContentBlocker
 
 Developed by: @AlhaqDigital
-Website: https://alhaqds.software
-Contact: https://alhaqds.software/contact
+Website: https://alhaq.uk
+Contact: https://alhaq.uk/contact
 Download: [store links]
 ```
 
 ### Email Template
 ```
-Subject: ??? Deen Shield by Alhaq Digital Services - Islamic Content Blocker Now Available
+Subject: ??? Amn Shield by Al-Haq Studio - Islamic Content Blocker Now Available
 
 Bismillah hirRahman nirRaheem
 Assalamu Alaikum wa Rahmatullahi wa Barakatuh,
 
-We're excited to announce the launch of **Deen Shield**, developed by **Alhaq Digital Services ** - a professional Islamic content blocker designed specifically for the Muslim community.
+We're excited to announce the launch of **Amn Shield**, developed by **Al-Haq Studio ** - a professional Islamic content blocker designed specifically for the Muslim community.
 
-**About Alhaq Digital Services:**
+**About Al-Haq Studio:**
 We are an Islamic technology company dedicated to creating digital solutions that align with Islamic values and serve the global Muslim community.
 
-**What is Deen Shield?**
+**What is Amn Shield?**
 A comprehensive browser extension that helps Muslims maintain halal browsing habits by blocking inappropriate content, social media distractions, and custom keywords - all with complete privacy protection.
 
 **Key Features:**
@@ -268,19 +268,19 @@ A comprehensive browser extension that helps Muslims maintain halal browsing hab
 - Firefox Add-ons: [link]  
 - Edge Add-ons: [link]
 
-**Why Choose Deen Shield by ADS?**
-Created by Muslim developers at Alhaq Digital Services following Islamic principles, Deen Shield helps you create a cleaner internet experience that aligns with your values while supporting Islamic business.
+**Why Choose Amn Shield by ADS?**
+Created by Muslim developers at Al-Haq Studio following Islamic principles, Amn Shield helps you create a cleaner internet experience that aligns with your values while supporting Islamic business.
 
-Join thousands of Muslims already using Deen Shield to transform their browsing experience.
+Join thousands of Muslims already using Amn Shield to transform their browsing experience.
 
 **Company Contact:**
-- Alhaq Digital Services 
-- Website: https://alhaqds.software
-- Contact: https://alhaqds.software/contact
-- Support: support@alhaqds.software
+- Al-Haq Studio 
+- Website: https://alhaq.uk
+- Contact: https://alhaq.uk/contact
+- Support: support@alhaq.uk
 
 Barakallahu feeki,
-The Alhaq Digital Services Team
+The Al-Haq Studio Team
 
 *"And whoever fears Allah - He will make for him a way out" - Quran 65:2*
 ```
@@ -289,18 +289,18 @@ The Alhaq Digital Services Team
 
 ## ?? Company Branding Guidelines
 
-### Alhaq Digital Services  Messaging
-- Always mention "Developed by Alhaq Digital Services "
+### Al-Haq Studio  Messaging
+- Always mention "Developed by Al-Haq Studio "
 - Emphasize Islamic technology expertise
 - Highlight commitment to Islamic values
 - Mention serving the global Muslim community
 - Include company website and contact information
 
 ### Contact Information
-- **Website**: https://alhaqds.software
-- **Contact Page**: https://alhaqds.software/contact
-- **Support Email**: support@alhaqds.software
-- **Business Email**: info@alhaqds.software
+- **Website**: https://alhaq.uk
+- **Contact Page**: https://alhaq.uk/contact
+- **Support Email**: support@alhaq.uk
+- **Business Email**: info@alhaq.uk
 
 ### Islamic Values Integration
 - Reference Islamic principles in descriptions
@@ -331,7 +331,7 @@ The Alhaq Digital Services Team
 - Bug fixes for toggle states and storage synchronization
 
 ### Version 1.0.0 (July 20, 2025) - **Professional Launch**
-- **First public release** by Alhaq Digital Services
+- **First public release** by Al-Haq Studio
 - Comprehensive Islamic content blocking system
 - Cross-browser support (Chrome, Firefox, Edge)
 - Professional UI with Islamic design principles

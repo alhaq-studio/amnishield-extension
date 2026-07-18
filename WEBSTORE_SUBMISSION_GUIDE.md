@@ -30,45 +30,45 @@
 ### Step 2: Package Extension
 ```bash
 cd build/chrome
-zip -r deen-shield-chrome-v1.0.0.zip .
+zip -r amn-shield-chrome-v1.0.0.zip .
 ```
 
 ### Step 3: Store Listing
-- **Name**: Deen Shield - Islamic Content Blocker
+- **Name**: Amn Shield - Islamic Content Blocker
 - **Summary**: Professional Islamic content blocker helping Muslims maintain halal browsing habits
 - **Category**: Productivity
 - **Language**: English
 
 ### Step 4: Store Description
 ```
-??? Deen Shield - Professional Islamic Content Blocker
+✨ Amn Shield - Professional Islamic Content Blocker
 
 Maintain halal browsing habits with our comprehensive content blocking solution designed specifically for the Muslim community.
 
-?? KEY FEATURES:
-? Block inappropriate content automatically
-? Social media distraction control
-? Custom keyword filtering
-? Password-protected settings
-? Complete privacy - no data collection
-? Cross-browser compatibility
+🔑 KEY FEATURES:
+🛡️ Block inappropriate content automatically
+🎯 Social media distraction control
+📝 Custom keyword filtering
+🔑 Password-protected settings
+🔒 Complete privacy - no data collection
+🌐 Cross-browser compatibility
 
-?? PRIVACY FIRST:
+🛡️ PRIVACY FIRST:
 - All data stored locally on your device
 - No tracking or data collection
 - No external server communication
 - Encrypted settings storage
 
-?? PERFECT FOR:
+💡 PERFECT FOR:
 - Muslim families wanting safer browsing
 - Students avoiding online distractions
 - Professionals maintaining focus
 - Anyone seeking Islamic-compliant internet use
 
-Transform your browsing experience while staying true to Islamic values. Install Deen Shield today!
+Transform your browsing experience while staying true to Islamic values. Install Amn Shield today!
 
-?? Support: support@deenshield.com
-?? Website: deenshield.com
+📧 Support: support@amnshield.com
+🌐 Website: amnshield.com
 ```
 
 ### Step 5: Screenshots
@@ -94,11 +94,11 @@ Upload 5-8 screenshots showing:
 ### Step 2: Package Extension
 ```bash
 cd build/firefox
-zip -r deen-shield-firefox-v1.0.0.zip .
+zip -r amn-shield-firefox-v1.0.0.zip .
 ```
 
 ### Step 3: Submission Form
-- **Name**: Deen Shield - Islamic Content Blocker
+- **Name**: Amn Shield - Islamic Content Blocker
 - **Summary**: Professional Islamic content blocker for Muslims
 - **Categories**: Security & Privacy, Productivity
 - **Tags**: islamic, content-blocker, privacy, security, halal
@@ -210,7 +210,7 @@ zip -r deen-shield-firefox-v1.0.0.zip .
 - Troubleshooting guide
 
 ### Support Channels
-- Email: support@deenshield.com
+- Email: support@amnshield.com
 - GitHub Issues
 - Store review responses
 - Community forums
