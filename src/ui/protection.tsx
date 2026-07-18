@@ -74,6 +74,41 @@ export function ProtectionPanel({
         </p>
       </section>
 
+      {/* Brand Theme Selector Card */}
+      <section className="card p-6 flex flex-col gap-4">
+        <h3 className="font-semibold text-sm">🎨 Interface Theme</h3>
+        <p className="text-xs text-muted leading-normal">
+          Customize the color scheme of the AmnShield extension dashboard.
+        </p>
+        <div className="flex flex-wrap gap-3 mt-1">
+          {[
+            { value: "sunset", label: "Sunset Glow", color: "#A45833" },
+            { value: "emerald", label: "Emerald Calm", color: "#3C7A67" },
+            { value: "cosmic", label: "Cosmic Night", color: "#C8B8FF" },
+          ].map((themeOpt) => {
+            const isSelected = (settings.theme || "sunset") === themeOpt.value;
+            return (
+              <button
+                key={themeOpt.value}
+                type="button"
+                onClick={() => onChange({ ...settings, theme: themeOpt.value })}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border transition-all text-xs font-semibold ${
+                  isSelected
+                    ? "border-accent bg-accent/5 text-ink"
+                    : "border-line bg-transparent hover:bg-state text-muted"
+                }`}
+              >
+                <span
+                  className="h-3 w-3 rounded-full"
+                  style={{ backgroundColor: themeOpt.color }}
+                />
+                {themeOpt.label}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
       <section className="card p-6 flex flex-col gap-5">
         <div className="flex items-center justify-between gap-4">
           <div>

@@ -99,6 +99,7 @@ export interface Settings {
   password?: string;
   securityQuestion?: string;
   securityAnswer?: string;
+  theme?: string;
 }
 
 export type BlockSource = "group" | "focus";

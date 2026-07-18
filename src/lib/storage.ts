@@ -16,6 +16,7 @@ export const DEFAULT_SETTINGS: Settings = {
   harmfulContentEnabled: true,
   adultContentEnabled: true,
   safeSearchEnabled: true,
+  theme: "sunset",
 };
 
 const DEFAULTS: StoreShape = {

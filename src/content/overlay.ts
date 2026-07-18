@@ -10,19 +10,50 @@ const STYLE = `
   align-items: center;
   justify-content: center;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: #f5f3ef;
-  color: #1a1917;
+  background: var(--bg, #eedbd0);
+  color: var(--ink, #2d1b14);
   opacity: 0;
   transition: opacity 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .amnshield-root.visible { opacity: 1; }
-@media (prefers-color-scheme: dark) {
-  .amnshield-root { background: #0b0b0c; color: #edece9; }
-  .breath { border-color: rgba(237, 236, 233, 0.45); }
-  .breath::before { border-color: rgba(237, 236, 233, 0.16); }
-  .breath span { color: rgba(237, 236, 233, 0.62); }
-  .ghost { color: rgba(237, 236, 233, 0.55); }
-  input, textarea { color: #edece9; border-color: rgba(237,236,233,0.28); }
+
+.amnshield-root.theme-sunset {
+  --bg: #eedbd0;
+  --surface: #ffffff;
+  --surface-2: #e6c2af;
+  --ink: #2d1b14;
+  --accent: #a45833;
+  --muted: #755b53;
+  --faint: #b9a298;
+  --line: #d7bcae;
+  --ring: rgba(164, 88, 51, 0.09);
+  --state: rgba(164, 88, 51, 0.05);
+}
+
+.amnshield-root.theme-emerald {
+  --bg: #f3f1ec;
+  --surface: #ffffff;
+  --surface-2: #d9e8e0;
+  --ink: #202724;
+  --accent: #3c7a67;
+  --muted: #536159;
+  --faint: #c1c7c2;
+  --line: #dbddd8;
+  --ring: rgba(60, 122, 103, 0.09);
+  --state: rgba(60, 122, 103, 0.05);
+}
+
+.amnshield-root.theme-cosmic {
+  --bg: #140d26;
+  --surface: #241840;
+  --surface-2: #34255c;
+  --ink: #f3ecff;
+  --accent: #c8b8ff;
+  --muted: #988baf;
+  --faint: #4e3f66;
+  --line: #34255c;
+  --ring: rgba(200, 184, 255, 0.15);
+  --state: rgba(200, 184, 255, 0.08);
 }
 .card {
   width: min(460px, 86vw);
@@ -38,7 +69,7 @@ const STYLE = `
   width: 92px;
   height: 92px;
   border-radius: 50%;
-  border: 1.5px solid rgba(26, 25, 23, 0.38);
+  border: 1.5px solid var(--ink, rgba(26, 25, 23, 0.38));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,13 +80,13 @@ const STYLE = `
   position: absolute;
   inset: -16px;
   border-radius: 50%;
-  border: 1px solid rgba(26, 25, 23, 0.14);
+  border: 1px solid var(--ring, rgba(26, 25, 23, 0.14));
 }
 .breath span {
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(26, 25, 23, 0.52);
+  color: var(--muted, rgba(26, 25, 23, 0.52));
 }
 .breath .cue { display: inline-grid; }
 .breath .cue > span {
@@ -100,7 +131,7 @@ input, textarea {
   width: 100%;
   max-width: 340px;
   background: transparent;
-  border: 1px solid rgba(26, 25, 23, 0.25);
+  border: 1px solid var(--line, rgba(26, 25, 23, 0.25));
   border-radius: 14px;
   padding: 11px 14px;
   color: inherit;
@@ -115,16 +146,17 @@ button {
   transition: opacity 0.3s ease;
 }
 .primary {
-  border: 1px solid currentColor;
-  background: transparent;
-  color: inherit;
+  border: 1.5px solid var(--accent, currentColor);
+  background: var(--accent);
+  color: var(--bg, #eedbd0);
   min-width: 220px;
+  font-weight: 600;
 }
 .primary:disabled { opacity: 0.4; cursor: default; }
 .ghost {
   border: none;
   background: none;
-  color: rgba(26, 25, 23, 0.55);
+  color: var(--muted, rgba(26, 25, 23, 0.55));
   padding: 8px;
 }
 .ghost:hover { opacity: 0.7; }
@@ -153,7 +185,7 @@ export interface OverlayHandlers {
 }
 
 export interface Overlay {
-  show: (decision: BlockDecision, handlers: OverlayHandlers) => void;
+  show: (decision: BlockDecision, handlers: OverlayHandlers) => void | Promise<void>;
   hide: () => void;
 }
 
@@ -191,13 +223,24 @@ export function createOverlay(): Overlay {
     timers.add(id);
   }
 
-  function show(decision: BlockDecision, handlers: OverlayHandlers) {
+  async function show(decision: BlockDecision, handlers: OverlayHandlers) {
     if (host) hide();
     const shadow = mount();
     document.documentElement.style.overflow = "hidden";
 
+    let activeTheme = "sunset";
+    try {
+      const res = await browser.storage.local.get("settings");
+      const settings = res.settings as any;
+      if (settings?.theme) {
+        activeTheme = settings.theme;
+      }
+    } catch (e) {
+      console.error("Failed to load theme settings for overlay", e);
+    }
+
     const root = document.createElement("div");
-    root.className = "amnshield-root";
+    root.className = `amnshield-root theme-${activeTheme}`;
     root.setAttribute("role", "dialog");
     root.setAttribute("aria-modal", "true");
     root.setAttribute("aria-label", "A mindful pause from Amn Shield");

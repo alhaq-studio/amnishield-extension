@@ -49,6 +49,46 @@
   }
 }
 
+/* AmnShield Brand Theme Overrides */
+:root, :root.theme-sunset {
+  --bg: #eedbd0;
+  --surface: #ffffff;
+  --surface-2: #e6c2af;
+  --ink: #2d1b14;
+  --accent: #a45833;
+  --muted: #755b53;
+  --faint: #b9a298;
+  --line: #d7bcae;
+  --ring: rgba(164, 88, 51, 0.09);
+  --state: rgba(164, 88, 51, 0.05);
+}
+
+:root.theme-emerald {
+  --bg: #f3f1ec;
+  --surface: #ffffff;
+  --surface-2: #d9e8e0;
+  --ink: #202724;
+  --accent: #3c7a67;
+  --muted: #536159;
+  --faint: #c1c7c2;
+  --line: #dbddd8;
+  --ring: rgba(60, 122, 103, 0.09);
+  --state: rgba(60, 122, 103, 0.05);
+}
+
+:root.theme-cosmic {
+  --bg: #140d26;
+  --surface: #241840;
+  --surface-2: #34255c;
+  --ink: #f3ecff;
+  --accent: #c8b8ff;
+  --muted: #988baf;
+  --faint: #4e3f66;
+  --line: #34255c;
+  --ring: rgba(200, 184, 255, 0.15);
+  --state: rgba(200, 184, 255, 0.08);
+}
+
 @theme inline {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Coolvetica", "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;

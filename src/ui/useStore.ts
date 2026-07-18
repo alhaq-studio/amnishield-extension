@@ -46,6 +46,14 @@ export function useAmnShield() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!state.ready) return;
+    const theme = state.settings.theme ?? "sunset";
+    const root = document.documentElement;
+    root.classList.remove("theme-sunset", "theme-emerald", "theme-cosmic");
+    root.classList.add(`theme-${theme}`);
+  }, [state.ready, state.settings.theme]);
+
   const saveSettings = (settings: Settings) => set("settings", settings);
 
   return { ...state, saveSettings };
