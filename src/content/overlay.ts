@@ -228,7 +228,7 @@ export function createOverlay(): Overlay {
     const shadow = mount();
     document.documentElement.style.overflow = "hidden";
 
-    let activeTheme = "sunset";
+    let activeTheme = "emerald";
     try {
       const res = await browser.storage.local.get("settings");
       const settings = res.settings as any;

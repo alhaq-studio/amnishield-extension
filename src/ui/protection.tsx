@@ -86,7 +86,7 @@ export function ProtectionPanel({
             { value: "emerald", label: "Emerald Calm", color: "#3C7A67" },
             { value: "cosmic", label: "Cosmic Night", color: "#C8B8FF" },
           ].map((themeOpt) => {
-            const isSelected = (settings.theme || "sunset") === themeOpt.value;
+            const isSelected = (settings.theme || "emerald") === themeOpt.value;
             return (
               <button
                 key={themeOpt.value}

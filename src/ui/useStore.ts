@@ -48,7 +48,7 @@ export function useAmnShield() {
 
   useEffect(() => {
     if (!state.ready) return;
-    const theme = state.settings.theme ?? "sunset";
+    const theme = state.settings.theme ?? "emerald";
     const root = document.documentElement;
     root.classList.remove("theme-sunset", "theme-emerald", "theme-cosmic");
     root.classList.add(`theme-${theme}`);
