@@ -28,25 +28,25 @@ function BlockedPage({ domain }: { domain: string }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f3f1ec] px-6 py-12 text-[#202724] dark:bg-[#140d26] dark:text-[#f3ecff]">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f8f9fc] px-6 py-12 text-[#0a2540] dark:bg-[#0f172a] dark:text-[#f8fafc]">
       <div className="flex max-w-md flex-col items-center text-center gap-6">
-        <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-current animate-pulse">
-          <span className="text-xs uppercase tracking-widest opacity-70">Breathe</span>
+        <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 animate-pulse text-emerald-600 dark:text-emerald-400">
+          <span class="material-symbols-outlined text-3xl">spa</span>
         </div>
 
-        <h1 className="font-display text-3xl font-bold tracking-tight">Amn Shield Protection</h1>
+        <h1 className="font-display text-3xl font-bold tracking-tight text-[#0a2540] dark:text-[#d4af37]">AmnShield Protection</h1>
 
-        <p className="text-lg leading-relaxed opacity-85">
-          <span className="font-semibold underline decoration-emerald-500">{domain}</span> is blocked by your active AmnShield focus & web filtering policy.
+        <p className="text-lg leading-relaxed opacity-90">
+          <span className="font-semibold underline decoration-emerald-500">{domain}</span> is blocked by your active AmnShield policy.
         </p>
 
-        <p className="text-sm italic opacity-60">
+        <p className="text-sm italic opacity-75">
           "Take a mindful moment to step back and focus on what truly matters today."
         </p>
 
         <button
           onClick={handleLeave}
-          className="mt-4 rounded-full bg-[#3c7a67] px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-[#c8b8ff] dark:text-[#140d26]"
+          className="mt-4 rounded-xl bg-[#0a2540] px-8 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90 dark:bg-[#d4af37] dark:text-[#0a2540] shadow-md"
         >
           Take me somewhere calmer
         </button>
