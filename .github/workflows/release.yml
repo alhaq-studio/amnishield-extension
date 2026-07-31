@@ -1,49 +1,58 @@
-name: Release Extension
+name: Build & Release AmnShield Extension
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
-  release:
-    name: Build, Test, and Publish
+  build-extension:
+    name: Build & Test Browser Extension
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: package-lock.json
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Run Unit Tests
+      - name: Run Tests
         run: npx tsx tests/content-blockers.test.ts
 
-      - name: Build & Publish to Web Stores
-        uses: wxt-dev/wxt-action@v1
-        with:
-          # Automatically zips and submits to the stores if credentials are set.
-          # If credentials are not provided, it will still build and zip target files locally.
-          chrome-extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
-          chrome-client-id: ${{ secrets.CHROME_CLIENT_ID }}
-          chrome-client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
-          chrome-refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
-          firefox-extension-id: ${{ secrets.FIREFOX_EXTENSION_ID }}
-          firefox-jwt-issuer: ${{ secrets.FIREFOX_JWT_ISSUER }}
-          firefox-jwt-secret: ${{ secrets.FIREFOX_JWT_SECRET }}
+      - name: Build WXT Extension Output
+        run: npm run build
 
-      - name: Create GitHub Release & Upload Assets
+      - name: Package Extension Zip
+        run: |
+          mkdir -p release_zip
+          cd .output/chrome-mv3 && zip -r "../../release_zip/AmnShield-Extension-Chrome-MV3.zip" . && cd ../..
+
+      - name: Create / Update GitHub Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
         with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v29.7.2026' }}
+          name: AmnShield Extension ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v29.7.2026' }}
+          body: |
+            ## 🌐 AmnShield Browser Extension v29.7.2026
+            - **DeclarativeNetRequest Rule Engine**: Instant C++ browser network layer blocking & tab redirection.
+            - **Mindful Block Screen**: Branded full-screen pause & quote screen with breathing indicator.
+            - **Live Desktop App Sync**: Auto-polls `http://127.0.0.1:48192/status` for active domain list.
+          draft: false
+          prerelease: false
           files: |
-            .output/*.zip
+            release_zip/AmnShield-Extension-Chrome-MV3.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
