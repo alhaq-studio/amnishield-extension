@@ -50,6 +50,11 @@ console.log("Testing Adult/NSFW Content Blocker...");
   const p2 = evaluate(baseEvalInput("https://pornhub.com", settingsDisabled));
   assert.strictEqual(p2.blocked, false, "pornhub.com should pass if adult blocker is disabled");
 
+  // Newly expanded domain checks
+  assert.strictEqual(evaluate(baseEvalInput("https://stripchat.com", settingsEnabled)).blocked, true, "stripchat.com should be blocked");
+  assert.strictEqual(evaluate(baseEvalInput("https://nhentai.net", settingsEnabled)).blocked, true, "nhentai.net should be blocked");
+  assert.strictEqual(evaluate(baseEvalInput("https://fansly.com", settingsEnabled)).blocked, true, "fansly.com should be blocked");
+
   // Keyword checks (e.g. "xxx" or "porn" in path/subdomain)
   const p3 = evaluate(baseEvalInput("https://some-clean-domain.com/nude-photos", settingsEnabled));
   assert.strictEqual(p3.blocked, true, "URL with adult keyword in path should be blocked");

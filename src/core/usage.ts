@@ -1,5 +1,5 @@
 import { update } from "../lib/storage";
-import { todayKey } from "../lib/time";
+import { dateKey, todayKey } from "../lib/time";
 import type { DateKey, DayUsage } from "../lib/types";
 import type { SiteLocation } from "../lib/url";
 
@@ -103,6 +103,15 @@ export async function persist(): Promise<void> {
       }
       next[key] = target;
     }
+
+    // Auto-purge records older than 90 days to prevent unbounded storage growth
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - 90);
+    const cutoffKey = dateKey(cutoff);
+    for (const key of Object.keys(next)) {
+      if (key < cutoffKey) delete next[key];
+    }
+
     return next;
   });
 }

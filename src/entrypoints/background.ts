@@ -9,18 +9,60 @@ import { evaluate, PASS } from "../core/blocker";
 import { activeSession, endSession } from "../core/focus";
 import { clearOnOpenGrants, pruneGrants, recordProceed } from "../core/grants";
 import { persist, startTracking, stopTracking, setWindowFocused, setPageVisible } from "../core/usage";
-
+import { pollGuardianStatus } from "../lib/guardianSync";
 import { getSafeSearchRedirect } from "../lib/safeSearch";
 
 let focusedTabId: number | null = null;
 
+async function syncDeclarativeNetRequestRules(): Promise<void> {
+  if (!browser.declarativeNetRequest) return;
+  try {
+    const [guardianDomains] = await Promise.all([get("guardianDomains")]);
+    const domainsToBlock = new Set<string>();
+
+    if (guardianDomains && guardianDomains.length > 0) {
+      for (const d of guardianDomains) {
+        const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+        if (clean) domainsToBlock.add(clean);
+      }
+    }
+
+    const existingRules = await browser.declarativeNetRequest.getDynamicRules();
+    const removeRuleIds = existingRules.map((r) => r.id);
+
+    const domainsList = Array.from(domainsToBlock).slice(0, 5000);
+    const addRules: chrome.declarativeNetRequest.Rule[] = domainsList.map((domain, idx) => ({
+      id: idx + 1,
+      priority: 1,
+      action: {
+        type: "redirect" as chrome.declarativeNetRequest.RuleActionType,
+        redirect: {
+          url: browser.runtime.getURL(`/options.html#/blocked?domain=${encodeURIComponent(domain)}`),
+        },
+      },
+      condition: {
+        urlFilter: `||${domain}^`,
+        resourceTypes: ["main_frame" as chrome.declarativeNetRequest.ResourceType],
+      },
+    }));
+
+    await browser.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds,
+      addRules,
+    });
+  } catch (e) {
+    console.warn("declarativeNetRequest rule sync error:", e);
+  }
+}
+
 async function decide(location: SiteLocation): Promise<BlockDecision> {
-  const [settings, usage, grants, proceeds, focus] = await Promise.all([
+  const [settings, usage, grants, proceeds, focus, guardianDomains] = await Promise.all([
     get("settings"),
     get("usage"),
     get("grants"),
     get("proceeds"),
     activeSession(),
+    get("guardianDomains"),
   ]);
   const now = new Date();
   return evaluate({
@@ -33,6 +75,7 @@ async function decide(location: SiteLocation): Promise<BlockDecision> {
     now: now.getTime(),
     grants,
     proceeds,
+    guardianDomains: guardianDomains ?? [],
   });
 }
 
@@ -62,6 +105,16 @@ async function evaluateTab(tabId: number, url: string | undefined, makeActive: b
   const decision = await decide(location);
 
   sendToTab(tabId, { type: "evaluate", decision });
+
+  if (decision.blocked) {
+    const optionsUrl = browser.runtime.getURL("/options.html");
+    if (!url.startsWith(optionsUrl)) {
+      void browser.tabs.update(tabId, {
+        url: browser.runtime.getURL(`/options.html#/blocked?domain=${encodeURIComponent(location.domain)}`),
+      });
+    }
+  }
+
   if (makeActive) {
     if (decision.blocked) stopTracking();
     else startTracking(tabId, location);
@@ -69,8 +122,6 @@ async function evaluateTab(tabId: number, url: string | undefined, makeActive: b
 }
 
 async function evaluateFocused(): Promise<void> {
-  // The worker can be restarted out from under us, dropping focusedTabId, so
-  // recover the active tab before giving up.
   if (focusedTabId == null) {
     const [tab] = await browser.tabs.query({ active: true, lastFocusedWindow: true });
     if (tab?.id == null) return;
@@ -96,8 +147,6 @@ function scheduleFocusEnd(focus: FocusSession | null): void {
   if (focus) browser.alarms.create("focus-end", { when: focus.endsAt });
 }
 
-// Wake exactly when the soonest unlock expires, so the warning returns on time
-// instead of waiting on the next tick (or a tab switch).
 function scheduleGrantEnd(grants: Record<string, number>): void {
   void browser.alarms.clear("grant-end");
   const now = Date.now();
@@ -111,6 +160,7 @@ export default defineBackground(() => {
     if (alarm.name === "tick") {
       void persist();
       void evaluateFocused();
+      void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
     } else if (alarm.name === "focus-end") {
       void activeSession().then(() => evaluateAllTabs());
     } else if (alarm.name === "grant-end") {
@@ -120,13 +170,21 @@ export default defineBackground(() => {
 
   void activeSession().then(scheduleFocusEnd);
   void get("grants").then(scheduleGrantEnd);
+  void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
 
   watch((changed) => {
     if ("focus" in changed) {
       scheduleFocusEnd(changed.focus ?? null);
       void evaluateAllTabs();
     }
-    if ("settings" in changed) void evaluateAllTabs();
+    if ("settings" in changed) {
+      void evaluateAllTabs();
+      void syncDeclarativeNetRequestRules();
+    }
+    if ("guardianDomains" in changed) {
+      void evaluateAllTabs();
+      void syncDeclarativeNetRequestRules();
+    }
     if ("grants" in changed) scheduleGrantEnd(changed.grants ?? {});
   });
 

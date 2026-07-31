@@ -22,6 +22,7 @@ interface EvalInput {
   now: number;
   grants: Record<string, number>;
   proceeds: Record<string, ProceedRecord>;
+  guardianDomains?: string[];
 }
 
 export const PASS: BlockDecision = {
@@ -119,9 +120,31 @@ function getAdultRegex() {
 }
 
 export function evaluate(input: EvalInput): BlockDecision {
-  const { location, settings, focus, todayUsage, weekday, nowMinutes, now, grants, proceeds } = input;
+  const { location, settings, focus, todayUsage, weekday, nowMinutes, now, grants, proceeds, guardianDomains } = input;
 
   const fullUrl = `${location.domain}${location.path}`;
+
+  // 0. Synced Windows Guardian domains (highest priority system block)
+  if (guardianDomains && guardianDomains.length > 0) {
+    const cleanDomain = location.domain.toLowerCase().replace(/^www\./, "");
+    const isGuardianBlocked = guardianDomains.some((d) => {
+      const cleanD = d.toLowerCase().replace(/^www\./, "");
+      return cleanDomain === cleanD || cleanDomain.endsWith("." + cleanD);
+    });
+    if (isGuardianBlocked) {
+      return {
+        blocked: true,
+        source: "group",
+        groupId: "guardian-policy",
+        groupName: "AmnShield System Policy",
+        reason: "on-open",
+        message: `Blocked by AmnShield Guardian Policy (${location.domain}).`,
+        warning: null,
+        canProceed: false,
+        focusExitable: false,
+      };
+    }
+  }
 
   // 1. Adult/NSFW content protection (highest priority, cannot proceed/bypass)
   if (settings.adultContentEnabled) {

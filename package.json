@@ -1,8 +1,8 @@
 {
   "name": "amn-shield",
-  "description": "Blocks harmful & distracting sites. Custom filters, focus schedules, password lock, and mindful breathing pause screen.",
+  "description": "Blocks harmful and distracting websites using custom domain lists, keyword filters, and scheduled blocking rules.",
   "private": true,
-  "version": "0.7.13.2026",
+  "version": "29.7.2026",
   "type": "module",
   "scripts": {
     "dev": "wxt",

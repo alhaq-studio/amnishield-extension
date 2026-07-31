@@ -8,9 +8,9 @@ export default defineConfig({
     plugins: [tailwindcss()],
   }),
   manifest: {
-    name: "Amn Shield - Islamic Productivity Tool",
-    description: "Blocks harmful sites with custom filters, focus schedules, password lock, and mindful breathing pause screen.",
-    version: "0.7.13.2026",
+    name: "Amn Shield - Website Content Blocker",
+    description: "Blocks harmful and distracting websites using custom domain lists, keyword filters, and scheduled blocking rules.",
+    version: "29.7.2026",
     permissions: ["storage", "tabs", "alarms", "declarativeNetRequest", "webNavigation"],
     host_permissions: ["<all_urls>"],
     web_accessible_resources: [

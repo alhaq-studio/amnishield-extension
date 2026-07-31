@@ -18,11 +18,54 @@ const TABS: { value: Tab; label: string }[] = [
   { value: "about", label: "About" },
 ];
 
+function BlockedPage({ domain }: { domain: string }) {
+  const handleLeave = () => {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = "about:blank";
+    }
+  };
+
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f3f1ec] px-6 py-12 text-[#202724] dark:bg-[#140d26] dark:text-[#f3ecff]">
+      <div className="flex max-w-md flex-col items-center text-center gap-6">
+        <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-current animate-pulse">
+          <span className="text-xs uppercase tracking-widest opacity-70">Breathe</span>
+        </div>
+
+        <h1 className="font-display text-3xl font-bold tracking-tight">Amn Shield Protection</h1>
+
+        <p className="text-lg leading-relaxed opacity-85">
+          <span className="font-semibold underline decoration-emerald-500">{domain}</span> is blocked by your active AmnShield focus & web filtering policy.
+        </p>
+
+        <p className="text-sm italic opacity-60">
+          "Take a mindful moment to step back and focus on what truly matters today."
+        </p>
+
+        <button
+          onClick={handleLeave}
+          className="mt-4 rounded-full bg-[#3c7a67] px-8 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90 dark:bg-[#c8b8ff] dark:text-[#140d26]"
+        >
+          Take me somewhere calmer
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function App() {
   const { usage, settings, focus, focusLog, ready, saveSettings } = useAmnShield();
   const [draft, setDraft] = useState<Settings | null>(null);
   const [tab, setTab] = useState<Tab>("usage");
   const [isLocked, setIsLocked] = useState<boolean>(false);
+
+  // Check if routed as Blocked Page
+  const hash = window.location.hash;
+  const searchParams = new URLSearchParams(window.location.search);
+  const blockedDomainParam =
+    searchParams.get("domain") || (hash.includes("domain=") ? decodeURIComponent(hash.split("domain=")[1]) : null);
 
   useEffect(() => {
     if (ready && !draft) {
@@ -32,6 +75,10 @@ export function App() {
       }
     }
   }, [ready, settings, draft]);
+
+  if (blockedDomainParam) {
+    return <BlockedPage domain={blockedDomainParam} />;
+  }
 
   if (!draft) return null;
 

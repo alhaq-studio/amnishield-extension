@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import { browser } from "#imports";
 import { useAmnShield } from "../../ui/useStore";
 import { UsageView, ErrorBoundary } from "../../ui/components";
 import { FocusQuickControl } from "../../ui/focus";
+import { pollGuardianStatus, type GuardianStatus } from "../../lib/guardianSync";
 
 async function openOptions(): Promise<void> {
   const url = browser.runtime.getURL("/options.html");
@@ -16,11 +18,40 @@ async function openOptions(): Promise<void> {
 }
 
 function Header() {
+  const [guardianStatus, setGuardianStatus] = useState<GuardianStatus | null>(null);
+
+  useEffect(() => {
+    void pollGuardianStatus().then(setGuardianStatus);
+    const interval = setInterval(() => {
+      void pollGuardianStatus().then(setGuardianStatus);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const isOnline = guardianStatus?.status === "online";
+
   return (
     <header className="flex items-center justify-between">
-      <h1 className="font-display text-2xl leading-none tracking-tight">Amn Shield</h1>
+      <div className="flex items-center gap-2">
+        <h1 className="font-display text-2xl leading-none tracking-tight">Amn Shield</h1>
+        <span
+          title={isOnline ? "Connected to AmnShield Windows Guardian Service" : "Standalone Browser Mode"}
+          className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider ${
+            isOnline
+              ? "bg-emerald-500/15 text-emerald-600 border border-emerald-500/30"
+              : "bg-amber-500/15 text-amber-600 border border-amber-500/30"
+          }`}
+        >
+          <span
+            className={`h-1.5 w-1.5 rounded-full ${
+              isOnline ? "bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" : "bg-amber-500"
+            }`}
+          />
+          {isOnline ? "SYS SYNCED" : "STANDALONE"}
+        </span>
+      </div>
       <span className="flex items-center gap-1.5 text-[11px] text-faint">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink/40" />
+        <span className="h-1.5 w-1.5 rounded-full bg-ink/40" />
         Today
       </span>
     </header>

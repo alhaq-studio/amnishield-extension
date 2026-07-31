@@ -8,6 +8,7 @@ interface StoreShape {
   focusLog: FocusLogEntry[];
   grants: Record<string, number>; // groupId -> granted until (ms)
   proceeds: Record<string, ProceedRecord>; // groupId -> proceed tally
+  guardianDomains: string[];
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -26,6 +27,7 @@ const DEFAULTS: StoreShape = {
   focusLog: [],
   grants: {},
   proceeds: {},
+  guardianDomains: [],
 };
 
 export async function get<K extends keyof StoreShape>(key: K): Promise<StoreShape[K]> {
