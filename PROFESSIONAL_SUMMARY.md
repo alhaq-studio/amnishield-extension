@@ -236,4 +236,4 @@ Your **Amn Shield** extension is now a **professional, web store-ready product**
 
 **Status:** ? **PROFESSIONAL WEB STORE SUBMISSION READY**  
 **Contact:** support@amnshield.com  
-**Repository:** github.com/Afrasyaab-GH/AmnShield-Extension
+**Repository:** github.com/alhaq-studio/AmnShield-Extension

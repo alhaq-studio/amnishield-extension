@@ -155,6 +155,72 @@ export function ProtectionPanel({
 
       </section>
 
+      {/* Sync & Cloud Privacy Card */}
+      <section className="card p-6 flex flex-col gap-5">
+        <h3 className="font-semibold text-sm">☁️ Sync & Cloud Privacy</h3>
+        <p className="text-xs text-muted leading-normal">
+          Manage cloud synchronization, usage telemetry, and smart recommendations.
+        </p>
+
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold text-sm">Sync Rules & Blocklists</p>
+            <p className="text-xs text-muted mt-1 leading-normal">
+              Synchronize blocklists and focus mode rules across devices via your cloud account.
+            </p>
+          </div>
+          <Toggle
+            on={settings.syncRulesEnabled ?? true}
+            onChange={(v) => onChange({ ...settings, syncRulesEnabled: v })}
+          />
+        </div>
+
+        <hr className="border-line" />
+
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold text-sm">Sync App Usage & Screentime</p>
+            <p className="text-xs text-muted mt-1 leading-normal">
+              Upload application usage stats to your cross-device parent dashboard.
+            </p>
+          </div>
+          <Toggle
+            on={settings.syncAppUsageEnabled ?? true}
+            onChange={(v) => onChange({ ...settings, syncAppUsageEnabled: v })}
+          />
+        </div>
+
+        <hr className="border-line" />
+
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold text-sm">Sync Website Browsing Metrics</p>
+            <p className="text-xs text-muted mt-1 leading-normal">
+              Sync web domain browsing duration to analyze time spent on productivity.
+            </p>
+          </div>
+          <Toggle
+            on={settings.syncWebUsageEnabled ?? true}
+            onChange={(v) => onChange({ ...settings, syncWebUsageEnabled: v })}
+          />
+        </div>
+
+        <hr className="border-line" />
+
+        <div className="flex items-center justify-between gap-4">
+          <div>
+            <p className="font-semibold text-sm">Smart AI Recommendations</p>
+            <p className="text-xs text-muted mt-1 leading-normal">
+              Enable AI assistance for smart blocking suggestions and schedule optimization.
+            </p>
+          </div>
+          <Toggle
+            on={settings.smartRecommendationsEnabled ?? true}
+            onChange={(v) => onChange({ ...settings, smartRecommendationsEnabled: v })}
+          />
+        </div>
+      </section>
+
       {/* Password Protection Card */}
       <section className="card p-6 flex flex-col gap-4">
         <h3 className="font-semibold text-sm">🔑 Settings Password Protection</h3>

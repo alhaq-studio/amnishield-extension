@@ -9,6 +9,11 @@ interface StoreShape {
   grants: Record<string, number>; // groupId -> granted until (ms)
   proceeds: Record<string, ProceedRecord>; // groupId -> proceed tally
   guardianDomains: string[];
+  guardianCustomDomains: string[];
+  guardianIsPremium: boolean;
+  adultPackActive: boolean;
+  socialPackActive: boolean;
+  blockedDomains: string[];
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -18,6 +23,10 @@ export const DEFAULT_SETTINGS: Settings = {
   adultContentEnabled: true,
   safeSearchEnabled: true,
   theme: "emerald",
+  syncRulesEnabled: true,
+  syncAppUsageEnabled: true,
+  syncWebUsageEnabled: true,
+  smartRecommendationsEnabled: true,
 };
 
 const DEFAULTS: StoreShape = {
@@ -28,6 +37,11 @@ const DEFAULTS: StoreShape = {
   grants: {},
   proceeds: {},
   guardianDomains: [],
+  guardianCustomDomains: [],
+  guardianIsPremium: false,
+  adultPackActive: false,
+  socialPackActive: false,
+  blockedDomains: [],
 };
 
 export async function get<K extends keyof StoreShape>(key: K): Promise<StoreShape[K]> {

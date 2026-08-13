@@ -100,6 +100,10 @@ export interface Settings {
   securityQuestion?: string;
   securityAnswer?: string;
   theme?: string;
+  syncRulesEnabled?: boolean;
+  syncAppUsageEnabled?: boolean;
+  syncWebUsageEnabled?: boolean;
+  smartRecommendationsEnabled?: boolean;
 }
 
 export type BlockSource = "group" | "focus";

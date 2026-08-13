@@ -113,7 +113,7 @@ For questions about this Privacy Policy or our privacy practices:
 ### Company Contact
 - **Al-Haq Studio**
 - **Website**: https://alhaq.uk
-- **GitHub**: https://github.com/Afrasyaab-GH
+- **GitHub**: https://github.com/alhaq-studio
 
 ## Compliance
 

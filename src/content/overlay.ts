@@ -267,6 +267,11 @@ export function createOverlay(): Overlay {
       return;
     }
 
+    if (decision.groupId === "guardian-policy") {
+      renderGuardian(body, decision, handlers);
+      return;
+    }
+
     const warning = decision.warning;
     const proceed = (minutes?: number) => {
       handlers.onProceed(minutes);
@@ -301,6 +306,10 @@ export function createOverlay(): Overlay {
     } else {
       body.appendChild(makeNote("I'll stay until the timer is done."));
     }
+  }
+
+  function renderGuardian(body: HTMLDivElement, decision: BlockDecision, handlers: OverlayHandlers): void {
+    body.appendChild(makeNote("🛡️ Blocked by AmnShield System Policy"));
   }
 
   function renderChallenge(body: HTMLDivElement, decision: BlockDecision, proceed: (minutes?: number) => void): void {

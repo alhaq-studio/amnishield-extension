@@ -90,6 +90,6 @@ Issues, ideas, and pull requests are all welcome. See **[CONTRIBUTING.md](CONTRI
 
 <div align="center">
 
-Made by [Afrasyaab](https://github.com/Afrasyaab-GH) · Take your time back.
+Made by [Afrasyaab](https://github.com/alhaq-studio) · Take your time back.
 
 </div>

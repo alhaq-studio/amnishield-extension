@@ -5,8 +5,11 @@ const LINKS = {
   website: "https://alhaq.uk",
   initiative: "https://alhaq-initiative.org",
   support: "https://alhaq-initiative.org/contact.html",
-  github: "https://github.com/alhaq-initiative/amn-shield",
-  email: "support@alhaq.uk"
+  github: "https://github.com/alhaq-studio/amnshield-extension",
+  email: "support@alhaq.uk",
+  patreon: "https://www.patreon.com/alhaq",
+  buymeacoffee: "https://www.buymeacoffee.com/alhaq",
+  kofi: "https://ko-fi.com/alhaq"
 };
 
 function ArrowLink({ href, children, className }: { href: string; children: ReactNode; className: string }) {
@@ -43,9 +46,18 @@ export function AboutPanel() {
         <p className="text-sm leading-relaxed text-muted">
           Need help, found a bug, or want to suggest a new feature? Get in touch with our team at Al-Haq Studio. We are constantly improving our content blocker and would love to hear from you.
         </p>
-        <div className="mt-5">
+        <div className="mt-5 flex flex-wrap gap-3">
           <ArrowLink href={LINKS.support} className={btnPrimary}>
             Contact Support
+          </ArrowLink>
+          <ArrowLink href={LINKS.patreon} className={btnOutline}>
+            Patreon ↗
+          </ArrowLink>
+          <ArrowLink href={LINKS.buymeacoffee} className={btnOutline}>
+            Buy Me a Coffee ↗
+          </ArrowLink>
+          <ArrowLink href={LINKS.kofi} className={btnOutline}>
+            Ko-fi ↗
           </ArrowLink>
         </div>
       </section>

@@ -28,28 +28,46 @@ function BlockedPage({ domain }: { domain: string }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#f8f9fc] px-6 py-12 text-[#0a2540] dark:bg-[#0f172a] dark:text-[#f8fafc]">
-      <div className="flex max-w-md flex-col items-center text-center gap-6">
-        <div className="relative flex h-24 w-24 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10 animate-pulse text-emerald-600 dark:text-emerald-400">
-          <span class="material-symbols-outlined text-3xl">spa</span>
+    <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 px-6 py-12 text-slate-100 font-sans">
+      <div className="relative flex max-w-lg flex-col items-center text-center gap-6 p-8 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-xl">
+        <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
         </div>
 
-        <h1 className="font-display text-3xl font-bold tracking-tight text-[#0a2540] dark:text-[#d4af37]">AmnShield Protection</h1>
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+            <span>🛡️ AmnShield Active Protection</span>
+          </div>
+          <h1 className="text-3xl font-extrabold tracking-tight text-white mt-1">Access Restricted</h1>
+        </div>
 
-        <p className="text-lg leading-relaxed opacity-90">
-          <span className="font-semibold underline decoration-emerald-500">{domain}</span> is blocked by your active AmnShield policy.
-        </p>
+        <div className="p-4 rounded-2xl bg-slate-950/60 border border-slate-800/80 w-full text-center">
+          <span className="text-xs font-medium text-slate-400 uppercase tracking-widest block mb-1">Blocked Target</span>
+          <span className="font-mono text-base font-bold text-emerald-400 break-all">{domain}</span>
+        </div>
 
-        <p className="text-sm italic opacity-75">
+        <blockquote className="text-sm italic text-slate-300 border-l-2 border-emerald-500/50 pl-4 my-1 text-left">
           "Take a mindful moment to step back and focus on what truly matters today."
-        </p>
+        </blockquote>
 
-        <button
-          onClick={handleLeave}
-          className="mt-4 rounded-xl bg-[#0a2540] px-8 py-3.5 text-sm font-semibold text-white transition-all hover:opacity-90 dark:bg-[#d4af37] dark:text-[#0a2540] shadow-md"
-        >
-          Take me somewhere calmer
-        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full pt-2">
+          <button
+            onClick={handleLeave}
+            className="w-full sm:w-auto flex-1 py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-emerald-500/25 cursor-pointer"
+          >
+            Go Back to Safety
+          </button>
+          <a
+            href="https://app.amnshield.com"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full sm:w-auto flex-1 py-3 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm transition-all border border-slate-700 text-center"
+          >
+            Manage Rules Console
+          </a>
+        </div>
       </div>
     </div>
   );

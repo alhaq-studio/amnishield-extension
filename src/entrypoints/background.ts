@@ -17,11 +17,21 @@ let focusedTabId: number | null = null;
 async function syncDeclarativeNetRequestRules(): Promise<void> {
   if (!browser.declarativeNetRequest) return;
   try {
-    const [guardianDomains] = await Promise.all([get("guardianDomains")]);
+    const [guardianDomains, blockedDomains] = await Promise.all([
+      get("guardianDomains"),
+      get("blockedDomains")
+    ]);
     const domainsToBlock = new Set<string>();
 
     if (guardianDomains && guardianDomains.length > 0) {
       for (const d of guardianDomains) {
+        const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+        if (clean) domainsToBlock.add(clean);
+      }
+    }
+
+    if (blockedDomains && blockedDomains.length > 0) {
+      for (const d of blockedDomains) {
         const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
         if (clean) domainsToBlock.add(clean);
       }
@@ -33,7 +43,7 @@ async function syncDeclarativeNetRequestRules(): Promise<void> {
     const domainsList = Array.from(domainsToBlock).slice(0, 5000);
     const addRules: chrome.declarativeNetRequest.Rule[] = domainsList.map((domain, idx) => ({
       id: idx + 1,
-      priority: 1,
+      priority: 100,
       action: {
         type: "redirect" as chrome.declarativeNetRequest.RuleActionType,
         redirect: {
@@ -41,7 +51,7 @@ async function syncDeclarativeNetRequestRules(): Promise<void> {
         },
       },
       condition: {
-        urlFilter: `||${domain}^`,
+        requestDomains: [domain],
         resourceTypes: ["main_frame" as chrome.declarativeNetRequest.ResourceType],
       },
     }));
@@ -56,15 +66,17 @@ async function syncDeclarativeNetRequestRules(): Promise<void> {
 }
 
 async function decide(location: SiteLocation): Promise<BlockDecision> {
-  const [settings, usage, grants, proceeds, focus, guardianDomains] = await Promise.all([
+  const [settings, usage, grants, proceeds, focus, guardianDomains, blockedDomains] = await Promise.all([
     get("settings"),
     get("usage"),
     get("grants"),
     get("proceeds"),
     activeSession(),
     get("guardianDomains"),
+    get("blockedDomains"),
   ]);
   const now = new Date();
+  const allGuardian = [...(guardianDomains ?? []), ...(blockedDomains ?? [])];
   return evaluate({
     location,
     settings,
@@ -75,7 +87,7 @@ async function decide(location: SiteLocation): Promise<BlockDecision> {
     now: now.getTime(),
     grants,
     proceeds,
-    guardianDomains: guardianDomains ?? [],
+    guardianDomains: allGuardian,
   });
 }
 
@@ -105,15 +117,6 @@ async function evaluateTab(tabId: number, url: string | undefined, makeActive: b
   const decision = await decide(location);
 
   sendToTab(tabId, { type: "evaluate", decision });
-
-  if (decision.blocked) {
-    const optionsUrl = browser.runtime.getURL("/options.html");
-    if (!url.startsWith(optionsUrl)) {
-      void browser.tabs.update(tabId, {
-        url: browser.runtime.getURL(`/options.html#/blocked?domain=${encodeURIComponent(location.domain)}`),
-      });
-    }
-  }
 
   if (makeActive) {
     if (decision.blocked) stopTracking();
@@ -172,6 +175,11 @@ export default defineBackground(() => {
   void get("grants").then(scheduleGrantEnd);
   void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
 
+  // Fast 2-second polling interval for real-time Windows App rule updates
+  setInterval(() => {
+    void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
+  }, 2000);
+
   watch((changed) => {
     if ("focus" in changed) {
       scheduleFocusEnd(changed.focus ?? null);
@@ -181,9 +189,15 @@ export default defineBackground(() => {
       void evaluateAllTabs();
       void syncDeclarativeNetRequestRules();
     }
-    if ("guardianDomains" in changed) {
+    if ("guardianDomains" in changed || "blockedDomains" in changed) {
       void evaluateAllTabs();
       void syncDeclarativeNetRequestRules();
+      if ("blockedDomains" in changed && Array.isArray(changed.blockedDomains)) {
+        const domains = changed.blockedDomains;
+        import("../lib/guardianSync").then(({ postUpdateDomainsToGuardian }) => {
+          void postUpdateDomainsToGuardian(domains);
+        });
+      }
     }
     if ("grants" in changed) scheduleGrantEnd(changed.grants ?? {});
   });
@@ -223,6 +237,12 @@ export default defineBackground(() => {
 
   browser.webNavigation.onBeforeNavigate.addListener(async (details) => {
     if (details.frameId !== 0) return;
+    try {
+      await pollGuardianStatus();
+      await syncDeclarativeNetRequestRules();
+      await evaluateTab(details.tabId, details.url, details.tabId === focusedTabId);
+    } catch {}
+
     const settings = await get("settings");
     if (settings.safeSearchEnabled) {
       const redirectUrl = getSafeSearchRedirect(details.url, true);
