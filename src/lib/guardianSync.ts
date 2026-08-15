@@ -18,7 +18,7 @@ const GUARDIAN_UPDATE_DOMAINS_URL = "http://127.0.0.1:48192/update-domains";
 const SYNC_TIMEOUT_MS = 2000;
 
 /**
- * Silently polls the local AmnShield Windows Guardian HTTP API.
+ * Silently polls the local AmniShield Windows Guardian HTTP API.
  * Returns GuardianStatus if online, or null if Guardian is offline / not installed.
  */
 export async function pollGuardianStatus(): Promise<GuardianStatus | null> {
@@ -65,7 +65,7 @@ export async function pollGuardianStatus(): Promise<GuardianStatus | null> {
 }
 
 /**
- * Posts updated custom domain rules back to AmnShield Windows app.
+ * Posts updated custom domain rules back to AmniShield Windows app.
  */
 export async function postUpdateDomainsToGuardian(domains: string[]): Promise<boolean> {
   try {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { get, set, watch, DEFAULT_SETTINGS } from "../lib/storage";
 import type { FocusLogEntry, FocusSession, Settings, UsageHistory } from "../lib/types";
 
-export interface AmnShieldState {
+export interface AmniShieldState {
   usage: UsageHistory;
   settings: Settings;
   focus: FocusSession | null;
@@ -10,8 +10,8 @@ export interface AmnShieldState {
   ready: boolean;
 }
 
-export function useAmnShield() {
-  const [state, setState] = useState<AmnShieldState>({
+export function useAmniShield() {
+  const [state, setState] = useState<AmniShieldState>({
     usage: {},
     settings: DEFAULT_SETTINGS,
     focus: null,
@@ -48,9 +48,13 @@ export function useAmnShield() {
 
   useEffect(() => {
     if (!state.ready) return;
-    const theme = state.settings.theme ?? "emerald";
+    let theme = state.settings.theme ?? "cosmic";
+    if (theme === "system") {
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      theme = isDark ? "dark" : "emerald";
+    }
     const root = document.documentElement;
-    root.classList.remove("theme-sunset", "theme-emerald", "theme-cosmic");
+    root.classList.remove("theme-sunset", "theme-emerald", "theme-cosmic", "theme-dark");
     root.classList.add(`theme-${theme}`);
   }, [state.ready, state.settings.theme]);
 

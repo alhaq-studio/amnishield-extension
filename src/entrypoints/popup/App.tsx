@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { browser } from "#imports";
-import { useAmnShield } from "../../ui/useStore";
+import { useAmniShield } from "../../ui/useStore";
 import { UsageView, ErrorBoundary } from "../../ui/components";
 import { FocusQuickControl } from "../../ui/focus";
 import { pollGuardianStatus, type GuardianStatus } from "../../lib/guardianSync";
@@ -33,9 +33,9 @@ function Header() {
   return (
     <header className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <h1 className="font-display text-2xl leading-none tracking-tight">Amn Shield</h1>
+        <h1 className="font-display text-2xl leading-none tracking-tight">AmniShield</h1>
         <span
-          title={isOnline ? "Connected to AmnShield Windows Guardian Service" : "Standalone Browser Mode"}
+          title={isOnline ? "Connected to AmniShield Windows Guardian Service" : "Standalone Browser Mode"}
           className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider ${
             isOnline
               ? "bg-emerald-500/15 text-emerald-600 border border-emerald-500/30"
@@ -68,7 +68,7 @@ function Loading() {
 }
 
 export function App() {
-  const { usage, settings, focus, ready } = useAmnShield();
+  const { usage, settings, focus, ready } = useAmniShield();
 
   if (!ready) return <Loading />;
 

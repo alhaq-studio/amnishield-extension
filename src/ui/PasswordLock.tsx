@@ -129,7 +129,7 @@ export function PasswordLock({
               🛡️
             </div>
             <div>
-              <h2 className="font-display text-2xl leading-none">Amn Shield Active</h2>
+              <h2 className="font-display text-2xl leading-none">AmniShield Active</h2>
               <p className="mt-2 text-xs text-muted">Enter password to manage blocking configurations.</p>
             </div>
 

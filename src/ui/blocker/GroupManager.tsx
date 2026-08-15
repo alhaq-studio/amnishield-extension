@@ -38,7 +38,7 @@ export function GroupManager({ groups, onChange }: { groups: BlockGroup[]; onCha
         <div className="rounded-2xl border border-accent/20 bg-accent/5 p-4 flex flex-col gap-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5">
-              🛡️ AmnShield Windows App Rules (Enforced)
+              🛡️ AmniShield Windows App Rules (Enforced)
             </span>
             <span className="text-[10px] text-muted font-medium bg-surface px-2 py-0.5 rounded-md border border-line">
               Master Authority
@@ -77,7 +77,7 @@ export function GroupManager({ groups, onChange }: { groups: BlockGroup[]; onCha
                   <span
                     key={domain}
                     className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface border border-line text-xs font-mono text-ink"
-                    title="Managed by AmnShield Windows App — Delete from Windows App only"
+                    title="Managed by AmniShield Windows App — Delete from Windows App only"
                   >
                     🔒 {domain}
                   </span>

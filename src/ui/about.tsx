@@ -20,13 +20,23 @@ function ArrowLink({ href, children, className }: { href: string; children: Reac
   );
 }
 
-export function AboutPanel() {
+export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
   return (
     <div className="flex flex-col gap-6">
       <section className="card p-6">
-        <p className="label mb-3">About the Developer</p>
+        <div className="flex items-center justify-between mb-3">
+          <p className="label mb-0">About the Developer</p>
+          {onStartTour && (
+            <button
+              onClick={onStartTour}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-purple-500/15 to-indigo-500/15 border border-purple-500/30 px-3 py-1.5 text-xs font-semibold text-ink hover:opacity-80 transition-all cursor-pointer"
+            >
+              <span>Revisit Guided Tour</span>
+            </button>
+          )}
+        </div>
         <p className="text-sm leading-relaxed text-ink">
-          Amn Shield is developed by <strong>Al-Haq Studio</strong> for the <strong>Al-Haq Initiative</strong>.
+          AmniShield is developed by <strong>Al-Haq Studio</strong> for the <strong>Al-Haq Initiative</strong>.
           We are a specialized Islamic technology organization dedicated to creating digital solutions that
           align with Islamic values and serve the Muslim community worldwide. Our tools help Muslims maintain
           spiritual wellness, stay productive, and browse the web safely.
@@ -62,10 +72,28 @@ export function AboutPanel() {
         </div>
       </section>
 
+      <section className="card p-6 flex flex-col gap-4">
+        <h3 className="font-semibold text-sm">🤲 Support AmniShield</h3>
+        <p className="text-xs text-muted leading-normal">
+          Help us continue developing Islamic technology solutions for the Ummah. Your support enables us to keep this extension free, open-source, and beneficial for all Muslims.
+        </p>
+        <div className="flex flex-col gap-3">
+          <ArrowLink
+            href="https://amnishield.com"
+            className={`${btnPrimary} w-fit text-center`}
+          >
+            💝 Donate (Sadaqah)
+          </ArrowLink>
+          <p className="text-[11px] italic text-faint leading-normal">
+            "The believer's shade on the Day of Resurrection will be his charity" - Hadith
+          </p>
+        </div>
+      </section>
+
       <section className="card p-6">
-        <p className="label mb-3">Amn Shield App Integration</p>
+        <p className="label mb-3">AmniShield App Integration</p>
         <p className="text-sm leading-relaxed text-muted">
-          Did you know Amn Shield is also available as an Android application? You can pair the browser extension with our Android client for central policy management and cross-device protection.
+          Did you know AmniShield is also available as an Android application? You can pair the browser extension with our Android client for central policy management and cross-device protection.
         </p>
         <div className="mt-5">
           <ArrowLink href={LINKS.initiative} className={btnPrimary}>

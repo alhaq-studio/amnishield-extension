@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useAmnShield } from "../../ui/useStore";
+import { useAmniShield } from "../../ui/useStore";
 import { UsageView, ErrorBoundary } from "../../ui/components";
 import { GroupManager } from "../../ui/blocker";
 import { FocusPanel } from "../../ui/focus";
 import { AboutPanel } from "../../ui/about";
 import { ProtectionPanel } from "../../ui/protection";
 import { PasswordLock } from "../../ui/PasswordLock";
+import { OnboardingTour } from "../../ui/OnboardingTour";
 import type { Settings } from "../../lib/types";
 
 type Tab = "usage" | "website" | "focus" | "protection" | "about";
@@ -38,7 +39,7 @@ function BlockedPage({ domain }: { domain: string }) {
 
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            <span>🛡️ AmnShield Active Protection</span>
+            <span>🛡️ AmniShield Active Protection</span>
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-white mt-1">Access Restricted</h1>
         </div>
@@ -60,7 +61,7 @@ function BlockedPage({ domain }: { domain: string }) {
             Go Back to Safety
           </button>
           <a
-            href="https://app.amnshield.com"
+            href="https://app.amnishield.com"
             target="_blank"
             rel="noreferrer"
             className="w-full sm:w-auto flex-1 py-3 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm transition-all border border-slate-700 text-center"
@@ -73,13 +74,22 @@ function BlockedPage({ domain }: { domain: string }) {
   );
 }
 
+const THEMES: { value: string; label: string; color: string }[] = [
+  { value: "cosmic", label: "Cosmic", color: "#C8B8FF" },
+  { value: "dark", label: "Dark", color: "#26A69A" },
+  { value: "emerald", label: "Emerald", color: "#3C7A67" },
+  { value: "sunset", label: "Sunset", color: "#A45833" },
+  { value: "system", label: "Auto", color: "linear-gradient(135deg, #26A69A 50%, #3C7A67 50%)" },
+];
+
 export function App() {
-  const { usage, settings, focus, focusLog, ready, saveSettings } = useAmnShield();
+  const { usage, settings, focus, focusLog, ready, saveSettings } = useAmniShield();
   const [draft, setDraft] = useState<Settings | null>(null);
   const [tab, setTab] = useState<Tab>("usage");
   const [isLocked, setIsLocked] = useState<boolean>(false);
+  const [showTour, setShowTour] = useState<boolean>(false);
 
-  // Check if routed as Blocked Page
+  // Check if routed as Blocked Page or Tour Hash
   const hash = window.location.hash;
   const searchParams = new URLSearchParams(window.location.search);
   const blockedDomainParam =
@@ -91,8 +101,11 @@ export function App() {
       if (settings.password) {
         setIsLocked(true);
       }
+      if (!settings.onboardingCompleted || hash === "#tour" || searchParams.get("tour") === "true") {
+        setShowTour(true);
+      }
     }
-  }, [ready, settings, draft]);
+  }, [ready, settings, draft, hash, searchParams]);
 
   if (blockedDomainParam) {
     return <BlockedPage domain={blockedDomainParam} />;
@@ -132,12 +145,61 @@ export function App() {
 
   return (
     <div className="mx-auto flex max-w-xl flex-col gap-7 px-6 py-14">
+      {showTour && (
+        <OnboardingTour
+          settings={draft}
+          onComplete={(updated) => {
+            commit(updated);
+            setShowTour(false);
+          }}
+          onClose={() => setShowTour(false)}
+        />
+      )}
+
       <header>
-        <div className="flex items-center gap-2.5">
-          <h1 className="font-display text-5xl leading-none">Amn Shield</h1>
-          <span className="mt-1 h-2 w-2 animate-pulse rounded-full bg-ink/40" />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2.5">
+              <h1 className="font-display text-5xl leading-none">AmniShield</h1>
+              <span className="mt-1 h-2 w-2 animate-pulse rounded-full bg-ink/40" />
+            </div>
+            <p className="mt-2 text-sm text-muted">Halal-first browsing protection</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* Quick Theme Switcher Pill Group */}
+            <div className="flex items-center bg-surface-2/70 border border-line rounded-full p-0.5 gap-0.5 shadow-sm">
+              {THEMES.map((th) => {
+                const isSelected = (draft.theme || "cosmic") === th.value;
+                return (
+                  <button
+                    key={th.value}
+                    type="button"
+                    title={`Theme: ${th.label}`}
+                    onClick={() => commit({ ...draft, theme: th.value })}
+                    className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      isSelected
+                        ? "bg-surface text-ink shadow-sm border border-line"
+                        : "text-muted hover:text-ink border border-transparent"
+                    }`}
+                  >
+                    <span
+                      className="h-2.5 w-2.5 rounded-full shrink-0"
+                      style={{ background: th.color }}
+                    />
+                    <span className="hidden sm:inline">{th.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              onClick={() => setShowTour(true)}
+              className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-900/40 via-indigo-900/40 to-blue-900/40 border border-purple-500/30 px-3.5 py-1.5 text-xs font-semibold text-[#c8b8ff] hover:opacity-90 transition-all shadow-[0_0_12px_rgba(200,184,255,0.2)] cursor-pointer shrink-0"
+            >
+              <span>Take Tour</span>
+            </button>
+          </div>
         </div>
-        <p className="mt-2 text-sm text-muted">Halal-first browsing protection</p>
       </header>
 
       <nav className="-mt-1 flex gap-1 border-b border-line">
@@ -175,7 +237,7 @@ export function App() {
           {tab === "protection" && (
             <ProtectionPanel settings={draft} onChange={commit} />
           )}
-          {tab === "about" && <AboutPanel />}
+          {tab === "about" && <AboutPanel onStartTour={() => setShowTour(true)} />}
         </div>
       </ErrorBoundary>
     </div>

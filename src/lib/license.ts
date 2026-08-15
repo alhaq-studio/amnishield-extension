@@ -23,7 +23,7 @@ async function importPublicKey(pemBase64: string): Promise<CryptoKey> {
   const der = base64ToBytes(pemBase64);
   return await crypto.subtle.importKey(
     "spki",
-    der,
+    der.buffer as ArrayBuffer,
     { name: "ECDSA", namedCurve: "P-256" },
     false,
     ["verify"]
@@ -58,8 +58,8 @@ export async function verifyLicense(licenseKey: string): Promise<LicensePayload 
     const isValid = await crypto.subtle.verify(
       { name: "ECDSA", hash: { name: "SHA-256" } },
       key,
-      signatureBytes,
-      payloadBytes
+      signatureBytes.buffer as ArrayBuffer,
+      payloadBytes.buffer as ArrayBuffer
     );
 
     return isValid ? payload : null;

@@ -11,6 +11,8 @@ interface StoreShape {
   guardianDomains: string[];
   guardianCustomDomains: string[];
   guardianIsPremium: boolean;
+  licenseKey: string;
+  licensePayload: any;
   adultPackActive: boolean;
   socialPackActive: boolean;
   blockedDomains: string[];
@@ -22,7 +24,7 @@ export const DEFAULT_SETTINGS: Settings = {
   harmfulContentEnabled: true,
   adultContentEnabled: true,
   safeSearchEnabled: true,
-  theme: "emerald",
+  theme: "cosmic",
   syncRulesEnabled: true,
   syncAppUsageEnabled: true,
   syncWebUsageEnabled: true,
@@ -39,6 +41,8 @@ const DEFAULTS: StoreShape = {
   guardianDomains: [],
   guardianCustomDomains: [],
   guardianIsPremium: false,
+  licenseKey: "",
+  licensePayload: null,
   adultPackActive: false,
   socialPackActive: false,
   blockedDomains: [],

@@ -55,6 +55,19 @@ const STYLE = `
   --ring: rgba(200, 184, 255, 0.15);
   --state: rgba(200, 184, 255, 0.08);
 }
+
+.amnshield-root.theme-dark {
+  --bg: #0b0b0c;
+  --surface: #161617;
+  --surface-2: #1f1f21;
+  --ink: #edece9;
+  --accent: #26a69a;
+  --muted: #8f8b84;
+  --faint: #65615b;
+  --line: #2a2a2c;
+  --ring: rgba(237, 236, 233, 0.1);
+  --state: rgba(237, 236, 233, 0.06);
+}
 .card {
   width: min(460px, 86vw);
   display: flex;
@@ -235,6 +248,10 @@ export function createOverlay(): Overlay {
       if (settings?.theme) {
         activeTheme = settings.theme;
       }
+      if (activeTheme === "system") {
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        activeTheme = isDark ? "dark" : "emerald";
+      }
     } catch (e) {
       console.error("Failed to load theme settings for overlay", e);
     }
@@ -243,7 +260,7 @@ export function createOverlay(): Overlay {
     root.className = `amnshield-root theme-${activeTheme}`;
     root.setAttribute("role", "dialog");
     root.setAttribute("aria-modal", "true");
-    root.setAttribute("aria-label", "A mindful pause from Amn Shield");
+    root.setAttribute("aria-label", "A mindful pause from AmniShield");
     root.innerHTML = `
       <div class="card" tabindex="-1">
         <div class="breath" aria-hidden="true">
@@ -309,7 +326,7 @@ export function createOverlay(): Overlay {
   }
 
   function renderGuardian(body: HTMLDivElement, decision: BlockDecision, handlers: OverlayHandlers): void {
-    body.appendChild(makeNote("🛡️ Blocked by AmnShield System Policy"));
+    body.appendChild(makeNote("🛡️ Blocked by AmniShield System Policy"));
   }
 
   function renderChallenge(body: HTMLDivElement, decision: BlockDecision, proceed: (minutes?: number) => void): void {

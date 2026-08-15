@@ -104,6 +104,7 @@ export interface Settings {
   syncAppUsageEnabled?: boolean;
   syncWebUsageEnabled?: boolean;
   smartRecommendationsEnabled?: boolean;
+  onboardingCompleted?: boolean;
 }
 
 export type BlockSource = "group" | "focus";

@@ -158,6 +158,12 @@ function scheduleGrantEnd(grants: Record<string, number>): void {
 }
 
 export default defineBackground(() => {
+  browser.runtime.onInstalled.addListener((details) => {
+    if (details.reason === "install") {
+      void browser.tabs.create({ url: browser.runtime.getURL("/options.html#tour") });
+    }
+  });
+
   browser.alarms.create("tick", { periodInMinutes: 0.5 });
   browser.alarms.onAlarm.addListener((alarm) => {
     if (alarm.name === "tick") {
