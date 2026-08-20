@@ -25,40 +25,21 @@
    - Sunset: AmniHaze Sunset Sand (#eedbd0 warm sand + #a45833 terracotta)
    ========================================================================== */
 
-:root {
-  /* Default: Calm Emerald (Light) */
-  --bg: #f0fdf4;
-  --surface: #ffffff;
-  --surface-2: #ecfdf5;
-  --ink: #064e3b;
-  --accent: #059669;
-  --accent-hover: #047857;
-  --muted: #047857;
-  --faint: #a7f3d0;
-  --line: #a7f3d0;
-  --ring: rgba(5, 150, 105, 0.15);
-  --state: rgba(5, 150, 105, 0.06);
-  --shadow-soft: 0 1px 3px rgba(6, 78, 59, 0.05), 0 4px 12px rgba(6, 78, 59, 0.08);
-  --shadow-float: 0 4px 6px -2px rgba(6, 78, 59, 0.08), 0 12px 24px -4px rgba(6, 78, 59, 0.12);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([class*="theme-"]) {
-    /* Default Dark Mode: Dark Space */
-    --bg: #0b1220;
-    --surface: #111b2e;
-    --surface-2: #1e293b;
-    --ink: #f8fafc;
-    --accent: #D4AF37;
-    --accent-hover: #bfa030;
-    --muted: #94a3b8;
-    --faint: #334155;
-    --line: #1e293b;
-    --ring: rgba(212, 175, 55, 0.2);
-    --state: rgba(212, 175, 55, 0.08);
-    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-float: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.12);
-  }
+:root, :root.theme-cosmic {
+  /* Default Theme: Cosmic Night */
+  --bg: #140d26;
+  --surface: #241840;
+  --surface-2: #34255c;
+  --ink: #f3ecff;
+  --accent: #c8b8ff;
+  --accent-hover: #b3a0f7;
+  --muted: #988baf;
+  --faint: #4e3f66;
+  --line: #34255c;
+  --ring: rgba(200, 184, 255, 0.15);
+  --state: rgba(200, 184, 255, 0.08);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 /* 1. Website Calm Emerald Theme */
@@ -95,22 +76,6 @@
   --shadow-float: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
-/* 3. AmniHaze Cosmic Night Theme */
-:root.theme-cosmic {
-  --bg: #140d26;
-  --surface: #241840;
-  --surface-2: #34255c;
-  --ink: #f3ecff;
-  --accent: #c8b8ff;
-  --accent-hover: #b3a0f7;
-  --muted: #988baf;
-  --faint: #4e3f66;
-  --line: #34255c;
-  --ring: rgba(200, 184, 255, 0.15);
-  --state: rgba(200, 184, 255, 0.08);
-  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.6);
-}
 
 /* 4. AmniHaze Sunset Sand Theme */
 :root.theme-sunset {
