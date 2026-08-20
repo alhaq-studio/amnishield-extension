@@ -99,7 +99,7 @@ Your Chrom- 🌐 **Cross-Platform**: Support for Chrome, Firefox, and Edge exten
    - Announce on social media
 
 5. **?? Support Setup**
-   - Set up support@amnshield.com
+   - Set up support@amnishield.com
    - Monitor store reviews
    - Respond to user feedback
 
@@ -235,5 +235,5 @@ Your **Amn Shield** extension is now a **professional, web store-ready product**
 ---
 
 **Status:** ? **PROFESSIONAL WEB STORE SUBMISSION READY**  
-**Contact:** support@amnshield.com  
+**Contact:** support@amnishield.com  
 **Repository:** github.com/alhaq-studio/AmnShield-Extension

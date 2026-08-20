@@ -15,9 +15,9 @@ Amn Shield ("we," "our," or "us") is developed by **Al-Haq Studio**, an Islamic 
 **Developer Information:**
 - **Developer Name**: Al-Haq Studio  
 - **Website**: https://alhaq.uk
-- **Product Website**: https://amnshield.com
+- **Product Website**: https://amnishield.com
 - **Contact Email**: info@alhaq.uk
-- **Support**: support@amnshield.com
+- **Support**: support@amnishield.com
 
 ## Information We Collect
 
@@ -107,8 +107,8 @@ We may update this Privacy Policy to reflect changes in our practices or applica
 For questions about this Privacy Policy or our privacy practices:
 
 ### Privacy-Related Inquiries
-- **Email**: support@amnshield.com
-- **Support**: https://amnshield.com
+- **Email**: support@amnishield.com
+- **Support**: https://amnishield.com
 
 ### Company Contact
 - **Al-Haq Studio**

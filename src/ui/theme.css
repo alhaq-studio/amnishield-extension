@@ -17,96 +17,77 @@
   font-display: swap;
 }
 
-:root {
-  --bg: #f3f1ec;
-  --surface: #ffffff;
-  --surface-2: #d9e8e0;
-  --ink: #202724;
-  --accent: #3c7a67;
-  --muted: #536159;
-  --faint: #c1c7c2;
-  --line: #dbddd8;
-  --ring: rgba(60, 122, 103, 0.09);
-  --state: rgba(60, 122, 103, 0.05);
-  --shadow-soft: 0 1px 2px rgba(28, 25, 20, 0.04), 0 2px 10px -4px rgba(28, 25, 20, 0.08);
-  --shadow-float: 0 2px 6px -2px rgba(28, 25, 20, 0.1), 0 12px 30px -10px rgba(28, 25, 20, 0.16);
-}
+/* ==========================================================================
+   AmnShield Brand Theme Tokens (Consistent with AmniShield-site)
+   ========================================================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0b0c;
-    --surface: #161617;
-    --surface-2: #1f1f21;
-    --ink: #edece9;
-    --accent: #26a69a;
-    --muted: #8f8b84;
-    --faint: #65615b;
-    --line: #2a2a2c;
-    --ring: rgba(237, 236, 233, 0.1);
-    --state: rgba(237, 236, 233, 0.06);
-    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 12px -4px rgba(0, 0, 0, 0.5);
-    --shadow-float: 0 2px 6px -2px rgba(0, 0, 0, 0.5), 0 14px 34px -10px rgba(0, 0, 0, 0.6);
-  }
-}
-
-/* AmnShield Brand Theme Overrides */
-:root, :root.theme-sunset {
-  --bg: #eedbd0;
-  --surface: #ffffff;
-  --surface-2: #e6c2af;
-  --ink: #2d1b14;
-  --accent: #a45833;
-  --muted: #755b53;
-  --faint: #b9a298;
-  --line: #d7bcae;
-  --ring: rgba(164, 88, 51, 0.09);
-  --state: rgba(164, 88, 51, 0.05);
+:root, :root.theme-cosmic {
+  --bg: #0b1220;
+  --surface: rgba(15, 23, 42, 0.88);
+  --surface-2: rgba(30, 41, 59, 0.7);
+  --ink: #f8fafc;
+  --accent: #D4AF37;
+  --accent-hover: #bfa030;
+  --muted: #94a3b8;
+  --faint: rgba(255, 255, 255, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
+  --ring: rgba(212, 175, 55, 0.25);
+  --state: rgba(212, 175, 55, 0.08);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.15);
 }
 
 :root.theme-emerald {
-  --bg: #f3f1ec;
-  --surface: #ffffff;
-  --surface-2: #d9e8e0;
-  --ink: #202724;
-  --accent: #3c7a67;
-  --muted: #536159;
-  --faint: #c1c7c2;
-  --line: #dbddd8;
-  --ring: rgba(60, 122, 103, 0.09);
-  --state: rgba(60, 122, 103, 0.05);
-}
-
-:root.theme-cosmic {
-  --bg: #140d26;
-  --surface: #241840;
-  --surface-2: #34255c;
-  --ink: #f3ecff;
-  --accent: #c8b8ff;
-  --muted: #988baf;
-  --faint: #4e3f66;
-  --line: #34255c;
-  --ring: rgba(200, 184, 255, 0.15);
-  --state: rgba(200, 184, 255, 0.08);
+  --bg: #090d16;
+  --surface: rgba(15, 23, 42, 0.88);
+  --surface-2: rgba(30, 41, 59, 0.7);
+  --ink: #f8fafc;
+  --accent: #10b981;
+  --accent-hover: #059669;
+  --muted: #94a3b8;
+  --faint: rgba(255, 255, 255, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
+  --ring: rgba(16, 185, 129, 0.25);
+  --state: rgba(16, 185, 129, 0.08);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.15);
 }
 
 :root.theme-dark {
-  --bg: #0b0b0c;
-  --surface: #161617;
-  --surface-2: #1f1f21;
-  --ink: #edece9;
-  --accent: #26a69a;
-  --muted: #8f8b84;
-  --faint: #65615b;
-  --line: #2a2a2c;
-  --ring: rgba(237, 236, 233, 0.1);
-  --state: rgba(237, 236, 233, 0.06);
-  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 12px -4px rgba(0, 0, 0, 0.5);
-  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --bg: #080c14;
+  --surface: rgba(13, 20, 36, 0.9);
+  --surface-2: rgba(24, 34, 56, 0.75);
+  --ink: #f8fafc;
+  --accent: #38bdf8;
+  --accent-hover: #0284c7;
+  --muted: #94a3b8;
+  --faint: rgba(255, 255, 255, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
+  --ring: rgba(56, 189, 248, 0.25);
+  --state: rgba(56, 189, 248, 0.08);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.15);
+}
+
+:root.theme-sunset {
+  --bg: #120d0a;
+  --surface: rgba(30, 20, 16, 0.9);
+  --surface-2: rgba(48, 32, 26, 0.75);
+  --ink: #f8fafc;
+  --accent: #f59e0b;
+  --accent-hover: #d97706;
+  --muted: #a89890;
+  --faint: rgba(255, 255, 255, 0.12);
+  --line: rgba(255, 255, 255, 0.08);
+  --ring: rgba(245, 158, 11, 0.25);
+  --state: rgba(245, 158, 11, 0.08);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.15);
 }
 
 @theme inline {
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Coolvetica", "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+  --font-display: "Coolvetica", "Inter", system-ui, sans-serif;
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
@@ -116,7 +97,7 @@
   --color-faint: var(--faint);
   --color-line: var(--line);
   --color-state: var(--state);
-  --radius-card: 22px;
+  --radius-card: 18px;
   --radius-pill: 999px;
   --shadow-soft: var(--shadow-soft);
   --shadow-float: var(--shadow-float);
@@ -139,7 +120,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
+  color: #0b1220;
 }
 
 *:focus-visible {
@@ -149,13 +130,13 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--line);
   border-radius: 999px;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -170,14 +151,23 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--muted);
+  font-weight: 600;
 }
 
 /* Elevated tonal surface that replaces the repeated hairline-border boxes. */
 @utility card {
   background: var(--surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-soft);
+  transition: all 0.25s var(--ease-calm);
+}
+
+.card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: var(--shadow-float);
 }
 
 /* Concentric ripple rings, the recurring "breathing water" motif. */
@@ -213,7 +203,7 @@ body {
 
 /* Gentle entrance for panels and sections. */
 @utility rise {
-  animation: rise 0.5s var(--ease-calm) both;
+  animation: rise 0.4s var(--ease-calm) both;
 }
 
 @keyframes rise {

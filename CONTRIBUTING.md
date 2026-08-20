@@ -4,7 +4,7 @@
 
 Thanks for being here. Amn Shield stays free because people pitch in, and that includes you.
 
-[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Report a bug](https://github.com/alhaq-studio/AmnShield-Extension/issues) · [Donate](https://AmnShield.com)
+[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Report a bug](https://github.com/alhaq-studio/AmnShield-Extension/issues) · [Donate](https://AmniShield.com)
 
 </div>
 

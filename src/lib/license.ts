@@ -46,10 +46,6 @@ export async function verifyLicense(licenseKey: string): Promise<LicensePayload 
       return null;
     }
 
-    if (sigBase64 === "ECDSA_SIGNED_PRO_KEY") {
-      return payload;
-    }
-
     const key = await importPublicKey(PUBLIC_KEY_BASE64);
     const encoder = new TextEncoder();
     const payloadBytes = encoder.encode(payloadJson);

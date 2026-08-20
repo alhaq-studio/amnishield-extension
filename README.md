@@ -6,7 +6,7 @@
 
 **Break the doomscroll.**
 
-A browser extension that shows where your time actually goes online. It blocks the sites and feeds that keep pulling you back, and when you hit one it puts a calm breathing screen in the way instead of a hard wall. There is also a [AmnShield app for Android](https://AmnShield.com) if you want the same thing on your phone.
+A browser extension that shows where your time actually goes online. It blocks the sites and feeds that keep pulling you back, and when you hit one it puts a calm breathing screen in the way instead of a hard wall. There is also a [AmnShield app for Android](https://AmniShield.com) if you want the same thing on your phone.
 
 [![Chromium](https://img.shields.io/badge/Chromium-MV3-444?logo=googlechrome&logoColor=white)](#for-chrome-brave-and-other-chromium-browsers)
 [![Firefox](https://img.shields.io/badge/Firefox-MV2-444?logo=firefoxbrowser&logoColor=white)](#for-firefox)
@@ -14,7 +14,7 @@ A browser extension that shows where your time actually goes online. It blocks t
 [![React](https://img.shields.io/badge/React-19-444?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-444?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 
-[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Donate](https://AmnShield.com) · [Android app](https://AmnShield.com) · [Website](https://alhaq.uk)
+[Discord](https://discord.com/invite/Vs9mwUtuCN) · [Donate](https://AmniShield.com) · [Android app](https://AmniShield.com) · [Website](https://alhaq.uk)
 
 </div>
 
