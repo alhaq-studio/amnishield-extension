@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-cosmic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AmniShield - Screentime Visualization Showcase</title>
+  <link rel="stylesheet" href=".output/chrome-mv3/assets/focus-CchSf1bz.css">
+  <style>
+    @font-face {
+      font-family: "Coolvetica";
+      src: url("public/fonts/coolvetica.otf") format("opentype");
+      font-weight: 400 700;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("public/fonts/inter.woff2") format("woff2");
+      font-weight: 100 900;
+    }
+    body {
+      background-color: #140d26;
+      color: #f3ecff;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .preview-card {
+      background: #241840;
+      border: 1px solid #34255c;
+      border-radius: 24px;
+      padding: 32px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(200, 184, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-card">
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2">
+        <h1 class="font-display text-2xl font-bold tracking-tight text-[#f3ecff]">AmniShield</h1>
+        <span class="flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          SYS SYNCED
+        </span>
+      </div>
+      <span class="text-xs text-[#988baf]">Today</span>
+    </div>
+
+    <!-- Screentime Donut Ring -->
+    <div class="relative flex flex-col items-center justify-center pt-2 pb-1">
+      <div class="relative flex items-center justify-center">
+        <svg width="190" height="190" viewBox="0 0 190 190" style="transform: rotate(-90deg);">
+          <!-- Background Track -->
+          <circle cx="95" cy="95" r="70" fill="none" stroke="#34255c" stroke-width="16" opacity="0.6" />
+          <!-- Blue Segment (YouTube 48%) -->
+          <circle cx="95" cy="95" r="70" fill="none" stroke="#38bdf8" stroke-width="16"
+                  stroke-dasharray="205 439.8" stroke-dashoffset="0" stroke-linecap="round" />
+          <!-- Coral Segment (Reddit 30%) -->
+          <circle cx="95" cy="95" r="70" fill="none" stroke="#f87171" stroke-width="16"
+                  stroke-dasharray="125 439.8" stroke-dashoffset="-213" stroke-linecap="round" />
+          <!-- Emerald Segment (GitHub 16%) -->
+          <circle cx="95" cy="95" r="70" fill="none" stroke="#34d399" stroke-width="16"
+                  stroke-dasharray="65 439.8" stroke-dashoffset="-344" stroke-linecap="round" />
+        </svg>
+
+        <!-- Center Metric -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+          <span class="text-[11px] font-bold tracking-widest text-[#988baf] uppercase leading-none mb-1.5">SCREENTIME</span>
+          <span class="font-display font-bold text-4xl text-[#f3ecff] leading-none tracking-tight">1h 12m</span>
+        </div>
+      </div>
+
+      <!-- Legend Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-5 max-w-sm">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#34255c]/60 text-[#f3ecff] border border-[#34255c]">
+          <span class="h-2 w-2 rounded-full bg-[#38bdf8]"></span>
+          <span>youtube.com</span>
+          <span class="font-mono text-[10px] text-[#988baf]">35m</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#34255c]/60 text-[#f3ecff] border border-[#34255c]">
+          <span class="h-2 w-2 rounded-full bg-[#f87171]"></span>
+          <span>reddit.com</span>
+          <span class="font-mono text-[10px] text-[#988baf]">22m</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#34255c]/60 text-[#f3ecff] border border-[#34255c]">
+          <span class="h-2 w-2 rounded-full bg-[#34d399]"></span>
+          <span>github.com</span>
+          <span class="font-mono text-[10px] text-[#988baf]">15m</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
