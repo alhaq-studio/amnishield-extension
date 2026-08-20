@@ -18,71 +18,115 @@
 }
 
 /* ==========================================================================
-   AmnShield Brand Theme Tokens (Consistent with AmniShield-site)
+   AmnShield Brand Theme Tokens
+   - Emerald: Website's Calm Emerald (light, serene, mint & forest green)
+   - Dark: Website's Dark Space (deep space navy #0b1220 + corporate gold #D4AF37)
+   - Cosmic: AmniHaze Cosmic Night (#140d26 deep purple + #c8b8ff lavender)
+   - Sunset: AmniHaze Sunset Sand (#eedbd0 warm sand + #a45833 terracotta)
    ========================================================================== */
 
-:root, :root.theme-cosmic {
+:root {
+  /* Default: Calm Emerald (Light) */
+  --bg: #f0fdf4;
+  --surface: #ffffff;
+  --surface-2: #ecfdf5;
+  --ink: #064e3b;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --muted: #047857;
+  --faint: #a7f3d0;
+  --line: #a7f3d0;
+  --ring: rgba(5, 150, 105, 0.15);
+  --state: rgba(5, 150, 105, 0.06);
+  --shadow-soft: 0 1px 3px rgba(6, 78, 59, 0.05), 0 4px 12px rgba(6, 78, 59, 0.08);
+  --shadow-float: 0 4px 6px -2px rgba(6, 78, 59, 0.08), 0 12px 24px -4px rgba(6, 78, 59, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([class*="theme-"]) {
+    /* Default Dark Mode: Dark Space */
+    --bg: #0b1220;
+    --surface: #111b2e;
+    --surface-2: #1e293b;
+    --ink: #f8fafc;
+    --accent: #D4AF37;
+    --accent-hover: #bfa030;
+    --muted: #94a3b8;
+    --faint: #334155;
+    --line: #1e293b;
+    --ring: rgba(212, 175, 55, 0.2);
+    --state: rgba(212, 175, 55, 0.08);
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-float: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.12);
+  }
+}
+
+/* 1. Website Calm Emerald Theme */
+:root.theme-emerald {
+  --bg: #f0fdf4;
+  --surface: #ffffff;
+  --surface-2: #ecfdf5;
+  --ink: #064e3b;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --muted: #047857;
+  --faint: #a7f3d0;
+  --line: #a7f3d0;
+  --ring: rgba(5, 150, 105, 0.15);
+  --state: rgba(5, 150, 105, 0.06);
+  --shadow-soft: 0 1px 3px rgba(6, 78, 59, 0.05), 0 4px 12px rgba(6, 78, 59, 0.08);
+  --shadow-float: 0 4px 6px -2px rgba(6, 78, 59, 0.08), 0 12px 24px -4px rgba(6, 78, 59, 0.12);
+}
+
+/* 2. Website Dark Space Theme */
+:root.theme-dark {
   --bg: #0b1220;
-  --surface: rgba(15, 23, 42, 0.88);
-  --surface-2: rgba(30, 41, 59, 0.7);
+  --surface: #111b2e;
+  --surface-2: #1e293b;
   --ink: #f8fafc;
   --accent: #D4AF37;
   --accent-hover: #bfa030;
   --muted: #94a3b8;
-  --faint: rgba(255, 255, 255, 0.12);
-  --line: rgba(255, 255, 255, 0.08);
-  --ring: rgba(212, 175, 55, 0.25);
+  --faint: #334155;
+  --line: #1e293b;
+  --ring: rgba(212, 175, 55, 0.2);
   --state: rgba(212, 175, 55, 0.08);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.15);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.12);
 }
 
-:root.theme-emerald {
-  --bg: #090d16;
-  --surface: rgba(15, 23, 42, 0.88);
-  --surface-2: rgba(30, 41, 59, 0.7);
-  --ink: #f8fafc;
-  --accent: #10b981;
-  --accent-hover: #059669;
-  --muted: #94a3b8;
-  --faint: rgba(255, 255, 255, 0.12);
-  --line: rgba(255, 255, 255, 0.08);
-  --ring: rgba(16, 185, 129, 0.25);
-  --state: rgba(16, 185, 129, 0.08);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.15);
+/* 3. AmniHaze Cosmic Night Theme */
+:root.theme-cosmic {
+  --bg: #140d26;
+  --surface: #241840;
+  --surface-2: #34255c;
+  --ink: #f3ecff;
+  --accent: #c8b8ff;
+  --accent-hover: #b3a0f7;
+  --muted: #988baf;
+  --faint: #4e3f66;
+  --line: #34255c;
+  --ring: rgba(200, 184, 255, 0.15);
+  --state: rgba(200, 184, 255, 0.08);
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
-:root.theme-dark {
-  --bg: #080c14;
-  --surface: rgba(13, 20, 36, 0.9);
-  --surface-2: rgba(24, 34, 56, 0.75);
-  --ink: #f8fafc;
-  --accent: #38bdf8;
-  --accent-hover: #0284c7;
-  --muted: #94a3b8;
-  --faint: rgba(255, 255, 255, 0.12);
-  --line: rgba(255, 255, 255, 0.08);
-  --ring: rgba(56, 189, 248, 0.25);
-  --state: rgba(56, 189, 248, 0.08);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.15);
-}
-
+/* 4. AmniHaze Sunset Sand Theme */
 :root.theme-sunset {
-  --bg: #120d0a;
-  --surface: rgba(30, 20, 16, 0.9);
-  --surface-2: rgba(48, 32, 26, 0.75);
-  --ink: #f8fafc;
-  --accent: #f59e0b;
-  --accent-hover: #d97706;
-  --muted: #a89890;
-  --faint: rgba(255, 255, 255, 0.12);
-  --line: rgba(255, 255, 255, 0.08);
-  --ring: rgba(245, 158, 11, 0.25);
-  --state: rgba(245, 158, 11, 0.08);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-float: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.15);
+  --bg: #eedbd0;
+  --surface: #ffffff;
+  --surface-2: #e6c2af;
+  --ink: #2d1b14;
+  --accent: #a45833;
+  --accent-hover: #8b4726;
+  --muted: #755b53;
+  --faint: #b9a298;
+  --line: #d7bcae;
+  --ring: rgba(164, 88, 51, 0.09);
+  --state: rgba(164, 88, 51, 0.05);
+  --shadow-soft: 0 1px 2px rgba(45, 27, 20, 0.08), 0 2px 8px -2px rgba(45, 27, 20, 0.12);
+  --shadow-float: 0 12px 32px rgba(45, 27, 20, 0.15);
 }
 
 @theme inline {
@@ -120,7 +164,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #0b1220;
+  color: var(--surface);
 }
 
 *:focus-visible {
@@ -144,7 +188,7 @@ body {
   background-clip: padding-box;
 }
 
-/* A small uppercase eyebrow label used above every section and stat. */
+/* Eyebrow Label */
 @utility label {
   font-size: 11px;
   line-height: 1;
@@ -154,11 +198,9 @@ body {
   font-weight: 600;
 }
 
-/* Elevated tonal surface that replaces the repeated hairline-border boxes. */
+/* Elevated Tonal Surface */
 @utility card {
   background: var(--surface);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-soft);
@@ -166,11 +208,11 @@ body {
 }
 
 .card:hover {
-  border-color: rgba(212, 175, 55, 0.3);
+  border-color: var(--accent);
   box-shadow: var(--shadow-float);
 }
 
-/* Concentric ripple rings, the recurring "breathing water" motif. */
+/* Concentric ripple rings */
 @utility bloom {
   position: absolute;
   left: 50%;
@@ -201,7 +243,7 @@ body {
   }
 }
 
-/* Gentle entrance for panels and sections. */
+/* Gentle entrance animation */
 @utility rise {
   animation: rise 0.4s var(--ease-calm) both;
 }
@@ -222,7 +264,7 @@ body {
   font-feature-settings: "tnum" 1;
 }
 
-/* Minimal range input shared by the focus and usage editors. */
+/* Minimal range input */
 .slider {
   -webkit-appearance: none;
   appearance: none;

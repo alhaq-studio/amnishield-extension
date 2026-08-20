@@ -75,11 +75,11 @@ function BlockedPage({ domain }: { domain: string }) {
 }
 
 const THEMES: { value: string; label: string; color: string }[] = [
+  { value: "emerald", label: "Emerald", color: "#059669" },
+  { value: "dark", label: "Dark", color: "#D4AF37" },
   { value: "cosmic", label: "Cosmic", color: "#C8B8FF" },
-  { value: "dark", label: "Dark", color: "#26A69A" },
-  { value: "emerald", label: "Emerald", color: "#3C7A67" },
   { value: "sunset", label: "Sunset", color: "#A45833" },
-  { value: "system", label: "Auto", color: "linear-gradient(135deg, #26A69A 50%, #3C7A67 50%)" },
+  { value: "system", label: "Auto", color: "linear-gradient(135deg, #059669 50%, #D4AF37 50%)" },
 ];
 
 export function App() {
