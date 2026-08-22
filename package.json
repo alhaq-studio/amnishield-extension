@@ -10,8 +10,9 @@
     "build": "wxt build",
     "build:cws": "wxt build && node scripts/build-cws.js",
     "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
+    "zip": "wxt zip && mkdir -p dist && cp -a .output/*.zip dist/ 2>/dev/null || true",
+    "zip:firefox": "wxt zip -b firefox && mkdir -p dist && cp -a .output/*.zip dist/ 2>/dev/null || true",
+    "dist": "npm run zip && npm run zip:firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
