@@ -13,7 +13,7 @@ export default defineConfig({
   manifest: {
     name: "AmniShield - Website Content Blocker",
     description: "Blocks harmful and distracting websites using custom domain lists, keyword filters, and scheduled blocking rules.",
-    version: "22.8.2026",
+    version: "2026.8.22",
     permissions: ["storage", "tabs", "alarms", "declarativeNetRequest", "webNavigation"],
     host_permissions: ["<all_urls>"],
     options_ui: {
