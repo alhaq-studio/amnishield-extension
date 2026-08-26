@@ -122,16 +122,28 @@ export function ProtectionPanel({
 
       {/* Sync & Cloud Privacy Card */}
       <section className="card p-6 flex flex-col gap-5">
-        <h3 className="font-semibold text-sm">Sync & Cloud Privacy</h3>
-        <p className="text-xs text-muted leading-normal">
-          Manage cloud synchronization, usage telemetry, and smart recommendations.
-        </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="font-semibold text-sm">Dual-Sync & Cloud Privacy</h3>
+            <p className="text-xs text-muted leading-normal mt-1">
+              Synchronize rules across your Android devices, Windows app, and browser extension.
+            </p>
+          </div>
+          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[11px] font-semibold">
+            Sync Hub Active
+          </span>
+        </div>
 
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="font-semibold text-sm">Sync Rules & Blocklists</p>
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-sm">Local Windows App Sync</p>
+              <span className="px-1.5 py-0.2 rounded text-[10px] bg-emerald-500/10 text-emerald-400 font-medium">
+                Auto-Detect
+              </span>
+            </div>
             <p className="text-xs text-muted mt-1 leading-normal">
-              Synchronize blocklists and focus mode rules across devices via your cloud account.
+              Accept live rule pushes from the local AmniShield Windows desktop daemon when running.
             </p>
           </div>
           <Toggle
@@ -139,14 +151,32 @@ export function ProtectionPanel({
             onChange={(v) => onChange({ ...settings, syncRulesEnabled: v })}
           />
         </div>
+        {(settings.syncRulesEnabled ?? true) && (
+          <div className="ml-12 mt-1">
+            <a
+              href="https://github.com/alhaq-studio/amnishield-windows/releases/latest"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 text-[11px] text-primary font-medium hover:underline transition"
+            >
+              <span>⬇️</span>
+              <span>Don't have it yet? Download AmnShield Windows App →</span>
+            </a>
+          </div>
+        )}
 
         <hr className="border-line" />
 
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="font-semibold text-sm">Sync App Usage & Screentime</p>
+            <div className="flex items-center gap-2">
+              <p className="font-semibold text-sm">AmniShield Cloud Sync</p>
+              <span className="px-1.5 py-0.2 rounded text-[10px] bg-primary/15 text-primary font-medium">
+                Cloud Connected
+              </span>
+            </div>
             <p className="text-xs text-muted mt-1 leading-normal">
-              Upload application usage stats to your cross-device parent dashboard.
+              Synchronize custom blocklists and schedules directly with your AmniShield Cloud account.
             </p>
           </div>
           <Toggle
@@ -161,7 +191,7 @@ export function ProtectionPanel({
           <div>
             <p className="font-semibold text-sm">Sync Website Browsing Metrics</p>
             <p className="text-xs text-muted mt-1 leading-normal">
-              Sync web domain browsing duration to analyze time spent on productivity.
+              Sync web domain browsing duration to analyze time spent on productivity across devices.
             </p>
           </div>
           <Toggle

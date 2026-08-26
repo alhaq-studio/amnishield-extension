@@ -3,13 +3,19 @@ import { btnPrimary, btnOutline } from "./components";
 
 const LINKS = {
   website: "https://alhaq.uk",
-  initiative: "https://alhaq-initiative.org",
-  support: "https://alhaq-initiative.org/contact.html",
+  initiative: "https://alhaq.uk",
+  support: "https://alhaq.uk/support.html",
+  legal: "https://alhaq.uk/legal/index.html",
+  deleteAccount: "https://alhaq.uk/legal/delete-account.html",
   github: "https://github.com/alhaq-studio/amnshield-extension",
   email: "support@alhaq.uk",
   patreon: "https://www.patreon.com/alhaq",
   buymeacoffee: "https://www.buymeacoffee.com/alhaq",
-  kofi: "https://ko-fi.com/alhaq"
+  kofi: "https://ko-fi.com/alhaq",
+  windowsApp: "https://github.com/alhaq-studio/amnishield-windows/releases/latest",
+  windowsRepo: "https://github.com/alhaq-studio/amnishield-windows",
+  androidApp: "https://amnishield.com/download",
+  downloadPage: "https://amnishield.com/download",
 };
 
 function ArrowLink({ href, children, className }: { href: string; children: ReactNode; className: string }) {
@@ -23,9 +29,10 @@ function ArrowLink({ href, children, className }: { href: string; children: Reac
 export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
   return (
     <div className="flex flex-col gap-6">
-      <section className="card p-6">
-        <div className="flex items-center justify-between mb-3">
-          <p className="label mb-0">About the Developer</p>
+      {/* Companion Apps Download Card */}
+      <section className="card p-6 flex flex-col gap-4">
+        <div className="flex items-center justify-between">
+          <p className="label mb-0">🖥️ Get AmniShield Companion Apps</p>
           {onStartTour && (
             <button
               onClick={onStartTour}
@@ -35,6 +42,51 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
             </button>
           )}
         </div>
+
+        {/* Windows App */}
+        <div className="rounded-xl border border-blue-500/20 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 p-4">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">💻</span>
+            <div className="flex-1">
+              <p className="font-semibold text-sm text-ink">AmnShield Windows Guardian</p>
+              <p className="text-xs text-muted mt-1 leading-normal">
+                Desktop app blocker, web domain filter engine, usage tracker, and real-time extension sync.
+                Auto-connects with this browser extension via local HTTP API.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <ArrowLink href={LINKS.windowsApp} className={`${btnPrimary} text-xs`}>
+                  ⬇️ Download for Windows
+                </ArrowLink>
+                <ArrowLink href={LINKS.windowsRepo} className={`${btnOutline} text-xs`}>
+                  Source Code ↗
+                </ArrowLink>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Android App */}
+        <div className="rounded-xl border border-emerald-500/20 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 p-4">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">📱</span>
+            <div className="flex-1">
+              <p className="font-semibold text-sm text-ink">AmnShield Android</p>
+              <p className="text-xs text-muted mt-1 leading-normal">
+                App blocker, keyword filter, Reels blocker, and focus mode for Android.
+                Pair with this extension for cross-device cloud sync.
+              </p>
+              <div className="mt-3">
+                <ArrowLink href={LINKS.downloadPage} className={`${btnOutline} text-xs`}>
+                  Get on Android ↗
+                </ArrowLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="card p-6">
+        <p className="label mb-3">About the Developer</p>
         <p className="text-sm leading-relaxed text-ink">
           AmniShield is developed by <strong>Al-Haq Studio</strong> for the <strong>Al-Haq Initiative</strong>.
           We are a specialized Islamic technology organization dedicated to creating digital solutions that
@@ -87,18 +139,6 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
           <p className="text-[11px] italic text-faint leading-normal">
             "The believer's shade on the Day of Resurrection will be his charity" - Hadith
           </p>
-        </div>
-      </section>
-
-      <section className="card p-6">
-        <p className="label mb-3">AmniShield App Integration</p>
-        <p className="text-sm leading-relaxed text-muted">
-          Did you know AmniShield is also available as an Android application? You can pair the browser extension with our Android client for central policy management and cross-device protection.
-        </p>
-        <div className="mt-5">
-          <ArrowLink href={LINKS.initiative} className={btnPrimary}>
-            Learn More
-          </ArrowLink>
         </div>
       </section>
     </div>
