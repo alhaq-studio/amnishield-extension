@@ -1,4 +1,4 @@
-name: Build & Release AmnShield Extension
+name: Build, Release & Publish Browser Extension
 
 on:
   push:
@@ -12,8 +12,8 @@ permissions:
   contents: write
 
 jobs:
-  build-extension:
-    name: Build & Test Browser Extension
+  build-and-publish:
+    name: Build, Release & Auto-Submit to Add-on Stores
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install Dependencies
         run: npm install
@@ -31,28 +32,41 @@ jobs:
       - name: Run Tests
         run: npx tsx tests/content-blockers.test.ts
 
-      - name: Build WXT Extension Output
+      - name: Build Extension (Chrome / Edge MV3)
         run: npm run build
 
-      - name: Package Extension Zip
+      - name: Package Extension Zips
         run: |
           mkdir -p release_zip
-          cd .output/chrome-mv3 && zip -r "../../release_zip/AmnShield-Extension-Chrome-MV3.zip" . && cd ../..
+          cd .output/chrome-mv3 && zip -r "../../release_zip/AmniShield-Extension-Edge.zip" . && cd ../..
+          cp release_zip/AmniShield-Extension-Edge.zip release_zip/AmniShield-Extension-Chrome-MV3.zip
 
       - name: Create / Update GitHub Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main'
         with:
-          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v29.7.2026' }}
-          name: AmnShield Extension ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v29.7.2026' }}
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v2026.8.27' }}
+          name: AmniShield Extension ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v2026.8.27' }}
           body: |
-            ## 🌐 AmnShield Browser Extension v29.7.2026
-            - **DeclarativeNetRequest Rule Engine**: Instant C++ browser network layer blocking & tab redirection.
+            ## 🌐 AmniShield Browser Extension
+            - **DeclarativeNetRequest Rule Engine**: Instant browser network layer blocking & tab redirection.
             - **Mindful Block Screen**: Branded full-screen pause & quote screen with breathing indicator.
-            - **Live Desktop App Sync**: Auto-polls `http://127.0.0.1:48192/status` for active domain list.
+            - **100% Zero-Knowledge Privacy**: All filtering and rule matching executes locally on-device.
           draft: false
           prerelease: false
           files: |
-            release_zip/AmnShield-Extension-Chrome-MV3.zip
+            release_zip/AmniShield-Extension-Edge.zip
+            release_zip/AmniShield-Extension-Chrome-MV3.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Submit to Microsoft Edge Add-ons
+        uses: wxt-dev/publish-extension@v1
+        if: (startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main') && (secrets.Key_1 != '' || secrets.KEY_1 != '' || secrets.EDGE_KEY_1 != '' || secrets.EDGE_API_KEY != '' || secrets.EDGE_CLIENT_SECRET != '')
+        continue-on-error: true
+        with:
+          edge-zip: release_zip/AmniShield-Extension-Edge.zip
+          edge-product-id: ${{ secrets.EDGE_PRODUCT_ID || secrets.EDGE_EXTENSION_ID || secrets.PRODUCT_ID }}
+          edge-client-id: ${{ secrets.EDGE_CLIENT_ID || secrets.CLIENT_ID }}
+          edge-client-secret: ${{ secrets.Key_1 || secrets.KEY_1 || secrets.EDGE_KEY_1 || secrets.EDGE_API_KEY || secrets.EDGE_CLIENT_SECRET }}
+          edge-notes: "Automated update for AmniShield website content blocker."
