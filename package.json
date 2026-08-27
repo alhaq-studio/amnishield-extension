@@ -13,6 +13,8 @@
     "zip": "wxt zip && mkdir -p dist && cp -a .output/*.zip dist/ 2>/dev/null || true",
     "zip:firefox": "wxt zip -b firefox && mkdir -p dist && cp -a .output/*.zip dist/ 2>/dev/null || true",
     "dist": "npm run zip && npm run zip:firefox",
+    "test": "npx tsx tests/content-blockers.test.ts && npx tsx tests/url-matcher.test.ts",
+    "check": "tsc --noEmit && npm run test",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
