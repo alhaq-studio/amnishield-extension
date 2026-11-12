@@ -49,7 +49,7 @@ export function matchKeyword(loc: SiteLocation, rawPattern: string): boolean {
     return domainMatches(domain, p);
   }
 
-  return domain.split(".").includes(p);
+  return domain.split(".").includes(p) || domain.includes(p);
 }
 
 export function groupMatches(loc: SiteLocation, matchers: string[]): boolean {

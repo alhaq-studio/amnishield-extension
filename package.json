@@ -2,8 +2,11 @@
   "name": "amni-shield",
   "description": "Blocks harmful and distracting websites using custom domain lists, keyword filters, and scheduled blocking rules.",
   "private": true,
-  "version": "2026.8.22",
+  "version": "0.3.0",
   "type": "module",
+  "imports": {
+    "#imports": "./tests/mock-imports.ts"
+  },
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",

@@ -56,7 +56,7 @@ export function GroupEditor({
                 onClick={() => patch({ matchers: draft.matchers.filter((x) => x !== m) })}
                 className="text-xs text-faint transition-colors hover:text-ink"
               >
-                ✕
+                ×
               </button>
             </div>
           ))}

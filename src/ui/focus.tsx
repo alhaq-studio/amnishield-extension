@@ -217,7 +217,7 @@ function GroupEditor({
                 onClick={() => patch({ domains: draft.domains.filter((x) => x !== m) })}
                 className="text-xs text-faint transition-colors hover:text-ink"
               >
-                ✕
+                ×
               </button>
             </div>
           ))}

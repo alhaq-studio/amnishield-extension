@@ -326,7 +326,7 @@ export function createOverlay(): Overlay {
   }
 
   function renderGuardian(body: HTMLDivElement, decision: BlockDecision, handlers: OverlayHandlers): void {
-    body.appendChild(makeNote("🛡️ Blocked by AmniShield System Policy"));
+    body.appendChild(makeNote("Blocked by AmniShield System Policy"));
   }
 
   function renderChallenge(body: HTMLDivElement, decision: BlockDecision, proceed: (minutes?: number) => void): void {

@@ -120,7 +120,7 @@ function RangeEditor({ ranges, onChange }: { ranges: TimeRange[]; onChange: (ran
             className={inputCls}
           />
           <button onClick={() => onChange(ranges.filter((_, j) => j !== i))} className="text-xs text-muted">
-            ✕
+            ×
           </button>
         </div>
       ))}

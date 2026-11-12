@@ -53,6 +53,15 @@ This is what you hit when you try to get past a block. Instead of a flat wall th
 
 You can add your own message and cap how many times you are allowed through, so it stays a pause and not a punishment.
 
+### Cross-Device Cloud Sync (PolicyPayload v2)
+
+Seamlessly synchronize blocking rules, custom domain lists, keyword patterns, and focus schedules across Android, Windows Guardian, and your Web Console:
+
+- **PolicyPayload v2:** Unified structured payload architecture supporting categorized blocking (Adult, Harmful, SafeSearch, Short-form reels).
+- **Dual Sync Strategies:** Automatic bidirectional `MERGE` and authoritative `FORCE_REPLACE` with automatic local pre-sync backup snapshots.
+- **Zero-Knowledge Privacy:** Cryptographic token authentication with strictly on-device rule evaluation.
+
+
 ## Installation
 
 ### From the Web Store (Recommended)

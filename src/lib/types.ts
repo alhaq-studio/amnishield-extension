@@ -90,6 +90,94 @@ export interface FocusLogEntry {
   completed: boolean;
 }
 
+export type PolicyBlockerType = "APP" | "WEBSITE" | "KEYWORD" | "REELS" | "FOCUS_MODE";
+
+export interface PolicyScheduleRule {
+  id: string;
+  groupId?: string;
+  title: string;
+  packageName?: string;
+  blockerType: PolicyBlockerType;
+  targets: string[];
+  targetWebsites: string[];
+  targetKeywords: string[];
+  type: "BLOCK" | "CHEAT";
+  recurrence: "DAILY" | "WEEKLY";
+  startMinute: number;
+  endMinute: number;
+  selectedDays: number[]; // 1=Sun..7=Sat
+  isEnabled: boolean;
+}
+
+export interface ReelBlockerConfig {
+  enabled: boolean;
+  mode: number; // 0 = immediate block, 1 = daily time limit
+  daily_limit_minutes: number;
+  youtube: boolean;
+  instagram: boolean;
+  tiktok: boolean;
+  browser: boolean;
+}
+
+export interface FocusModePolicyConfig {
+  strictness: number;
+  allow_early_stop: boolean;
+  always_whitelisted_apps: string[];
+}
+
+export interface LaunchLimitRule {
+  id?: string;
+  packageName: string;
+  maxLaunches: number;
+  timePeriod: "HOURLY" | "DAILY" | "WEEKLY";
+  dayOfWeek: number | null;
+  isEnabled?: boolean;
+}
+
+export interface LegacyScheduleObject {
+  enabled?: boolean;
+  start?: string;
+  end?: string;
+  days?: Array<number | string>;
+}
+
+export interface PolicyPayloadV2 {
+  schema_version?: number;
+  updated_at?: string;
+  strict_mode?: boolean;
+  allow_unblur?: boolean;
+  blocked_apps?: string[];
+  named_block_lists?: Record<string, string[]>;
+  blocked_domains?: string[];
+  blocked_keywords?: string[];
+  blocked_categories?: string[];
+  reel_blocker?: Partial<ReelBlockerConfig>;
+  focus_mode?: Partial<FocusModePolicyConfig>;
+  schedules?: PolicyScheduleRule[] | LegacyScheduleObject;
+  launch_limits?: LaunchLimitRule[];
+  daily_limit_minutes?: number;
+}
+
+export interface UserProfileConfig {
+  id?: string;
+  email?: string;
+  displayName?: string;
+  bio?: string;
+  role?: string;
+  dailyGoalMinutes?: number;
+  isPremium?: boolean;
+  licenseKey?: string;
+}
+
+export interface PreSyncRuleSnapshot {
+  timestamp: number;
+  settings: Settings;
+  blockedDomains: string[];
+  guardianCustomDomains: string[];
+  adultPackActive: boolean;
+  socialPackActive: boolean;
+}
+
 export interface Settings {
   groups: BlockGroup[];
   focusGroups: FocusGroup[];
@@ -105,6 +193,38 @@ export interface Settings {
   syncWebUsageEnabled?: boolean;
   smartRecommendationsEnabled?: boolean;
   onboardingCompleted?: boolean;
+  strictMode?: boolean;
+  allowUnblur?: boolean;
+  blockedKeywords?: string[];
+  blockedCategories?: string[];
+  reelBlocker?: ReelBlockerConfig;
+  focusModePolicy?: FocusModePolicyConfig;
+  policySchedules?: PolicyScheduleRule[];
+  launchLimits?: LaunchLimitRule[];
+  namedBlockLists?: Record<string, string[]>;
+  blockedApps?: string[];
+  userProfile?: UserProfileConfig;
+  personalCloudSyncEnabled?: boolean;
+}
+
+export function defaultReelBlocker(): ReelBlockerConfig {
+  return {
+    enabled: false,
+    mode: 0,
+    daily_limit_minutes: 30,
+    youtube: true,
+    instagram: true,
+    tiktok: true,
+    browser: true,
+  };
+}
+
+export function defaultFocusModePolicy(): FocusModePolicyConfig {
+  return {
+    strictness: 0,
+    allow_early_stop: true,
+    always_whitelisted_apps: [],
+  };
 }
 
 export type BlockSource = "group" | "focus";

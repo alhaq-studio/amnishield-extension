@@ -32,7 +32,7 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
       {/* Companion Apps Download Card */}
       <section className="card p-6 flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <p className="label mb-0">🖥️ Get AmniShield Companion Apps</p>
+          <p className="label mb-0">Get AmniShield Companion Apps</p>
           {onStartTour && (
             <button
               onClick={onStartTour}
@@ -46,16 +46,20 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
         {/* Windows App */}
         <div className="rounded-xl border border-blue-500/20 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 p-4">
           <div className="flex items-start gap-3">
-            <span className="text-2xl">💻</span>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </span>
             <div className="flex-1">
-              <p className="font-semibold text-sm text-ink">AmnShield Windows Guardian</p>
+              <p className="font-semibold text-sm text-ink">AmniShield Windows Guardian</p>
               <p className="text-xs text-muted mt-1 leading-normal">
                 Desktop app blocker, web domain filter engine, usage tracker, and real-time extension sync.
                 Auto-connects with this browser extension via local HTTP API.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <ArrowLink href={LINKS.windowsApp} className={`${btnPrimary} text-xs`}>
-                  ⬇️ Download for Windows
+                  Download for Windows
                 </ArrowLink>
                 <ArrowLink href={LINKS.windowsRepo} className={`${btnOutline} text-xs`}>
                   Source Code ↗
@@ -68,9 +72,13 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
         {/* Android App */}
         <div className="rounded-xl border border-emerald-500/20 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 p-4">
           <div className="flex items-start gap-3">
-            <span className="text-2xl">📱</span>
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-500/15 text-emerald-400">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </span>
             <div className="flex-1">
-              <p className="font-semibold text-sm text-ink">AmnShield Android</p>
+              <p className="font-semibold text-sm text-ink">AmniShield Android</p>
               <p className="text-xs text-muted mt-1 leading-normal">
                 App blocker, keyword filter, Reels blocker, and focus mode for Android.
                 Pair with this extension for cross-device cloud sync.
@@ -125,7 +133,7 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
       </section>
 
       <section className="card p-6 flex flex-col gap-4">
-        <h3 className="font-semibold text-sm">🤲 Support AmniShield</h3>
+        <h3 className="font-semibold text-sm">Support AmniShield</h3>
         <p className="text-xs text-muted leading-normal">
           Help us continue developing Islamic technology solutions for the Ummah. Your support enables us to keep this extension free, open-source, and beneficial for all Muslims.
         </p>
@@ -134,7 +142,7 @@ export function AboutPanel({ onStartTour }: { onStartTour?: () => void }) {
             href="https://amnishield.com"
             className={`${btnPrimary} w-fit text-center`}
           >
-            💝 Donate (Sadaqah)
+            Donate (Sadaqah)
           </ArrowLink>
           <p className="text-[11px] italic text-faint leading-normal">
             "The believer's shade on the Day of Resurrection will be his charity" - Hadith

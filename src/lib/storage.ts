@@ -1,7 +1,24 @@
 import { browser } from "#imports";
-import type { FocusLogEntry, FocusSession, ProceedRecord, Settings, UsageHistory } from "./types";
+import type {
+  FocusLogEntry,
+  FocusSession,
+  PolicyPayloadV2,
+  PreSyncRuleSnapshot,
+  ProceedRecord,
+  Settings,
+  UsageHistory,
+} from "./types";
+import { defaultFocusModePolicy, defaultReelBlocker } from "./types";
 
-interface StoreShape {
+export interface CloudAuthSession {
+  accessToken: string;
+  refreshToken: string;
+  userId: string;
+  email?: string;
+  expiresAt: number;
+}
+
+export interface StoreShape {
   usage: UsageHistory;
   settings: Settings;
   focus: FocusSession | null;
@@ -16,6 +33,17 @@ interface StoreShape {
   adultPackActive: boolean;
   socialPackActive: boolean;
   blockedDomains: string[];
+  // Cloud Sync & Account / Console Pairing state
+  cloudAuthSession: CloudAuthSession | null;
+  cloudAuthToken: string;
+  cloudDeviceId: string;
+  cloudDeviceName: string;
+  isPairedWithConsole: boolean;
+  isConsoleManaged: boolean;
+  cachedPolicyPayload: PolicyPayloadV2 | null;
+  lastPolicySyncTimestamp: number;
+  lastSyncError: string;
+  preSyncSnapshot: PreSyncRuleSnapshot | null;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -29,6 +57,17 @@ export const DEFAULT_SETTINGS: Settings = {
   syncAppUsageEnabled: true,
   syncWebUsageEnabled: true,
   smartRecommendationsEnabled: true,
+  strictMode: false,
+  allowUnblur: true,
+  blockedKeywords: [],
+  blockedCategories: ["adult", "harmful"],
+  reelBlocker: defaultReelBlocker(),
+  focusModePolicy: defaultFocusModePolicy(),
+  policySchedules: [],
+  launchLimits: [],
+  namedBlockLists: {},
+  blockedApps: [],
+  personalCloudSyncEnabled: true,
 };
 
 const DEFAULTS: StoreShape = {
@@ -46,6 +85,16 @@ const DEFAULTS: StoreShape = {
   adultPackActive: false,
   socialPackActive: false,
   blockedDomains: [],
+  cloudAuthSession: null,
+  cloudAuthToken: "",
+  cloudDeviceId: "",
+  cloudDeviceName: "AmniShield Browser Extension",
+  isPairedWithConsole: false,
+  isConsoleManaged: false,
+  cachedPolicyPayload: null,
+  lastPolicySyncTimestamp: 0,
+  lastSyncError: "",
+  preSyncSnapshot: null,
 };
 
 export async function get<K extends keyof StoreShape>(key: K): Promise<StoreShape[K]> {

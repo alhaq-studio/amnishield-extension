@@ -9,7 +9,7 @@ import { evaluate, PASS } from "../core/blocker";
 import { activeSession, endSession } from "../core/focus";
 import { clearOnOpenGrants, pruneGrants, recordProceed } from "../core/grants";
 import { persist, startTracking, stopTracking, setWindowFocused, setPageVisible } from "../core/usage";
-import { pollGuardianStatus } from "../lib/guardianSync";
+import { pollGuardianStatus, pollDualSync } from "../lib/guardianSync";
 import { getSafeSearchRedirect } from "../lib/safeSearch";
 
 let focusedTabId: number | null = null;
@@ -17,23 +17,19 @@ let focusedTabId: number | null = null;
 async function syncDeclarativeNetRequestRules(): Promise<void> {
   if (!browser.declarativeNetRequest) return;
   try {
-    const [guardianDomains, blockedDomains] = await Promise.all([
+    const [guardianDomains, guardianCustomDomains, blockedDomains] = await Promise.all([
       get("guardianDomains"),
-      get("blockedDomains")
+      get("guardianCustomDomains"),
+      get("blockedDomains"),
     ]);
     const domainsToBlock = new Set<string>();
 
-    if (guardianDomains && guardianDomains.length > 0) {
-      for (const d of guardianDomains) {
-        const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
-        if (clean) domainsToBlock.add(clean);
-      }
-    }
-
-    if (blockedDomains && blockedDomains.length > 0) {
-      for (const d of blockedDomains) {
-        const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
-        if (clean) domainsToBlock.add(clean);
+    for (const list of [guardianDomains, guardianCustomDomains, blockedDomains]) {
+      if (list && list.length > 0) {
+        for (const d of list) {
+          const clean = d.toLowerCase().trim().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+          if (clean && clean.includes(".")) domainsToBlock.add(clean);
+        }
       }
     }
 
@@ -66,17 +62,33 @@ async function syncDeclarativeNetRequestRules(): Promise<void> {
 }
 
 async function decide(location: SiteLocation): Promise<BlockDecision> {
-  const [settings, usage, grants, proceeds, focus, guardianDomains, blockedDomains] = await Promise.all([
+  const [
+    settings,
+    usage,
+    grants,
+    proceeds,
+    focus,
+    guardianDomains,
+    guardianCustomDomains,
+    blockedDomains,
+    socialPackActive,
+  ] = await Promise.all([
     get("settings"),
     get("usage"),
     get("grants"),
     get("proceeds"),
     activeSession(),
     get("guardianDomains"),
+    get("guardianCustomDomains"),
     get("blockedDomains"),
+    get("socialPackActive"),
   ]);
   const now = new Date();
-  const allGuardian = [...(guardianDomains ?? []), ...(blockedDomains ?? [])];
+  const allGuardian = [
+    ...(guardianDomains ?? []),
+    ...(guardianCustomDomains ?? []),
+    ...(blockedDomains ?? []),
+  ];
   return evaluate({
     location,
     settings,
@@ -88,6 +100,7 @@ async function decide(location: SiteLocation): Promise<BlockDecision> {
     grants,
     proceeds,
     guardianDomains: allGuardian,
+    socialPackActive: Boolean(socialPackActive),
   });
 }
 
@@ -169,7 +182,7 @@ export default defineBackground(() => {
     if (alarm.name === "tick") {
       void persist();
       void evaluateFocused();
-      void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
+      void pollDualSync().then(() => syncDeclarativeNetRequestRules());
     } else if (alarm.name === "focus-end") {
       void activeSession().then(() => evaluateAllTabs());
     } else if (alarm.name === "grant-end") {
@@ -179,7 +192,7 @@ export default defineBackground(() => {
 
   void activeSession().then(scheduleFocusEnd);
   void get("grants").then(scheduleGrantEnd);
-  void pollGuardianStatus().then(() => syncDeclarativeNetRequestRules());
+  void pollDualSync().then(() => syncDeclarativeNetRequestRules());
 
   // Fast 2-second polling interval for real-time Windows App rule updates
   setInterval(() => {
@@ -191,11 +204,11 @@ export default defineBackground(() => {
       scheduleFocusEnd(changed.focus ?? null);
       void evaluateAllTabs();
     }
-    if ("settings" in changed) {
+    if ("settings" in changed || "socialPackActive" in changed) {
       void evaluateAllTabs();
       void syncDeclarativeNetRequestRules();
     }
-    if ("guardianDomains" in changed || "blockedDomains" in changed) {
+    if ("guardianDomains" in changed || "guardianCustomDomains" in changed || "blockedDomains" in changed) {
       void evaluateAllTabs();
       void syncDeclarativeNetRequestRules();
       if ("blockedDomains" in changed && Array.isArray(changed.blockedDomains)) {

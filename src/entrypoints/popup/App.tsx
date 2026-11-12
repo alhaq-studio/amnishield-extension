@@ -4,6 +4,7 @@ import { useAmniShield } from "../../ui/useStore";
 import { UsageView, ErrorBoundary } from "../../ui/components";
 import { FocusQuickControl } from "../../ui/focus";
 import { pollGuardianStatus, type GuardianStatus } from "../../lib/guardianSync";
+import { getCloudSyncStatus, type CloudSyncStatus } from "../../lib/cloudSync";
 
 async function openOptions(): Promise<void> {
   const url = browser.runtime.getURL("/options.html");
@@ -19,35 +20,57 @@ async function openOptions(): Promise<void> {
 
 function Header() {
   const [guardianStatus, setGuardianStatus] = useState<GuardianStatus | null>(null);
+  const [cloudStatus, setCloudStatus] = useState<CloudSyncStatus | null>(null);
 
   useEffect(() => {
     void pollGuardianStatus().then(setGuardianStatus);
+    void getCloudSyncStatus().then(setCloudStatus);
     const interval = setInterval(() => {
       void pollGuardianStatus().then(setGuardianStatus);
+      void getCloudSyncStatus().then(setCloudStatus);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const isOnline = guardianStatus?.status === "online";
+  const isLocalOnline = guardianStatus?.status === "online";
+  const isConsoleManaged = cloudStatus?.mode === "console_managed";
+  const isCloudLoggedIn = cloudStatus?.mode === "personal_cloud";
+  const isSynced = isLocalOnline || isConsoleManaged || isCloudLoggedIn;
+
+  const badgeLabel = isLocalOnline
+    ? "SYS SYNCED"
+    : isConsoleManaged
+    ? "CONSOLE SYNCED"
+    : isCloudLoggedIn
+    ? "CLOUD SYNCED"
+    : "STANDALONE";
+
+  const badgeTitle = isLocalOnline
+    ? "Connected to AmniShield Windows Guardian Service"
+    : isConsoleManaged
+    ? "Paired with AmniShield Web Admin Console"
+    : isCloudLoggedIn
+    ? `Synced with AmniShield Cloud (${cloudStatus?.userEmail ?? ""})`
+    : "Standalone Browser Mode";
 
   return (
     <header className="flex items-center justify-between">
       <div className="flex items-center gap-2">
         <h1 className="font-display text-2xl leading-none tracking-tight">AmniShield</h1>
         <span
-          title={isOnline ? "Connected to AmniShield Windows Guardian Service" : "Standalone Browser Mode"}
+          title={badgeTitle}
           className={`flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wider ${
-            isOnline
+            isSynced
               ? "bg-emerald-500/15 text-emerald-600 border border-emerald-500/30"
               : "bg-amber-500/15 text-amber-600 border border-amber-500/30"
           }`}
         >
           <span
             className={`h-1.5 w-1.5 rounded-full ${
-              isOnline ? "bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" : "bg-amber-500"
+              isSynced ? "bg-emerald-500 animate-pulse shadow-[0_0_6px_rgba(16,185,129,0.8)]" : "bg-amber-500"
             }`}
           />
-          {isOnline ? "SYS SYNCED" : "STANDALONE"}
+          {badgeLabel}
         </span>
       </div>
       <span className="flex items-center gap-1.5 text-[11px] text-faint">

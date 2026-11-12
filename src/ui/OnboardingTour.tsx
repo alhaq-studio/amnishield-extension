@@ -286,8 +286,10 @@ export function OnboardingTour({ settings, onComplete, onClose }: OnboardingTour
           {currentStep === 6 && (
             <div className="flex flex-col gap-5 my-auto animate-rise">
               <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xl font-bold">
-                  🤲
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
                 </div>
                 <div>
                   <span className="text-xs uppercase tracking-wider text-amber-400 font-medium">Community &amp; Sadaqah</span>
@@ -311,7 +313,7 @@ export function OnboardingTour({ settings, onComplete, onClose }: OnboardingTour
                     rel="noreferrer noopener"
                     className="px-4 py-2 rounded-xl text-xs font-bold text-[#140d26] bg-gradient-to-r from-amber-400 to-amber-500 hover:opacity-90 transition-all shadow-md cursor-pointer"
                   >
-                    💝 Donate (Sadaqah)
+                    Donate (Sadaqah)
                   </a>
                 </div>
                 <blockquote className="text-[11px] italic text-[#c8b8ff] border-l border-amber-500/40 pl-3 mt-1">

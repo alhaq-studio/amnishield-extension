@@ -39,7 +39,7 @@ function BlockedPage({ domain }: { domain: string }) {
 
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-            <span>🛡️ AmniShield Active Protection</span>
+            <span>AmniShield Active Protection</span>
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-white mt-1">Access Restricted</h1>
         </div>

@@ -2,7 +2,7 @@ import assert from "assert";
 import { matchKeyword, groupMatches } from "../src/lib/match";
 import { parseLocation, domainMatches } from "../src/lib/url";
 
-console.log("⏳ Bismillah - Running URL & Keyword Matcher Tests...");
+console.log("Bismillah - Running URL & Keyword Matcher Tests...");
 
 // 1. Exact Domain Matching
 {
@@ -55,4 +55,4 @@ console.log("⏳ Bismillah - Running URL & Keyword Matcher Tests...");
   assert.strictEqual(groupMatches(loc, safelist), false, "Should not match safe domains");
 }
 
-console.log("🚀 Alhamdulillah - All URL & Keyword Matcher tests passed successfully!");
+console.log("Alhamdulillah - All URL & Keyword Matcher tests passed successfully!");

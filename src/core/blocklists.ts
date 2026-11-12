@@ -4,6 +4,54 @@ export const DEFAULT_HARMFUL_KEYWORDS = [
   "riba", "astrology", "horoscope", "pagan"
 ];
 
+export const DEFAULT_GAMBLING_KEYWORDS = [
+  "betting", "casino", "gambling", "poker", "roulette", "sportsbook", "slotmachine", "jackpot", "draftkings", "fanduel", "bet365"
+];
+
+export const DEFAULT_GAMBLING_DOMAINS = [
+  "bet365.com",
+  "draftkings.com",
+  "fanduel.com",
+  "pokerstars.com",
+  "888casino.com",
+  "betway.com",
+  "williamhill.com",
+  "stake.com",
+  "roobet.com",
+  "bovada.lv",
+  "betmgm.com"
+];
+
+export const DEFAULT_SOCIAL_DOMAINS = [
+  "facebook.com",
+  "instagram.com",
+  "tiktok.com",
+  "twitter.com",
+  "x.com",
+  "snapchat.com",
+  "reddit.com",
+  "threads.net",
+  "tumblr.com",
+  "pinterest.com"
+];
+
+export const DEFAULT_DATING_DOMAINS = [
+  "tinder.com",
+  "bumble.com",
+  "hinge.co",
+  "okcupid.com",
+  "match.com",
+  "badoo.com",
+  "plentyoffish.com",
+  "pof.com",
+  "eharmony.com",
+  "grindr.com"
+];
+
+export const DEFAULT_DATING_KEYWORDS = [
+  "tinder", "bumble", "okcupid", "hookup", "casualdating", "speeddating"
+];
+
 export const DEFAULT_ADULT_KEYWORDS = [
   "porn", "xxx", "erotic", "naked", "nude", "nudity", "lust", "lewd",
   "nsfw", "fetish", "escort", "hookup", "camgirl", "camguy", "sugarbaby", "sugardaddy",
