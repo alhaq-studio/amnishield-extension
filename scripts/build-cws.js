@@ -4,7 +4,8 @@ import { execSync } from "child_process";
 
 const distDir = path.resolve(".output/chrome-mv3");
 const cwsDir = path.resolve(".output/chrome-mv3-cws");
-const zipFile = path.resolve(".output/AmnShield-Browser-Extension-CWS.zip");
+const zipFile = path.resolve(".output/AmniShield-Browser-Extension-CWS.zip");
+const legacyZipFile = path.resolve(".output/AmnShield-Browser-Extension-CWS.zip");
 
 if (!fs.existsSync(distDir)) {
   console.error("Error: .output/chrome-mv3 does not exist. Run wxt build first.");
@@ -26,6 +27,9 @@ fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 if (fs.existsSync(zipFile)) {
   fs.rmSync(zipFile, { force: true });
 }
+if (fs.existsSync(legacyZipFile)) {
+  fs.rmSync(legacyZipFile, { force: true });
+}
 
 if (process.platform === "win32") {
   execSync(`powershell -NoProfile -Command "Compress-Archive -Path '${cwsDir}\\*' -DestinationPath '${zipFile}' -Force"`);
@@ -37,4 +41,7 @@ if (process.platform === "win32") {
   }
 }
 
-console.log("CWS Zip Built Successfully:", zipFile);
+// Ensure legacy compatibility copy exists
+fs.copyFileSync(zipFile, legacyZipFile);
+
+console.log("[OK] CWS Zip Built Successfully:", zipFile);

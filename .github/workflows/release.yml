@@ -19,7 +19,7 @@ jobs:
   # 1. RIGOROUS TESTING & VALIDATION PHASE (Quality Gate)
   # =========================================================================
   test-and-validate:
-    name: 🧪 Rigorous Automated Testing & Typecheck
+    name: [CI] Automated Testing & Typecheck
     runs-on: ubuntu-latest
 
     steps:
@@ -50,16 +50,16 @@ jobs:
       - name: Validate Manifest & Output Assets
         run: |
           if [ ! -f .output/chrome-mv3/manifest.json ]; then
-            echo "❌ Error: manifest.json is missing in build output!"
+            echo "[ERROR] manifest.json is missing in build output!"
             exit 1
           fi
-          echo "✅ Build output validated successfully."
+          echo "[OK] Build output validated successfully."
 
   # =========================================================================
   # 2. BUILD, RELEASE & STORE SUBMISSION PHASE (Gated by Test Success)
   # =========================================================================
   publish-and-release:
-    name: 🚀 Build Release & Auto-Submit to Edge Add-ons
+    name: [RELEASE] Build Release & Auto-Submit to Edge Add-ons
     needs: [test-and-validate]
     if: success() && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
@@ -93,7 +93,7 @@ jobs:
           tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v2026.8.27' }}
           name: AmniShield Extension ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || 'v2026.8.27' }}
           body: |
-            ## 🌐 AmniShield Browser Extension
+            ## AmniShield Browser Extension
             - **DeclarativeNetRequest Rule Engine**: Instant browser network layer blocking & tab redirection.
             - **Mindful Block Screen**: Branded full-screen pause & quote screen with breathing indicator.
             - **100% Zero-Knowledge Privacy**: All filtering and rule matching executes locally on-device.

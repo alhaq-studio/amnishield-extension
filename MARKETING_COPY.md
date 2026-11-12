@@ -1,6 +1,6 @@
-# Web Store Marketing C🌐 **Cross-Browser Support** - Works on Chrome, Firefox, and Edgepy
+# Web Store Marketing Copy
 
-## ?? Chrome Web Store Listing
+## Chrome Web Store Listing
 
 ### Title
 Amn Shield - Islamic Content Blocker
@@ -316,7 +316,7 @@ The Al-Haq Studio Team
 - Show commitment to privacy and ethics
 - Demonstrate community focus
 
-## 📅 **Release History**
+##  **Release History**
 
 ### Version 1.2.0 (August 2, 2025) - **Latest Stable Release**
 - Enhanced stability with save changes pattern

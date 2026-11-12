@@ -4,6 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   srcDir: "src",
+  suppressWarnings: {
+    firefoxDataCollection: true,
+  },
   vite: () => ({
     plugins: [tailwindcss()],
     build: {
@@ -19,6 +22,14 @@ export default defineConfig({
     options_ui: {
       open_in_tab: true,
       page: "options.html",
+    },
+    browser_specific_settings: {
+      gecko: {
+        id: "amnishield@alhaq.uk",
+        data_collection_permissions: {
+          required: ["none"],
+        },
+      },
     },
     web_accessible_resources: [
       {

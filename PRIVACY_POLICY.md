@@ -27,11 +27,11 @@ Amn Shield ("we," "our," or "us") is developed by **Al-Haq Studio**, an Islamic 
 - **Custom Keywords**: User-defined blocking patterns and rules
 
 ### Data We DO NOT Collect
-- ❌ Personal identification information (names, emails, accounts)
-- ❌ Browsing history
-- ❌ Website content or URLs visited
-- ❌ User analytics or telemetry tracking data
-- ❌ Any data transmitted to external servers
+- [NO] Personal identification information (names, emails, accounts)
+- [NO] Browsing history
+- [NO] Website content or URLs visited
+- [NO] User analytics or telemetry tracking data
+- [NO] Any data transmitted to external servers
 
 ## How We Use Information
 
